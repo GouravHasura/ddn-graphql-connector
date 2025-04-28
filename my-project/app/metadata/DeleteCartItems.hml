@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsMutationResponse
+  description: response of any mutation on the table "cart_items"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[CartItems!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: CartItemsMutationResponse
+    inputTypeName: CartItemsMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteCartItems
+  outputType: CartItemsMutationResponse
+  arguments:
+    - name: where
+      type: CartItemsBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_cart_items
+  graphql:
+    rootFieldName: deleteCartItems
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "cart_items"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteCartItems
+  permissions:
+    - role: admin
+      allowExecution: true
+

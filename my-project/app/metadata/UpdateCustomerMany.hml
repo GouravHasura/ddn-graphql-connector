@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerUpdates
+  fields:
+    - name: inc
+      type: CustomerIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CustomerSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CustomerBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: CustomerUpdates
+    inputTypeName: CustomerUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCustomerMany
+  outputType: "[CustomerMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[CustomerUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Customer_many
+  graphql:
+    rootFieldName: updateCustomerMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCustomerMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

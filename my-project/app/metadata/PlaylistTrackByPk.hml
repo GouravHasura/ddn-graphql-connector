@@ -1,0 +1,32 @@
+---
+kind: Command
+version: v1
+definition:
+  name: PlaylistTrackByPk
+  outputType: PlaylistTrack
+  arguments:
+    - name: playlistId
+      type: Int!
+    - name: trackId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: PlaylistTrack_by_pk
+    argumentMapping:
+      playlistId: PlaylistId
+      trackId: TrackId
+  graphql:
+    rootFieldName: playlistTrackByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "PlaylistTrack" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: PlaylistTrackByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

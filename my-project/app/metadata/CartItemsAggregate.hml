@@ -1,0 +1,510 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsAvgFields
+    inputTypeName: CartItemsAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_avg_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: cartId
+      type: Uuid
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: quantity
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: CartItemsMaxFields
+    inputTypeName: CartItemsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_max_fields
+      fieldMapping:
+        cartId:
+          column:
+            name: cart_id
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        quantity:
+          column:
+            name: quantity
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cartId
+          - createdAt
+          - id
+          - productId
+          - quantity
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: cartId
+      type: Uuid
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: quantity
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: CartItemsMinFields
+    inputTypeName: CartItemsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_min_fields
+      fieldMapping:
+        cartId:
+          column:
+            name: cart_id
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        quantity:
+          column:
+            name: quantity
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cartId
+          - createdAt
+          - id
+          - productId
+          - quantity
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsStddevFields
+    inputTypeName: CartItemsStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_stddev_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsStddevPopFields
+    inputTypeName: CartItemsStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_stddev_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsStddevSampFields
+    inputTypeName: CartItemsStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_stddev_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: quantity
+      type: Int
+  graphql:
+    typeName: CartItemsSumFields
+    inputTypeName: CartItemsSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_sum_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsVarPopFields
+    inputTypeName: CartItemsVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_var_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsVarSampFields
+    inputTypeName: CartItemsVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_var_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: quantity
+      type: Float
+  graphql:
+    typeName: CartItemsVarianceFields
+    inputTypeName: CartItemsVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_variance_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsAggregateFields
+  description: aggregate fields of "cart_items"
+  fields:
+    - name: avg
+      type: CartItemsAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[CartItemsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: CartItemsMaxFields
+    - name: min
+      type: CartItemsMinFields
+    - name: stddev
+      type: CartItemsStddevFields
+    - name: stddevPop
+      type: CartItemsStddevPopFields
+    - name: stddevSamp
+      type: CartItemsStddevSampFields
+    - name: sum
+      type: CartItemsSumFields
+    - name: varPop
+      type: CartItemsVarPopFields
+    - name: varSamp
+      type: CartItemsVarSampFields
+    - name: variance
+      type: CartItemsVarianceFields
+  graphql:
+    typeName: CartItemsAggregateFields
+    inputTypeName: CartItemsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsAggregate
+  description: aggregated selection of "cart_items"
+  fields:
+    - name: aggregate
+      type: CartItemsAggregateFields
+    - name: nodes
+      type: "[CartItems!]!"
+  graphql:
+    typeName: CartItemsAggregate
+    inputTypeName: CartItemsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: CartItemsAggregate
+  outputType: CartItemsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[CartItemsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CartItemsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CartItemsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: cart_items_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: cartItemsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "cart_items"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CartItemsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

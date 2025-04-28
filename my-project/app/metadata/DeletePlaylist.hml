@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistMutationResponse
+  description: response of any mutation on the table "Playlist"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Playlist!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: PlaylistMutationResponse
+    inputTypeName: PlaylistMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeletePlaylist
+  outputType: PlaylistMutationResponse
+  arguments:
+    - name: where
+      type: PlaylistBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Playlist
+  graphql:
+    rootFieldName: deletePlaylist
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeletePlaylist
+  permissions:
+    - role: admin
+      allowExecution: true
+

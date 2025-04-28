@@ -1,0 +1,156 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsIncInput
+  description: input type for incrementing numeric columns in table "products"
+  fields:
+    - name: price
+      type: Int
+  graphql:
+    typeName: ProductsIncInput
+    inputTypeName: ProductsIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_inc_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsSetInput
+  description: input type for updating data in table "products"
+  fields:
+    - name: categoryId
+      type: Uuid
+    - name: countryOfOrigin
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: description
+      type: String
+    - name: id
+      type: Uuid
+    - name: image
+      type: String
+    - name: manufacturerId
+      type: Uuid
+    - name: name
+      type: String
+    - name: price
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+    - name: vector
+      type: Vector
+  graphql:
+    typeName: ProductsSetInput
+    inputTypeName: ProductsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_set_input
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+        vector:
+          column:
+            name: vector
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+          - vector
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateProducts
+  outputType: ProductsMutationResponse
+  arguments:
+    - name: inc
+      type: ProductsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ProductsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: ProductsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_products
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateProducts
+    rootFieldKind: Mutation
+  description: 'update data of the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateProducts
+  permissions:
+    - role: admin
+      allowExecution: true
+

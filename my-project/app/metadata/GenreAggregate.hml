@@ -1,0 +1,494 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreAvgFields
+    inputTypeName: GenreAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_avg_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: genreId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: GenreMaxFields
+    inputTypeName: GenreMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_max_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreMinFields
+  description: aggregate min on columns
+  fields:
+    - name: genreId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: GenreMinFields
+    inputTypeName: GenreMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_min_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreStddevFields
+    inputTypeName: GenreStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_stddev_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreStddevPopFields
+    inputTypeName: GenreStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_stddev_pop_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreStddevSampFields
+    inputTypeName: GenreStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_stddev_samp_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: genreId
+      type: Int
+  graphql:
+    typeName: GenreSumFields
+    inputTypeName: GenreSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_sum_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreVarPopFields
+    inputTypeName: GenreVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_var_pop_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreVarSampFields
+    inputTypeName: GenreVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_var_samp_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: genreId
+      type: Float
+  graphql:
+    typeName: GenreVarianceFields
+    inputTypeName: GenreVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_variance_fields
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreAggregateFields
+  description: aggregate fields of "Genre"
+  fields:
+    - name: avg
+      type: GenreAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[GenreSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: GenreMaxFields
+    - name: min
+      type: GenreMinFields
+    - name: stddev
+      type: GenreStddevFields
+    - name: stddevPop
+      type: GenreStddevPopFields
+    - name: stddevSamp
+      type: GenreStddevSampFields
+    - name: sum
+      type: GenreSumFields
+    - name: varPop
+      type: GenreVarPopFields
+    - name: varSamp
+      type: GenreVarSampFields
+    - name: variance
+      type: GenreVarianceFields
+  graphql:
+    typeName: GenreAggregateFields
+    inputTypeName: GenreAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreAggregate
+  description: aggregated selection of "Genre"
+  fields:
+    - name: aggregate
+      type: GenreAggregateFields
+    - name: nodes
+      type: "[Genre!]!"
+  graphql:
+    typeName: GenreAggregate
+    inputTypeName: GenreAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: GenreAggregate
+  outputType: GenreAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[GenreSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[GenreOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: GenreBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Genre_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: genreAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: GenreAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,506 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventAvgFields
+    inputTypeName: SecurityEventAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_avg_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: evtDesc
+      type: String
+    - name: evtId
+      type: Int
+    - name: evtRootCause
+      type: String
+  graphql:
+    typeName: SecurityEventMaxFields
+    inputTypeName: SecurityEventMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_max_fields
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventMinFields
+  description: aggregate min on columns
+  fields:
+    - name: evtDesc
+      type: String
+    - name: evtId
+      type: Int
+    - name: evtRootCause
+      type: String
+  graphql:
+    typeName: SecurityEventMinFields
+    inputTypeName: SecurityEventMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_min_fields
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventStddevFields
+    inputTypeName: SecurityEventStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_stddev_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventStddevPopFields
+    inputTypeName: SecurityEventStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_stddev_pop_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventStddevSampFields
+    inputTypeName: SecurityEventStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_stddev_samp_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: evtId
+      type: Int
+  graphql:
+    typeName: SecurityEventSumFields
+    inputTypeName: SecurityEventSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_sum_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventVarPopFields
+    inputTypeName: SecurityEventVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_var_pop_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventVarSampFields
+    inputTypeName: SecurityEventVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_var_samp_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: evtId
+      type: Float
+  graphql:
+    typeName: SecurityEventVarianceFields
+    inputTypeName: SecurityEventVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_variance_fields
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventAggregateFields
+  description: aggregate fields of "security_event"
+  fields:
+    - name: avg
+      type: SecurityEventAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[SecurityEventSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: SecurityEventMaxFields
+    - name: min
+      type: SecurityEventMinFields
+    - name: stddev
+      type: SecurityEventStddevFields
+    - name: stddevPop
+      type: SecurityEventStddevPopFields
+    - name: stddevSamp
+      type: SecurityEventStddevSampFields
+    - name: sum
+      type: SecurityEventSumFields
+    - name: varPop
+      type: SecurityEventVarPopFields
+    - name: varSamp
+      type: SecurityEventVarSampFields
+    - name: variance
+      type: SecurityEventVarianceFields
+  graphql:
+    typeName: SecurityEventAggregateFields
+    inputTypeName: SecurityEventAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventAggregate
+  description: aggregated selection of "security_event"
+  fields:
+    - name: aggregate
+      type: SecurityEventAggregateFields
+    - name: nodes
+      type: "[SecurityEvent!]!"
+  graphql:
+    typeName: SecurityEventAggregate
+    inputTypeName: SecurityEventAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: SecurityEventAggregate
+  outputType: SecurityEventAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[SecurityEventSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[SecurityEventOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: SecurityEventBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: security_event_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: securityEventAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: SecurityEventAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,284 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsOrderBy
+  description: Ordering options when selecting data from "coupons".
+  fields:
+    - name: amount
+      type: OrderBy
+    - name: code
+      type: OrderBy
+    - name: createdAt
+      type: OrderBy
+    - name: expirationDate
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: percentOrValue
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: userId
+      type: OrderBy
+  graphql:
+    typeName: CouponsOrderBy
+    inputTypeName: CouponsOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_order_by
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsBoolExp
+  description: Boolean expression to filter rows from the table "coupons". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[CouponsBoolExp!]"
+    - name: not
+      type: CouponsBoolExp
+    - name: or
+      type: "[CouponsBoolExp!]"
+    - name: amount
+      type: IntComparisonExp
+    - name: code
+      type: StringComparisonExp
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: expirationDate
+      type: TimestamptzComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: percentOrValue
+      type: StringComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: userId
+      type: UuidComparisonExp
+  graphql:
+    typeName: CouponsBoolExp
+    inputTypeName: CouponsBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Coupons
+  description: columns and relationships of "coupons"
+  fields:
+    - name: amount
+      type: Int
+    - name: code
+      type: String!
+    - name: createdAt
+      type: Timestamptz!
+    - name: expirationDate
+      type: Timestamptz!
+    - name: id
+      type: Uuid!
+    - name: percentOrValue
+      type: String
+    - name: updatedAt
+      type: Timestamptz!
+    - name: userId
+      type: Uuid!
+  graphql:
+    typeName: Coupons
+    inputTypeName: CouponsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Coupons
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Coupons
+  outputType: "[Coupons!]!"
+  arguments:
+    - name: distinctOn
+      type: "[CouponsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CouponsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CouponsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: coupons
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: coupons
+    rootFieldKind: Query
+  description: 'fetch data from the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Coupons
+  permissions:
+    - role: admin
+      allowExecution: true
+

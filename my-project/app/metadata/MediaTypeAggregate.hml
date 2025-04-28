@@ -1,0 +1,494 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeAvgFields
+    inputTypeName: MediaTypeAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_avg_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: mediaTypeId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: MediaTypeMaxFields
+    inputTypeName: MediaTypeMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_max_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeMinFields
+  description: aggregate min on columns
+  fields:
+    - name: mediaTypeId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: MediaTypeMinFields
+    inputTypeName: MediaTypeMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_min_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeStddevFields
+    inputTypeName: MediaTypeStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_stddev_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeStddevPopFields
+    inputTypeName: MediaTypeStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_stddev_pop_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeStddevSampFields
+    inputTypeName: MediaTypeStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_stddev_samp_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: mediaTypeId
+      type: Int
+  graphql:
+    typeName: MediaTypeSumFields
+    inputTypeName: MediaTypeSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_sum_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeVarPopFields
+    inputTypeName: MediaTypeVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_var_pop_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeVarSampFields
+    inputTypeName: MediaTypeVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_var_samp_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: mediaTypeId
+      type: Float
+  graphql:
+    typeName: MediaTypeVarianceFields
+    inputTypeName: MediaTypeVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_variance_fields
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeAggregateFields
+  description: aggregate fields of "MediaType"
+  fields:
+    - name: avg
+      type: MediaTypeAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[MediaTypeSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: MediaTypeMaxFields
+    - name: min
+      type: MediaTypeMinFields
+    - name: stddev
+      type: MediaTypeStddevFields
+    - name: stddevPop
+      type: MediaTypeStddevPopFields
+    - name: stddevSamp
+      type: MediaTypeStddevSampFields
+    - name: sum
+      type: MediaTypeSumFields
+    - name: varPop
+      type: MediaTypeVarPopFields
+    - name: varSamp
+      type: MediaTypeVarSampFields
+    - name: variance
+      type: MediaTypeVarianceFields
+  graphql:
+    typeName: MediaTypeAggregateFields
+    inputTypeName: MediaTypeAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeAggregate
+  description: aggregated selection of "MediaType"
+  fields:
+    - name: aggregate
+      type: MediaTypeAggregateFields
+    - name: nodes
+      type: "[MediaType!]!"
+  graphql:
+    typeName: MediaTypeAggregate
+    inputTypeName: MediaTypeAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: MediaTypeAggregate
+  outputType: MediaTypeAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[MediaTypeSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[MediaTypeOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: MediaTypeBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: MediaType_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: mediaTypeAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: MediaTypeAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

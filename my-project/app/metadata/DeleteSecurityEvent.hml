@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventMutationResponse
+  description: response of any mutation on the table "security_event"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[SecurityEvent!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: SecurityEventMutationResponse
+    inputTypeName: SecurityEventMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteSecurityEvent
+  outputType: SecurityEventMutationResponse
+  arguments:
+    - name: where
+      type: SecurityEventBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_security_event
+  graphql:
+    rootFieldName: deleteSecurityEvent
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteSecurityEvent
+  permissions:
+    - role: admin
+      allowExecution: true
+

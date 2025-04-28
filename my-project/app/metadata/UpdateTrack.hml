@@ -1,0 +1,184 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackIncInput
+  description: input type for incrementing numeric columns in table "Track"
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackIncInput
+    inputTypeName: TrackIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_inc_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackSetInput
+  description: input type for updating data in table "Track"
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: composer
+      type: String
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: name
+      type: String
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackSetInput
+    inputTypeName: TrackSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_set_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateTrack
+  outputType: TrackMutationResponse
+  arguments:
+    - name: inc
+      type: TrackIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: TrackSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: TrackBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Track
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateTrack
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateTrack
+  permissions:
+    - role: admin
+      allowExecution: true
+

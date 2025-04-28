@@ -1,0 +1,107 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersInsertInput
+  description: input type for inserting data into table "manufacturers"
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: ManufacturersInsertInput
+    inputTypeName: ManufacturersInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_insert_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersOnConflict
+  description: on_conflict condition type for table "manufacturers"
+  fields:
+    - name: constraint
+      type: ManufacturersConstraint!
+    - name: updateColumns
+      type: "[ManufacturersUpdateColumn!]!"
+    - name: where
+      type: ManufacturersBoolExp
+  graphql:
+    typeName: ManufacturersOnConflict
+    inputTypeName: ManufacturersOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertManufacturers
+  outputType: ManufacturersMutationResponse
+  arguments:
+    - name: objects
+      type: "[ManufacturersInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: ManufacturersOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_manufacturers
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertManufacturers
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertManufacturers
+  permissions:
+    - role: admin
+      allowExecution: true
+

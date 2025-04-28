@@ -1,0 +1,28 @@
+{
+  "$schema": "configuration.schema.json",
+  "introspection": {
+    "endpoint": {
+      "valueFromEnv": "GRAPHQL_ENDPOINT"
+    },
+    "headers": {
+      "X-Hasura-Admin-Secret": {
+        "value": "ZoX6gtrZtexlxA6rvxiExJvWpyKKsnIRRFHHbrwhx4cbGdRsMNakECI2NVu4bQL1"
+      },
+      "Content-Type": {
+        "value": "application/json"
+      }
+    }
+  
+  },
+  "execution": {
+    "endpoint": {
+      "valueFromEnv": "GRAPHQL_ENDPOINT"
+    },
+    "headers": {
+      "Content-Type": {
+        "value": "application/json"
+      }
+    }
+  }
+}
+

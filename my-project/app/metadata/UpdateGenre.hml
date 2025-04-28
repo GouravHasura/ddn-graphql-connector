@@ -1,0 +1,106 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreIncInput
+  description: input type for incrementing numeric columns in table "Genre"
+  fields:
+    - name: genreId
+      type: Int
+  graphql:
+    typeName: GenreIncInput
+    inputTypeName: GenreIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_inc_input
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreSetInput
+  description: input type for updating data in table "Genre"
+  fields:
+    - name: genreId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: GenreSetInput
+    inputTypeName: GenreSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_set_input
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateGenre
+  outputType: GenreMutationResponse
+  arguments:
+    - name: inc
+      type: GenreIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: GenreSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: GenreBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Genre
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateGenre
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateGenre
+  permissions:
+    - role: admin
+      allowExecution: true
+

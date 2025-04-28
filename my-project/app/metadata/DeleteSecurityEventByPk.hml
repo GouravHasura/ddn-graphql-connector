@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteSecurityEventByPk
+  outputType: SecurityEvent
+  arguments:
+    - name: evtId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_security_event_by_pk
+    argumentMapping:
+      evtId: evt_id
+  graphql:
+    rootFieldName: deleteSecurityEventByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteSecurityEventByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,64 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsPkColumnsInput
+  description: "primary key columns input for table: products"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: ProductsPkColumnsInput
+    inputTypeName: ProductsPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateProductsByPk
+  outputType: Products
+  arguments:
+    - name: inc
+      type: ProductsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ProductsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: ProductsPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_products_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateProductsByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateProductsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistMutationResponse
+  description: response of any mutation on the table "Artist"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Artist!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: ArtistMutationResponse
+    inputTypeName: ArtistMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteArtist
+  outputType: ArtistMutationResponse
+  arguments:
+    - name: where
+      type: ArtistBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Artist
+  graphql:
+    rootFieldName: deleteArtist
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteArtist
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,138 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsIncInput
+  description: input type for incrementing numeric columns in table "coupons"
+  fields:
+    - name: amount
+      type: Int
+  graphql:
+    typeName: CouponsIncInput
+    inputTypeName: CouponsIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_inc_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsSetInput
+  description: input type for updating data in table "coupons"
+  fields:
+    - name: amount
+      type: Int
+    - name: code
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: expirationDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: percentOrValue
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CouponsSetInput
+    inputTypeName: CouponsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_set_input
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCoupons
+  outputType: CouponsMutationResponse
+  arguments:
+    - name: inc
+      type: CouponsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CouponsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CouponsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_coupons
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateCoupons
+    rootFieldKind: Mutation
+  description: 'update data of the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCoupons
+  permissions:
+    - role: admin
+      allowExecution: true
+

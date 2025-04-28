@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteNotificationsByPk
+  outputType: Notifications
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_notifications_by_pk
+  graphql:
+    rootFieldName: deleteNotificationsByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteNotificationsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

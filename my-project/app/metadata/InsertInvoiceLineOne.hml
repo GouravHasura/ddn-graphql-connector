@@ -1,0 +1,34 @@
+---
+kind: Command
+version: v1
+definition:
+  name: InsertInvoiceLineOne
+  outputType: InvoiceLine
+  arguments:
+    - name: object
+      type: InvoiceLineInsertInput!
+      description: the row to be inserted
+    - name: onConflict
+      type: InvoiceLineOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_InvoiceLine_one
+    argumentMapping:
+      object: object
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertInvoiceLineOne
+    rootFieldKind: Mutation
+  description: 'insert a single row into the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertInvoiceLineOne
+  permissions:
+    - role: admin
+      allowExecution: true
+

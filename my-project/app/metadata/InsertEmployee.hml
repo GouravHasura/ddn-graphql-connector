@@ -1,0 +1,192 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeInsertInput
+  description: input type for inserting data into table "Employee"
+  fields:
+    - name: address
+      type: String
+    - name: birthDate
+      type: Timestamp
+    - name: city
+      type: String
+    - name: country
+      type: String
+    - name: email
+      type: String
+    - name: employeeId
+      type: Int
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: hireDate
+      type: Timestamp
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: reportsTo
+      type: Int
+    - name: state
+      type: String
+    - name: title
+      type: String
+  graphql:
+    typeName: EmployeeInsertInput
+    inputTypeName: EmployeeInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_insert_input
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeOnConflict
+  description: on_conflict condition type for table "Employee"
+  fields:
+    - name: constraint
+      type: EmployeeConstraint!
+    - name: updateColumns
+      type: "[EmployeeUpdateColumn!]!"
+    - name: where
+      type: EmployeeBoolExp
+  graphql:
+    typeName: EmployeeOnConflict
+    inputTypeName: EmployeeOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertEmployee
+  outputType: EmployeeMutationResponse
+  arguments:
+    - name: objects
+      type: "[EmployeeInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: EmployeeOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Employee
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertEmployee
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertEmployee
+  permissions:
+    - role: admin
+      allowExecution: true
+

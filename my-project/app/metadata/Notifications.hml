@@ -1,0 +1,230 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsOrderBy
+  description: Ordering options when selecting data from "notifications".
+  fields:
+    - name: createdAt
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: message
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: userId
+      type: OrderBy
+  graphql:
+    typeName: NotificationsOrderBy
+    inputTypeName: NotificationsOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_order_by
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsBoolExp
+  description: Boolean expression to filter rows from the table "notifications".
+    All fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[NotificationsBoolExp!]"
+    - name: not
+      type: NotificationsBoolExp
+    - name: or
+      type: "[NotificationsBoolExp!]"
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: message
+      type: StringComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: userId
+      type: UuidComparisonExp
+  graphql:
+    typeName: NotificationsBoolExp
+    inputTypeName: NotificationsBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Notifications
+  description: columns and relationships of "notifications"
+  fields:
+    - name: createdAt
+      type: Timestamptz!
+    - name: id
+      type: Uuid!
+    - name: message
+      type: String!
+    - name: updatedAt
+      type: Timestamptz!
+    - name: userId
+      type: Uuid!
+  graphql:
+    typeName: Notifications
+    inputTypeName: NotificationsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Notifications
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Notifications
+  outputType: "[Notifications!]!"
+  arguments:
+    - name: distinctOn
+      type: "[NotificationsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[NotificationsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: NotificationsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: notifications
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: notifications
+    rootFieldKind: Query
+  description: 'fetch data from the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Notifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

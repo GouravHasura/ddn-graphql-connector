@@ -1,0 +1,180 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerInsertInput
+  description: input type for inserting data into table "Customer"
+  fields:
+    - name: address
+      type: String
+    - name: city
+      type: String
+    - name: company
+      type: String
+    - name: country
+      type: String
+    - name: customerId
+      type: Int
+    - name: email
+      type: String
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: state
+      type: String
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerInsertInput
+    inputTypeName: CustomerInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_insert_input
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerOnConflict
+  description: on_conflict condition type for table "Customer"
+  fields:
+    - name: constraint
+      type: CustomerConstraint!
+    - name: updateColumns
+      type: "[CustomerUpdateColumn!]!"
+    - name: where
+      type: CustomerBoolExp
+  graphql:
+    typeName: CustomerOnConflict
+    inputTypeName: CustomerOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCustomer
+  outputType: CustomerMutationResponse
+  arguments:
+    - name: objects
+      type: "[CustomerInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: CustomerOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Customer
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCustomer
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCustomer
+  permissions:
+    - role: admin
+      allowExecution: true
+

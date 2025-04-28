@@ -1,0 +1,150 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersInsertInput
+  description: input type for inserting data into table "orders"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: deliveryDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: isReviewed
+      type: Boolean
+    - name: productId
+      type: Uuid
+    - name: status
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: OrdersInsertInput
+    inputTypeName: OrdersInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_insert_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        isReviewed:
+          column:
+            name: is_reviewed
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - isReviewed
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersOnConflict
+  description: on_conflict condition type for table "orders"
+  fields:
+    - name: constraint
+      type: OrdersConstraint!
+    - name: updateColumns
+      type: "[OrdersUpdateColumn!]!"
+    - name: where
+      type: OrdersBoolExp
+  graphql:
+    typeName: OrdersOnConflict
+    inputTypeName: OrdersOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertOrders
+  outputType: OrdersMutationResponse
+  arguments:
+    - name: objects
+      type: "[OrdersInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: OrdersOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_orders
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertOrders
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertOrders
+  permissions:
+    - role: admin
+      allowExecution: true
+

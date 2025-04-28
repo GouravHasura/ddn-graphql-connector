@@ -1,0 +1,418 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsOrderBy
+  description: Ordering options when selecting data from "products".
+  fields:
+    - name: categoryId
+      type: OrderBy
+    - name: countryOfOrigin
+      type: OrderBy
+    - name: createdAt
+      type: OrderBy
+    - name: description
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: image
+      type: OrderBy
+    - name: manufacturerId
+      type: OrderBy
+    - name: name
+      type: OrderBy
+    - name: price
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: vector
+      type: OrderBy
+  graphql:
+    typeName: ProductsOrderBy
+    inputTypeName: ProductsOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_order_by
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+        vector:
+          column:
+            name: vector
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+          - vector
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: VectorComparisonExp
+  description: Boolean expression to compare columns of type "vector". All fields
+    are combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: Vector
+    - name: gt
+      type: Vector
+    - name: gte
+      type: Vector
+    - name: in
+      type: "[Vector!]"
+    - name: isNull
+      type: Boolean
+    - name: lt
+      type: Vector
+    - name: lte
+      type: Vector
+    - name: neq
+      type: Vector
+    - name: nin
+      type: "[Vector!]"
+  graphql:
+    typeName: VectorComparisonExp_1
+    inputTypeName: VectorComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: vector_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        in:
+          column:
+            name: _in
+        isNull:
+          column:
+            name: _is_null
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nin:
+          column:
+            name: _nin
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: VectorComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - in
+          - isNull
+          - lt
+          - lte
+          - neq
+          - nin
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsBoolExp
+  description: Boolean expression to filter rows from the table "products". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[ProductsBoolExp!]"
+    - name: not
+      type: ProductsBoolExp
+    - name: or
+      type: "[ProductsBoolExp!]"
+    - name: categoryId
+      type: UuidComparisonExp
+    - name: countryOfOrigin
+      type: StringComparisonExp
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: description
+      type: StringComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: image
+      type: StringComparisonExp
+    - name: manufacturerId
+      type: UuidComparisonExp
+    - name: name
+      type: StringComparisonExp
+    - name: price
+      type: IntComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: vector
+      type: VectorComparisonExp
+  graphql:
+    typeName: ProductsBoolExp
+    inputTypeName: ProductsBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+        vector:
+          column:
+            name: vector
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+          - vector
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Products
+  description: columns and relationships of "products"
+  fields:
+    - name: categoryId
+      type: Uuid!
+    - name: countryOfOrigin
+      type: String!
+    - name: createdAt
+      type: Timestamptz!
+    - name: description
+      type: String!
+    - name: id
+      type: Uuid!
+    - name: image
+      type: String!
+    - name: manufacturerId
+      type: Uuid!
+    - name: name
+      type: String!
+    - name: price
+      type: Int!
+    - name: updatedAt
+      type: Timestamptz!
+    - name: vector
+      type: Vector!
+  graphql:
+    typeName: Products
+    inputTypeName: ProductsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+        vector:
+          column:
+            name: vector
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Products
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+          - vector
+
+---
+kind: Command
+version: v1
+definition:
+  name: Products
+  outputType: "[Products!]!"
+  arguments:
+    - name: distinctOn
+      type: "[ProductsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ProductsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ProductsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: products
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: products
+    rootFieldKind: Query
+  description: 'fetch data from the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Products
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackUpdates
+  fields:
+    - name: inc
+      type: TrackIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: TrackSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: TrackBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: TrackUpdates
+    inputTypeName: TrackUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateTrackMany
+  outputType: "[TrackMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[TrackUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Track_many
+  graphql:
+    rootFieldName: updateTrackMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateTrackMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

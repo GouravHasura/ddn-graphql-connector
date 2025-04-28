@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineMutationResponse
+  description: response of any mutation on the table "InvoiceLine"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[InvoiceLine!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: InvoiceLineMutationResponse
+    inputTypeName: InvoiceLineMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteInvoiceLine
+  outputType: InvoiceLineMutationResponse
+  arguments:
+    - name: where
+      type: InvoiceLineBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_InvoiceLine
+  graphql:
+    rootFieldName: deleteInvoiceLine
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteInvoiceLine
+  permissions:
+    - role: admin
+      allowExecution: true
+

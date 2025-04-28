@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistPkColumnsInput
+  description: "primary key columns input for table: Artist"
+  fields:
+    - name: artistId
+      type: Int!
+  graphql:
+    typeName: ArtistPkColumnsInput
+    inputTypeName: ArtistPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_pk_columns_input
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateArtistByPk
+  outputType: Artist
+  arguments:
+    - name: inc
+      type: ArtistIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ArtistSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: ArtistPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Artist_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateArtistByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateArtistByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

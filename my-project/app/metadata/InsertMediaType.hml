@@ -1,0 +1,114 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeInsertInput
+  description: input type for inserting data into table "MediaType"
+  fields:
+    - name: mediaTypeId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: MediaTypeInsertInput
+    inputTypeName: MediaTypeInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_insert_input
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeOnConflict
+  description: on_conflict condition type for table "MediaType"
+  fields:
+    - name: constraint
+      type: MediaTypeConstraint!
+    - name: updateColumns
+      type: "[MediaTypeUpdateColumn!]!"
+    - name: where
+      type: MediaTypeBoolExp
+  graphql:
+    typeName: MediaTypeOnConflict
+    inputTypeName: MediaTypeOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertMediaType
+  outputType: MediaTypeMutationResponse
+  arguments:
+    - name: objects
+      type: "[MediaTypeInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: MediaTypeOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_MediaType
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertMediaType
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertMediaType
+  permissions:
+    - role: admin
+      allowExecution: true
+

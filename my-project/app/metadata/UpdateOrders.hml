@@ -1,0 +1,107 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersSetInput
+  description: input type for updating data in table "orders"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: deliveryDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: isReviewed
+      type: Boolean
+    - name: productId
+      type: Uuid
+    - name: status
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: OrdersSetInput
+    inputTypeName: OrdersSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_set_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        isReviewed:
+          column:
+            name: is_reviewed
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - isReviewed
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateOrders
+  outputType: OrdersMutationResponse
+  arguments:
+    - name: set
+      type: OrdersSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: OrdersBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_orders
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateOrders
+    rootFieldKind: Mutation
+  description: 'update data of the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateOrders
+  permissions:
+    - role: admin
+      allowExecution: true
+

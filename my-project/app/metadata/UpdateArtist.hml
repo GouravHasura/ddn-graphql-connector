@@ -1,0 +1,106 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistIncInput
+  description: input type for incrementing numeric columns in table "Artist"
+  fields:
+    - name: artistId
+      type: Int
+  graphql:
+    typeName: ArtistIncInput
+    inputTypeName: ArtistIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_inc_input
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistSetInput
+  description: input type for updating data in table "Artist"
+  fields:
+    - name: artistId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: ArtistSetInput
+    inputTypeName: ArtistSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_set_input
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateArtist
+  outputType: ArtistMutationResponse
+  arguments:
+    - name: inc
+      type: ArtistIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ArtistSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: ArtistBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Artist
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateArtist
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateArtist
+  permissions:
+    - role: admin
+      allowExecution: true
+

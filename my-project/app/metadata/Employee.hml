@@ -1,0 +1,490 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeOrderBy
+  description: Ordering options when selecting data from "Employee".
+  fields:
+    - name: address
+      type: OrderBy
+    - name: birthDate
+      type: OrderBy
+    - name: city
+      type: OrderBy
+    - name: country
+      type: OrderBy
+    - name: email
+      type: OrderBy
+    - name: employeeId
+      type: OrderBy
+    - name: fax
+      type: OrderBy
+    - name: firstName
+      type: OrderBy
+    - name: hireDate
+      type: OrderBy
+    - name: lastName
+      type: OrderBy
+    - name: phone
+      type: OrderBy
+    - name: postalCode
+      type: OrderBy
+    - name: reportsTo
+      type: OrderBy
+    - name: state
+      type: OrderBy
+    - name: title
+      type: OrderBy
+  graphql:
+    typeName: EmployeeOrderBy
+    inputTypeName: EmployeeOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_order_by
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TimestampComparisonExp
+  description: Boolean expression to compare columns of type "timestamp". All
+    fields are combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: Timestamp
+    - name: gt
+      type: Timestamp
+    - name: gte
+      type: Timestamp
+    - name: in
+      type: "[Timestamp!]"
+    - name: isNull
+      type: Boolean
+    - name: lt
+      type: Timestamp
+    - name: lte
+      type: Timestamp
+    - name: neq
+      type: Timestamp
+    - name: nin
+      type: "[Timestamp!]"
+  graphql:
+    typeName: TimestampComparisonExp_1
+    inputTypeName: TimestampComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: timestamp_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        in:
+          column:
+            name: _in
+        isNull:
+          column:
+            name: _is_null
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nin:
+          column:
+            name: _nin
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TimestampComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - in
+          - isNull
+          - lt
+          - lte
+          - neq
+          - nin
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeBoolExp
+  description: Boolean expression to filter rows from the table "Employee". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[EmployeeBoolExp!]"
+    - name: not
+      type: EmployeeBoolExp
+    - name: or
+      type: "[EmployeeBoolExp!]"
+    - name: address
+      type: StringComparisonExp
+    - name: birthDate
+      type: TimestampComparisonExp
+    - name: city
+      type: StringComparisonExp
+    - name: country
+      type: StringComparisonExp
+    - name: email
+      type: StringComparisonExp
+    - name: employeeId
+      type: IntComparisonExp
+    - name: fax
+      type: StringComparisonExp
+    - name: firstName
+      type: StringComparisonExp
+    - name: hireDate
+      type: TimestampComparisonExp
+    - name: lastName
+      type: StringComparisonExp
+    - name: phone
+      type: StringComparisonExp
+    - name: postalCode
+      type: StringComparisonExp
+    - name: reportsTo
+      type: IntComparisonExp
+    - name: state
+      type: StringComparisonExp
+    - name: title
+      type: StringComparisonExp
+  graphql:
+    typeName: EmployeeBoolExp
+    inputTypeName: EmployeeBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Employee
+  description: columns and relationships of "Employee"
+  fields:
+    - name: address
+      type: String
+    - name: birthDate
+      type: Timestamp
+    - name: city
+      type: String
+    - name: country
+      type: String
+    - name: email
+      type: String
+    - name: employeeId
+      type: Int!
+    - name: fax
+      type: String
+    - name: firstName
+      type: String!
+    - name: hireDate
+      type: Timestamp
+    - name: lastName
+      type: String!
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: reportsTo
+      type: Int
+    - name: state
+      type: String
+    - name: title
+      type: String
+  graphql:
+    typeName: Employee
+    inputTypeName: EmployeeInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Employee
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: Command
+version: v1
+definition:
+  name: Employee
+  outputType: "[Employee!]!"
+  arguments:
+    - name: distinctOn
+      type: "[EmployeeSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[EmployeeOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: EmployeeBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Employee
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: employee
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Employee
+  permissions:
+    - role: admin
+      allowExecution: true
+

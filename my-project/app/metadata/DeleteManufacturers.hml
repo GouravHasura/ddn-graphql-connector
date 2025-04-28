@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersMutationResponse
+  description: response of any mutation on the table "manufacturers"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Manufacturers!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: ManufacturersMutationResponse
+    inputTypeName: ManufacturersMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteManufacturers
+  outputType: ManufacturersMutationResponse
+  arguments:
+    - name: where
+      type: ManufacturersBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_manufacturers
+  graphql:
+    rootFieldName: deleteManufacturers
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteManufacturers
+  permissions:
+    - role: admin
+      allowExecution: true
+

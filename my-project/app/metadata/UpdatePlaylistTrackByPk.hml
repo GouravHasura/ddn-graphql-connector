@@ -1,0 +1,74 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackPkColumnsInput
+  description: "primary key columns input for table: PlaylistTrack"
+  fields:
+    - name: playlistId
+      type: Int!
+    - name: trackId
+      type: Int!
+  graphql:
+    typeName: PlaylistTrackPkColumnsInput
+    inputTypeName: PlaylistTrackPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_pk_columns_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdatePlaylistTrackByPk
+  outputType: PlaylistTrack
+  arguments:
+    - name: inc
+      type: PlaylistTrackIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: PlaylistTrackSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: PlaylistTrackPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_PlaylistTrack_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updatePlaylistTrackByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "PlaylistTrack"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdatePlaylistTrackByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

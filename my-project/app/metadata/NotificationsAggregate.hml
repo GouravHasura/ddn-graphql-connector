@@ -1,0 +1,224 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: message
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: NotificationsMaxFields
+    inputTypeName: NotificationsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_max_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: message
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: NotificationsMinFields
+    inputTypeName: NotificationsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_min_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsAggregateFields
+  description: aggregate fields of "notifications"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[NotificationsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: NotificationsMaxFields
+    - name: min
+      type: NotificationsMinFields
+  graphql:
+    typeName: NotificationsAggregateFields
+    inputTypeName: NotificationsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsAggregate
+  description: aggregated selection of "notifications"
+  fields:
+    - name: aggregate
+      type: NotificationsAggregateFields
+    - name: nodes
+      type: "[Notifications!]!"
+  graphql:
+    typeName: NotificationsAggregate
+    inputTypeName: NotificationsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: NotificationsAggregate
+  outputType: NotificationsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[NotificationsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[NotificationsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: NotificationsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: notifications_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: notificationsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: NotificationsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

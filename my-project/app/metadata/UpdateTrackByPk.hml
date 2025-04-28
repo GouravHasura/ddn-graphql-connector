@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackPkColumnsInput
+  description: "primary key columns input for table: Track"
+  fields:
+    - name: trackId
+      type: Int!
+  graphql:
+    typeName: TrackPkColumnsInput
+    inputTypeName: TrackPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_pk_columns_input
+      fieldMapping:
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - trackId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateTrackByPk
+  outputType: Track
+  arguments:
+    - name: inc
+      type: TrackIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: TrackSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: TrackPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Track_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateTrackByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateTrackByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

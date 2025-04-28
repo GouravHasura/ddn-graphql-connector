@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: CouponsByPk
+  outputType: Coupons
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: coupons_by_pk
+  graphql:
+    rootFieldName: couponsByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "coupons" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CouponsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

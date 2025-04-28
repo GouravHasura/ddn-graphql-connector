@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenrePkColumnsInput
+  description: "primary key columns input for table: Genre"
+  fields:
+    - name: genreId
+      type: Int!
+  graphql:
+    typeName: GenrePkColumnsInput
+    inputTypeName: GenrePkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_pk_columns_input
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenrePkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateGenreByPk
+  outputType: Genre
+  arguments:
+    - name: inc
+      type: GenreIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: GenreSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: GenrePkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Genre_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateGenreByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateGenreByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

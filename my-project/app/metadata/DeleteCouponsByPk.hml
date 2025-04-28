@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteCouponsByPk
+  outputType: Coupons
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_coupons_by_pk
+  graphql:
+    rootFieldName: deleteCouponsByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteCouponsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

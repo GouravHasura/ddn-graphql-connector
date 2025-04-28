@@ -1,0 +1,138 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsInsertInput
+  description: input type for inserting data into table "cart_items"
+  fields:
+    - name: cartId
+      type: Uuid
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: quantity
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: CartItemsInsertInput
+    inputTypeName: CartItemsInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_insert_input
+      fieldMapping:
+        cartId:
+          column:
+            name: cart_id
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        quantity:
+          column:
+            name: quantity
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cartId
+          - createdAt
+          - id
+          - productId
+          - quantity
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsOnConflict
+  description: on_conflict condition type for table "cart_items"
+  fields:
+    - name: constraint
+      type: CartItemsConstraint!
+    - name: updateColumns
+      type: "[CartItemsUpdateColumn!]!"
+    - name: where
+      type: CartItemsBoolExp
+  graphql:
+    typeName: CartItemsOnConflict
+    inputTypeName: CartItemsOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCartItems
+  outputType: CartItemsMutationResponse
+  arguments:
+    - name: objects
+      type: "[CartItemsInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: CartItemsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_cart_items
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCartItems
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "cart_items"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCartItems
+  permissions:
+    - role: admin
+      allowExecution: true
+

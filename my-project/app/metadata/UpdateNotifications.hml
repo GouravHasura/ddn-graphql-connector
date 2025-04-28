@@ -1,0 +1,89 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsSetInput
+  description: input type for updating data in table "notifications"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: message
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: NotificationsSetInput
+    inputTypeName: NotificationsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_set_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateNotifications
+  outputType: NotificationsMutationResponse
+  arguments:
+    - name: set
+      type: NotificationsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: NotificationsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_notifications
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateNotifications
+    rootFieldKind: Mutation
+  description: 'update data of the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateNotifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

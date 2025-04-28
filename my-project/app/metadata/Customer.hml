@@ -1,0 +1,374 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerOrderBy
+  description: Ordering options when selecting data from "Customer".
+  fields:
+    - name: address
+      type: OrderBy
+    - name: city
+      type: OrderBy
+    - name: company
+      type: OrderBy
+    - name: country
+      type: OrderBy
+    - name: customerId
+      type: OrderBy
+    - name: email
+      type: OrderBy
+    - name: fax
+      type: OrderBy
+    - name: firstName
+      type: OrderBy
+    - name: lastName
+      type: OrderBy
+    - name: phone
+      type: OrderBy
+    - name: postalCode
+      type: OrderBy
+    - name: state
+      type: OrderBy
+    - name: supportRepId
+      type: OrderBy
+  graphql:
+    typeName: CustomerOrderBy
+    inputTypeName: CustomerOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_order_by
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerBoolExp
+  description: Boolean expression to filter rows from the table "Customer". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[CustomerBoolExp!]"
+    - name: not
+      type: CustomerBoolExp
+    - name: or
+      type: "[CustomerBoolExp!]"
+    - name: address
+      type: StringComparisonExp
+    - name: city
+      type: StringComparisonExp
+    - name: company
+      type: StringComparisonExp
+    - name: country
+      type: StringComparisonExp
+    - name: customerId
+      type: IntComparisonExp
+    - name: email
+      type: StringComparisonExp
+    - name: fax
+      type: StringComparisonExp
+    - name: firstName
+      type: StringComparisonExp
+    - name: lastName
+      type: StringComparisonExp
+    - name: phone
+      type: StringComparisonExp
+    - name: postalCode
+      type: StringComparisonExp
+    - name: state
+      type: StringComparisonExp
+    - name: supportRepId
+      type: IntComparisonExp
+  graphql:
+    typeName: CustomerBoolExp
+    inputTypeName: CustomerBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Customer
+  description: columns and relationships of "Customer"
+  fields:
+    - name: address
+      type: String
+    - name: city
+      type: String
+    - name: company
+      type: String
+    - name: country
+      type: String
+    - name: customerId
+      type: Int!
+    - name: email
+      type: String!
+    - name: fax
+      type: String
+    - name: firstName
+      type: String!
+    - name: lastName
+      type: String!
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: state
+      type: String
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: Customer
+    inputTypeName: CustomerInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Customer
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Customer
+  outputType: "[Customer!]!"
+  arguments:
+    - name: distinctOn
+      type: "[CustomerSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CustomerOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CustomerBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Customer
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: customer
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Customer
+  permissions:
+    - role: admin
+      allowExecution: true
+

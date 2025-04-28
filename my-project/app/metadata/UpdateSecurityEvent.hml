@@ -1,0 +1,112 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventIncInput
+  description: input type for incrementing numeric columns in table "security_event"
+  fields:
+    - name: evtId
+      type: Int
+  graphql:
+    typeName: SecurityEventIncInput
+    inputTypeName: SecurityEventIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_inc_input
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventSetInput
+  description: input type for updating data in table "security_event"
+  fields:
+    - name: evtDesc
+      type: String
+    - name: evtId
+      type: Int
+    - name: evtRootCause
+      type: String
+  graphql:
+    typeName: SecurityEventSetInput
+    inputTypeName: SecurityEventSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_set_input
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateSecurityEvent
+  outputType: SecurityEventMutationResponse
+  arguments:
+    - name: inc
+      type: SecurityEventIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: SecurityEventSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: SecurityEventBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_security_event
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateSecurityEvent
+    rootFieldKind: Mutation
+  description: 'update data of the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateSecurityEvent
+  permissions:
+    - role: admin
+      allowExecution: true
+

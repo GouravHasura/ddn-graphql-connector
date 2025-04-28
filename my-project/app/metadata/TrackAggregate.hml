@@ -1,0 +1,866 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackAvgFields
+    inputTypeName: TrackAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_avg_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: composer
+      type: String
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: name
+      type: String
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackMaxFields
+    inputTypeName: TrackMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_max_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackMinFields
+  description: aggregate min on columns
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: composer
+      type: String
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: name
+      type: String
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackMinFields
+    inputTypeName: TrackMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_min_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackStddevFields
+    inputTypeName: TrackStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_stddev_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackStddevPopFields
+    inputTypeName: TrackStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_stddev_pop_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackStddevSampFields
+    inputTypeName: TrackStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_stddev_samp_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackSumFields
+    inputTypeName: TrackSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_sum_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackVarPopFields
+    inputTypeName: TrackVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_var_pop_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackVarSampFields
+    inputTypeName: TrackVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_var_samp_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: albumId
+      type: Float
+    - name: bytes
+      type: Float
+    - name: genreId
+      type: Float
+    - name: mediaTypeId
+      type: Float
+    - name: milliseconds
+      type: Float
+    - name: trackId
+      type: Float
+    - name: unitPrice
+      type: Float
+  graphql:
+    typeName: TrackVarianceFields
+    inputTypeName: TrackVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_variance_fields
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackAggregateFields
+  description: aggregate fields of "Track"
+  fields:
+    - name: avg
+      type: TrackAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[TrackSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: TrackMaxFields
+    - name: min
+      type: TrackMinFields
+    - name: stddev
+      type: TrackStddevFields
+    - name: stddevPop
+      type: TrackStddevPopFields
+    - name: stddevSamp
+      type: TrackStddevSampFields
+    - name: sum
+      type: TrackSumFields
+    - name: varPop
+      type: TrackVarPopFields
+    - name: varSamp
+      type: TrackVarSampFields
+    - name: variance
+      type: TrackVarianceFields
+  graphql:
+    typeName: TrackAggregateFields
+    inputTypeName: TrackAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackAggregate
+  description: aggregated selection of "Track"
+  fields:
+    - name: aggregate
+      type: TrackAggregateFields
+    - name: nodes
+      type: "[Track!]!"
+  graphql:
+    typeName: TrackAggregate
+    inputTypeName: TrackAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: TrackAggregate
+  outputType: TrackAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[TrackSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[TrackOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: TrackBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Track_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: trackAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: TrackAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

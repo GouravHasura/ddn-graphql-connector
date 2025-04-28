@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumMutationResponse
+  description: response of any mutation on the table "Album"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Album!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: AlbumMutationResponse
+    inputTypeName: AlbumMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteAlbum
+  outputType: AlbumMutationResponse
+  arguments:
+    - name: where
+      type: AlbumBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Album
+  graphql:
+    rootFieldName: deleteAlbum
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteAlbum
+  permissions:
+    - role: admin
+      allowExecution: true
+

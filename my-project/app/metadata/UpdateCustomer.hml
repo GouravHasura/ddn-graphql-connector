@@ -1,0 +1,178 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerIncInput
+  description: input type for incrementing numeric columns in table "Customer"
+  fields:
+    - name: customerId
+      type: Int
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerIncInput
+    inputTypeName: CustomerIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_inc_input
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerSetInput
+  description: input type for updating data in table "Customer"
+  fields:
+    - name: address
+      type: String
+    - name: city
+      type: String
+    - name: company
+      type: String
+    - name: country
+      type: String
+    - name: customerId
+      type: Int
+    - name: email
+      type: String
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: state
+      type: String
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerSetInput
+    inputTypeName: CustomerSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_set_input
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCustomer
+  outputType: CustomerMutationResponse
+  arguments:
+    - name: inc
+      type: CustomerIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CustomerSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CustomerBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Customer
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateCustomer
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCustomer
+  permissions:
+    - role: admin
+      allowExecution: true
+

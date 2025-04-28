@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteUsersByPk
+  outputType: Users
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_users_by_pk
+  graphql:
+    rootFieldName: deleteUsersByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteUsersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

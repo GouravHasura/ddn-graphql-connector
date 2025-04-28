@@ -1,0 +1,107 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersSetInput
+  description: input type for updating data in table "users"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: email
+      type: String
+    - name: id
+      type: Uuid
+    - name: isEmailVerified
+      type: Boolean
+    - name: lastSeen
+      type: Timestamptz
+    - name: name
+      type: String
+    - name: password
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: UsersSetInput
+    inputTypeName: UsersSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_set_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        isEmailVerified:
+          column:
+            name: is_email_verified
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - email
+          - id
+          - isEmailVerified
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateUsers
+  outputType: UsersMutationResponse
+  arguments:
+    - name: set
+      type: UsersSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: UsersBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_users
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateUsers
+    rootFieldKind: Mutation
+  description: 'update data of the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateUsers
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,230 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineOrderBy
+  description: Ordering options when selecting data from "InvoiceLine".
+  fields:
+    - name: invoiceId
+      type: OrderBy
+    - name: invoiceLineId
+      type: OrderBy
+    - name: quantity
+      type: OrderBy
+    - name: trackId
+      type: OrderBy
+    - name: unitPrice
+      type: OrderBy
+  graphql:
+    typeName: InvoiceLineOrderBy
+    inputTypeName: InvoiceLineOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_order_by
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineBoolExp
+  description: Boolean expression to filter rows from the table "InvoiceLine". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[InvoiceLineBoolExp!]"
+    - name: not
+      type: InvoiceLineBoolExp
+    - name: or
+      type: "[InvoiceLineBoolExp!]"
+    - name: invoiceId
+      type: IntComparisonExp
+    - name: invoiceLineId
+      type: IntComparisonExp
+    - name: quantity
+      type: IntComparisonExp
+    - name: trackId
+      type: IntComparisonExp
+    - name: unitPrice
+      type: NumericComparisonExp
+  graphql:
+    typeName: InvoiceLineBoolExp
+    inputTypeName: InvoiceLineBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLine
+  description: columns and relationships of "InvoiceLine"
+  fields:
+    - name: invoiceId
+      type: Int!
+    - name: invoiceLineId
+      type: Int!
+    - name: quantity
+      type: Int!
+    - name: trackId
+      type: Int!
+    - name: unitPrice
+      type: Numeric!
+  graphql:
+    typeName: InvoiceLine
+    inputTypeName: InvoiceLineInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLine
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: Command
+version: v1
+definition:
+  name: InvoiceLine
+  outputType: "[InvoiceLine!]!"
+  arguments:
+    - name: distinctOn
+      type: "[InvoiceLineSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[InvoiceLineOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: InvoiceLineBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: InvoiceLine
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: invoiceLine
+    rootFieldKind: Query
+  description: 'fetch data from the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InvoiceLine
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsMutationResponse
+  description: response of any mutation on the table "products"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Products!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: ProductsMutationResponse
+    inputTypeName: ProductsMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteProducts
+  outputType: ProductsMutationResponse
+  arguments:
+    - name: where
+      type: ProductsBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_products
+  graphql:
+    rootFieldName: deleteProducts
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteProducts
+  permissions:
+    - role: admin
+      allowExecution: true
+

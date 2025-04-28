@@ -1,0 +1,106 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistIncInput
+  description: input type for incrementing numeric columns in table "Playlist"
+  fields:
+    - name: playlistId
+      type: Int
+  graphql:
+    typeName: PlaylistIncInput
+    inputTypeName: PlaylistIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_inc_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistSetInput
+  description: input type for updating data in table "Playlist"
+  fields:
+    - name: name
+      type: String
+    - name: playlistId
+      type: Int
+  graphql:
+    typeName: PlaylistSetInput
+    inputTypeName: PlaylistSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_set_input
+      fieldMapping:
+        name:
+          column:
+            name: Name
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - name
+          - playlistId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdatePlaylist
+  outputType: PlaylistMutationResponse
+  arguments:
+    - name: inc
+      type: PlaylistIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: PlaylistSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: PlaylistBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Playlist
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updatePlaylist
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdatePlaylist
+  permissions:
+    - role: admin
+      allowExecution: true
+

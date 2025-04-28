@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteGenreByPk
+  outputType: Genre
+  arguments:
+    - name: genreId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Genre_by_pk
+    argumentMapping:
+      genreId: GenreId
+  graphql:
+    rootFieldName: deleteGenreByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteGenreByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

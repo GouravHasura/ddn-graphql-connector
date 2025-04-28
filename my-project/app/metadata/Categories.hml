@@ -1,0 +1,162 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesOrderBy
+  description: Ordering options when selecting data from "categories".
+  fields:
+    - name: id
+      type: OrderBy
+    - name: name
+      type: OrderBy
+  graphql:
+    typeName: CategoriesOrderBy
+    inputTypeName: CategoriesOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_order_by
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesBoolExp
+  description: Boolean expression to filter rows from the table "categories". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[CategoriesBoolExp!]"
+    - name: not
+      type: CategoriesBoolExp
+    - name: or
+      type: "[CategoriesBoolExp!]"
+    - name: id
+      type: UuidComparisonExp
+    - name: name
+      type: StringComparisonExp
+  graphql:
+    typeName: CategoriesBoolExp
+    inputTypeName: CategoriesBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        id:
+          column:
+            name: id
+        name:
+          column:
+            name: name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Categories
+  description: columns and relationships of "categories"
+  fields:
+    - name: id
+      type: Uuid!
+    - name: name
+      type: String!
+  graphql:
+    typeName: Categories
+    inputTypeName: CategoriesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Categories
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: Categories
+  outputType: "[Categories!]!"
+  arguments:
+    - name: distinctOn
+      type: "[CategoriesSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CategoriesOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CategoriesBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: categories
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: categories
+    rootFieldKind: Query
+  description: 'fetch data from the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Categories
+  permissions:
+    - role: admin
+      allowExecution: true
+

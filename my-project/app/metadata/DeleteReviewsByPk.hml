@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteReviewsByPk
+  outputType: Reviews
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_reviews_by_pk
+  graphql:
+    rootFieldName: deleteReviewsByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteReviewsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

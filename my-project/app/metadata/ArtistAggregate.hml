@@ -1,0 +1,494 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistAvgFields
+    inputTypeName: ArtistAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_avg_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: artistId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: ArtistMaxFields
+    inputTypeName: ArtistMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_max_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistMinFields
+  description: aggregate min on columns
+  fields:
+    - name: artistId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: ArtistMinFields
+    inputTypeName: ArtistMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_min_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistStddevFields
+    inputTypeName: ArtistStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_stddev_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistStddevPopFields
+    inputTypeName: ArtistStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_stddev_pop_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistStddevSampFields
+    inputTypeName: ArtistStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_stddev_samp_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: artistId
+      type: Int
+  graphql:
+    typeName: ArtistSumFields
+    inputTypeName: ArtistSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_sum_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistVarPopFields
+    inputTypeName: ArtistVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_var_pop_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistVarSampFields
+    inputTypeName: ArtistVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_var_samp_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: artistId
+      type: Float
+  graphql:
+    typeName: ArtistVarianceFields
+    inputTypeName: ArtistVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_variance_fields
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistAggregateFields
+  description: aggregate fields of "Artist"
+  fields:
+    - name: avg
+      type: ArtistAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[ArtistSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: ArtistMaxFields
+    - name: min
+      type: ArtistMinFields
+    - name: stddev
+      type: ArtistStddevFields
+    - name: stddevPop
+      type: ArtistStddevPopFields
+    - name: stddevSamp
+      type: ArtistStddevSampFields
+    - name: sum
+      type: ArtistSumFields
+    - name: varPop
+      type: ArtistVarPopFields
+    - name: varSamp
+      type: ArtistVarSampFields
+    - name: variance
+      type: ArtistVarianceFields
+  graphql:
+    typeName: ArtistAggregateFields
+    inputTypeName: ArtistAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistAggregate
+  description: aggregated selection of "Artist"
+  fields:
+    - name: aggregate
+      type: ArtistAggregateFields
+    - name: nodes
+      type: "[Artist!]!"
+  graphql:
+    typeName: ArtistAggregate
+    inputTypeName: ArtistAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: ArtistAggregate
+  outputType: ArtistAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[ArtistSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ArtistOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ArtistBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Artist_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: artistAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ArtistAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

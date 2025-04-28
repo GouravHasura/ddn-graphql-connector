@@ -1,0 +1,114 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackInsertInput
+  description: input type for inserting data into table "PlaylistTrack"
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackInsertInput
+    inputTypeName: PlaylistTrackInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_insert_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackOnConflict
+  description: on_conflict condition type for table "PlaylistTrack"
+  fields:
+    - name: constraint
+      type: PlaylistTrackConstraint!
+    - name: updateColumns
+      type: "[PlaylistTrackUpdateColumn!]!"
+    - name: where
+      type: PlaylistTrackBoolExp
+  graphql:
+    typeName: PlaylistTrackOnConflict
+    inputTypeName: PlaylistTrackOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertPlaylistTrack
+  outputType: PlaylistTrackMutationResponse
+  arguments:
+    - name: objects
+      type: "[PlaylistTrackInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: PlaylistTrackOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_PlaylistTrack
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertPlaylistTrack
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "PlaylistTrack"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertPlaylistTrack
+  permissions:
+    - role: admin
+      allowExecution: true
+

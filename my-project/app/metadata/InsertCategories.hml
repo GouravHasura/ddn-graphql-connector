@@ -1,0 +1,107 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesInsertInput
+  description: input type for inserting data into table "categories"
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: CategoriesInsertInput
+    inputTypeName: CategoriesInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_insert_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesOnConflict
+  description: on_conflict condition type for table "categories"
+  fields:
+    - name: constraint
+      type: CategoriesConstraint!
+    - name: updateColumns
+      type: "[CategoriesUpdateColumn!]!"
+    - name: where
+      type: CategoriesBoolExp
+  graphql:
+    typeName: CategoriesOnConflict
+    inputTypeName: CategoriesOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCategories
+  outputType: CategoriesMutationResponse
+  arguments:
+    - name: objects
+      type: "[CategoriesInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: CategoriesOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_categories
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCategories
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCategories
+  permissions:
+    - role: admin
+      allowExecution: true
+

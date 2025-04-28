@@ -1,0 +1,284 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersOrderBy
+  description: Ordering options when selecting data from "orders".
+  fields:
+    - name: createdAt
+      type: OrderBy
+    - name: deliveryDate
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: isReviewed
+      type: OrderBy
+    - name: productId
+      type: OrderBy
+    - name: status
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: userId
+      type: OrderBy
+  graphql:
+    typeName: OrdersOrderBy
+    inputTypeName: OrdersOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_order_by
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        isReviewed:
+          column:
+            name: is_reviewed
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - isReviewed
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersBoolExp
+  description: Boolean expression to filter rows from the table "orders". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[OrdersBoolExp!]"
+    - name: not
+      type: OrdersBoolExp
+    - name: or
+      type: "[OrdersBoolExp!]"
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: deliveryDate
+      type: TimestamptzComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: isReviewed
+      type: BooleanComparisonExp
+    - name: productId
+      type: UuidComparisonExp
+    - name: status
+      type: StringComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: userId
+      type: UuidComparisonExp
+  graphql:
+    typeName: OrdersBoolExp
+    inputTypeName: OrdersBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        isReviewed:
+          column:
+            name: is_reviewed
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - createdAt
+          - deliveryDate
+          - id
+          - isReviewed
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Orders
+  description: columns and relationships of "orders"
+  fields:
+    - name: createdAt
+      type: Timestamptz!
+    - name: deliveryDate
+      type: Timestamptz
+    - name: id
+      type: Uuid!
+    - name: isReviewed
+      type: Boolean!
+    - name: productId
+      type: Uuid!
+    - name: status
+      type: String!
+    - name: updatedAt
+      type: Timestamptz!
+    - name: userId
+      type: Uuid!
+  graphql:
+    typeName: Orders
+    inputTypeName: OrdersInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        isReviewed:
+          column:
+            name: is_reviewed
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Orders
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - isReviewed
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Orders
+  outputType: "[Orders!]!"
+  arguments:
+    - name: distinctOn
+      type: "[OrdersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[OrdersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: OrdersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: orders
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: orders
+    rootFieldKind: Query
+  description: 'fetch data from the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Orders
+  permissions:
+    - role: admin
+      allowExecution: true
+

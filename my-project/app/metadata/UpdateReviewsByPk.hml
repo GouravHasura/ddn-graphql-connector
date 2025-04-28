@@ -1,0 +1,64 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsPkColumnsInput
+  description: "primary key columns input for table: reviews"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: ReviewsPkColumnsInput
+    inputTypeName: ReviewsPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateReviewsByPk
+  outputType: Reviews
+  arguments:
+    - name: inc
+      type: ReviewsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ReviewsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: ReviewsPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_reviews_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateReviewsByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateReviewsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

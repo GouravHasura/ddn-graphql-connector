@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsUpdates
+  fields:
+    - name: inc
+      type: ReviewsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ReviewsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: ReviewsBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: ReviewsUpdates
+    inputTypeName: ReviewsUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateReviewsMany
+  outputType: "[ReviewsMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[ReviewsUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_reviews_many
+  graphql:
+    rootFieldName: updateReviewsMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateReviewsMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

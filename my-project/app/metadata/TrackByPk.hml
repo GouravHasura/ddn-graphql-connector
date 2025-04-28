@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: TrackByPk
+  outputType: Track
+  arguments:
+    - name: trackId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Track_by_pk
+    argumentMapping:
+      trackId: TrackId
+  graphql:
+    rootFieldName: trackByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Track" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: TrackByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

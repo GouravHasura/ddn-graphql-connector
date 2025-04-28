@@ -1,0 +1,64 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersSetInput
+  description: input type for updating data in table "manufacturers"
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: ManufacturersSetInput
+    inputTypeName: ManufacturersSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_set_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateManufacturers
+  outputType: ManufacturersMutationResponse
+  arguments:
+    - name: set
+      type: ManufacturersSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: ManufacturersBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_manufacturers
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateManufacturers
+    rootFieldKind: Mutation
+  description: 'update data of the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateManufacturers
+  permissions:
+    - role: admin
+      allowExecution: true
+

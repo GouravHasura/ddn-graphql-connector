@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: EmployeeByPk
+  outputType: Employee
+  arguments:
+    - name: employeeId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Employee_by_pk
+    argumentMapping:
+      employeeId: EmployeeId
+  graphql:
+    rootFieldName: employeeByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Employee" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: EmployeeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumPkColumnsInput
+  description: "primary key columns input for table: Album"
+  fields:
+    - name: albumId
+      type: Int!
+  graphql:
+    typeName: AlbumPkColumnsInput
+    inputTypeName: AlbumPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_pk_columns_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateAlbumByPk
+  outputType: Album
+  arguments:
+    - name: inc
+      type: AlbumIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: AlbumSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: AlbumPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Album_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateAlbumByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateAlbumByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

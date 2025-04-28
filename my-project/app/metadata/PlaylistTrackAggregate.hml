@@ -1,0 +1,542 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackAvgFields
+    inputTypeName: PlaylistTrackAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_avg_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackMaxFields
+    inputTypeName: PlaylistTrackMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_max_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackMinFields
+  description: aggregate min on columns
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackMinFields
+    inputTypeName: PlaylistTrackMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_min_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackStddevFields
+    inputTypeName: PlaylistTrackStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_stddev_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackStddevPopFields
+    inputTypeName: PlaylistTrackStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_stddev_pop_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackStddevSampFields
+    inputTypeName: PlaylistTrackStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_stddev_samp_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackSumFields
+    inputTypeName: PlaylistTrackSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_sum_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackVarPopFields
+    inputTypeName: PlaylistTrackVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_var_pop_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackVarSampFields
+    inputTypeName: PlaylistTrackVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_var_samp_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: playlistId
+      type: Float
+    - name: trackId
+      type: Float
+  graphql:
+    typeName: PlaylistTrackVarianceFields
+    inputTypeName: PlaylistTrackVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_variance_fields
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackAggregateFields
+  description: aggregate fields of "PlaylistTrack"
+  fields:
+    - name: avg
+      type: PlaylistTrackAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[PlaylistTrackSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: PlaylistTrackMaxFields
+    - name: min
+      type: PlaylistTrackMinFields
+    - name: stddev
+      type: PlaylistTrackStddevFields
+    - name: stddevPop
+      type: PlaylistTrackStddevPopFields
+    - name: stddevSamp
+      type: PlaylistTrackStddevSampFields
+    - name: sum
+      type: PlaylistTrackSumFields
+    - name: varPop
+      type: PlaylistTrackVarPopFields
+    - name: varSamp
+      type: PlaylistTrackVarSampFields
+    - name: variance
+      type: PlaylistTrackVarianceFields
+  graphql:
+    typeName: PlaylistTrackAggregateFields
+    inputTypeName: PlaylistTrackAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackAggregate
+  description: aggregated selection of "PlaylistTrack"
+  fields:
+    - name: aggregate
+      type: PlaylistTrackAggregateFields
+    - name: nodes
+      type: "[PlaylistTrack!]!"
+  graphql:
+    typeName: PlaylistTrackAggregate
+    inputTypeName: PlaylistTrackAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: PlaylistTrackAggregate
+  outputType: PlaylistTrackAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[PlaylistTrackSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[PlaylistTrackOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: PlaylistTrackBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: PlaylistTrack_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: playlistTrackAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "PlaylistTrack"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: PlaylistTrackAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

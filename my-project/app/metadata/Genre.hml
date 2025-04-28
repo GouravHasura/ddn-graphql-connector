@@ -1,0 +1,176 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreOrderBy
+  description: Ordering options when selecting data from "Genre".
+  fields:
+    - name: genreId
+      type: OrderBy
+    - name: name
+      type: OrderBy
+  graphql:
+    typeName: GenreOrderBy
+    inputTypeName: GenreOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_order_by
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreBoolExp
+  description: Boolean expression to filter rows from the table "Genre". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[GenreBoolExp!]"
+    - name: not
+      type: GenreBoolExp
+    - name: or
+      type: "[GenreBoolExp!]"
+    - name: genreId
+      type: IntComparisonExp
+    - name: name
+      type: StringComparisonExp
+  graphql:
+    typeName: GenreBoolExp
+    inputTypeName: GenreBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - genreId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Genre
+  description: columns and relationships of "Genre"
+  fields:
+    - name: genreId
+      type: Int!
+    - name: name
+      type: String
+  graphql:
+    typeName: Genre
+    inputTypeName: GenreInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre
+      fieldMapping:
+        genreId:
+          column:
+            name: GenreId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Genre
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - genreId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: Genre
+  outputType: "[Genre!]!"
+  arguments:
+    - name: distinctOn
+      type: "[GenreSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[GenreOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: GenreBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Genre
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: genre
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Genre
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteManufacturersByPk
+  outputType: Manufacturers
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_manufacturers_by_pk
+  graphql:
+    rootFieldName: deleteManufacturersByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteManufacturersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

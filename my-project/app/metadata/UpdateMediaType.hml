@@ -1,0 +1,106 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeIncInput
+  description: input type for incrementing numeric columns in table "MediaType"
+  fields:
+    - name: mediaTypeId
+      type: Int
+  graphql:
+    typeName: MediaTypeIncInput
+    inputTypeName: MediaTypeIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_inc_input
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeSetInput
+  description: input type for updating data in table "MediaType"
+  fields:
+    - name: mediaTypeId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: MediaTypeSetInput
+    inputTypeName: MediaTypeSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_set_input
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateMediaType
+  outputType: MediaTypeMutationResponse
+  arguments:
+    - name: inc
+      type: MediaTypeIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: MediaTypeSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: MediaTypeBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_MediaType
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateMediaType
+    rootFieldKind: Mutation
+  description: 'update data of the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateMediaType
+  permissions:
+    - role: admin
+      allowExecution: true
+

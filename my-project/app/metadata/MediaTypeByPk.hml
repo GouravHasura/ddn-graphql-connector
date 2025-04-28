@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: MediaTypeByPk
+  outputType: MediaType
+  arguments:
+    - name: mediaTypeId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: MediaType_by_pk
+    argumentMapping:
+      mediaTypeId: MediaTypeId
+  graphql:
+    rootFieldName: mediaTypeByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "MediaType" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: MediaTypeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,132 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineInsertInput
+  description: input type for inserting data into table "InvoiceLine"
+  fields:
+    - name: invoiceId
+      type: Int
+    - name: invoiceLineId
+      type: Int
+    - name: quantity
+      type: Int
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: InvoiceLineInsertInput
+    inputTypeName: InvoiceLineInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_insert_input
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineOnConflict
+  description: on_conflict condition type for table "InvoiceLine"
+  fields:
+    - name: constraint
+      type: InvoiceLineConstraint!
+    - name: updateColumns
+      type: "[InvoiceLineUpdateColumn!]!"
+    - name: where
+      type: InvoiceLineBoolExp
+  graphql:
+    typeName: InvoiceLineOnConflict
+    inputTypeName: InvoiceLineOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertInvoiceLine
+  outputType: InvoiceLineMutationResponse
+  arguments:
+    - name: objects
+      type: "[InvoiceLineInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: InvoiceLineOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_InvoiceLine
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertInvoiceLine
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertInvoiceLine
+  permissions:
+    - role: admin
+      allowExecution: true
+

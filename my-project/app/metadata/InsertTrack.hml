@@ -1,0 +1,156 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackInsertInput
+  description: input type for inserting data into table "Track"
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: composer
+      type: String
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int
+    - name: milliseconds
+      type: Int
+    - name: name
+      type: String
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: TrackInsertInput
+    inputTypeName: TrackInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_insert_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackOnConflict
+  description: on_conflict condition type for table "Track"
+  fields:
+    - name: constraint
+      type: TrackConstraint!
+    - name: updateColumns
+      type: "[TrackUpdateColumn!]!"
+    - name: where
+      type: TrackBoolExp
+  graphql:
+    typeName: TrackOnConflict
+    inputTypeName: TrackOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertTrack
+  outputType: TrackMutationResponse
+  arguments:
+    - name: objects
+      type: "[TrackInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: TrackOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Track
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertTrack
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertTrack
+  permissions:
+    - role: admin
+      allowExecution: true
+

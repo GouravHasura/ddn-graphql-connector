@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsMutationResponse
+  description: response of any mutation on the table "coupons"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Coupons!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: CouponsMutationResponse
+    inputTypeName: CouponsMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteCoupons
+  outputType: CouponsMutationResponse
+  arguments:
+    - name: where
+      type: CouponsBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_coupons
+  graphql:
+    rootFieldName: deleteCoupons
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteCoupons
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsMutationResponse
+  description: response of any mutation on the table "notifications"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Notifications!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: NotificationsMutationResponse
+    inputTypeName: NotificationsMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteNotifications
+  outputType: NotificationsMutationResponse
+  arguments:
+    - name: where
+      type: NotificationsBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_notifications
+  graphql:
+    rootFieldName: deleteNotifications
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteNotifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

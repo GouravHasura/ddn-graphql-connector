@@ -1,0 +1,174 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: CategoriesMaxFields
+    inputTypeName: CategoriesMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_max_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesMinFields
+  description: aggregate min on columns
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: CategoriesMinFields
+    inputTypeName: CategoriesMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_min_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesAggregateFields
+  description: aggregate fields of "categories"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[CategoriesSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: CategoriesMaxFields
+    - name: min
+      type: CategoriesMinFields
+  graphql:
+    typeName: CategoriesAggregateFields
+    inputTypeName: CategoriesAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesAggregate
+  description: aggregated selection of "categories"
+  fields:
+    - name: aggregate
+      type: CategoriesAggregateFields
+    - name: nodes
+      type: "[Categories!]!"
+  graphql:
+    typeName: CategoriesAggregate
+    inputTypeName: CategoriesAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: CategoriesAggregate
+  outputType: CategoriesAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[CategoriesSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CategoriesOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CategoriesBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: categories_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: categoriesAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CategoriesAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

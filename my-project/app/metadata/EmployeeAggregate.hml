@@ -1,0 +1,698 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeAvgFields
+    inputTypeName: EmployeeAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_avg_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: address
+      type: String
+    - name: birthDate
+      type: Timestamp
+    - name: city
+      type: String
+    - name: country
+      type: String
+    - name: email
+      type: String
+    - name: employeeId
+      type: Int
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: hireDate
+      type: Timestamp
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: reportsTo
+      type: Int
+    - name: state
+      type: String
+    - name: title
+      type: String
+  graphql:
+    typeName: EmployeeMaxFields
+    inputTypeName: EmployeeMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_max_fields
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeMinFields
+  description: aggregate min on columns
+  fields:
+    - name: address
+      type: String
+    - name: birthDate
+      type: Timestamp
+    - name: city
+      type: String
+    - name: country
+      type: String
+    - name: email
+      type: String
+    - name: employeeId
+      type: Int
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: hireDate
+      type: Timestamp
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: reportsTo
+      type: Int
+    - name: state
+      type: String
+    - name: title
+      type: String
+  graphql:
+    typeName: EmployeeMinFields
+    inputTypeName: EmployeeMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_min_fields
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeStddevFields
+    inputTypeName: EmployeeStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_stddev_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeStddevPopFields
+    inputTypeName: EmployeeStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_stddev_pop_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeStddevSampFields
+    inputTypeName: EmployeeStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_stddev_samp_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: employeeId
+      type: Int
+    - name: reportsTo
+      type: Int
+  graphql:
+    typeName: EmployeeSumFields
+    inputTypeName: EmployeeSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_sum_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeVarPopFields
+    inputTypeName: EmployeeVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_var_pop_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeVarSampFields
+    inputTypeName: EmployeeVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_var_samp_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: employeeId
+      type: Float
+    - name: reportsTo
+      type: Float
+  graphql:
+    typeName: EmployeeVarianceFields
+    inputTypeName: EmployeeVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_variance_fields
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeAggregateFields
+  description: aggregate fields of "Employee"
+  fields:
+    - name: avg
+      type: EmployeeAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[EmployeeSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: EmployeeMaxFields
+    - name: min
+      type: EmployeeMinFields
+    - name: stddev
+      type: EmployeeStddevFields
+    - name: stddevPop
+      type: EmployeeStddevPopFields
+    - name: stddevSamp
+      type: EmployeeStddevSampFields
+    - name: sum
+      type: EmployeeSumFields
+    - name: varPop
+      type: EmployeeVarPopFields
+    - name: varSamp
+      type: EmployeeVarSampFields
+    - name: variance
+      type: EmployeeVarianceFields
+  graphql:
+    typeName: EmployeeAggregateFields
+    inputTypeName: EmployeeAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeAggregate
+  description: aggregated selection of "Employee"
+  fields:
+    - name: aggregate
+      type: EmployeeAggregateFields
+    - name: nodes
+      type: "[Employee!]!"
+  graphql:
+    typeName: EmployeeAggregate
+    inputTypeName: EmployeeAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: EmployeeAggregate
+  outputType: EmployeeAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[EmployeeSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[EmployeeOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: EmployeeBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Employee_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: employeeAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: EmployeeAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

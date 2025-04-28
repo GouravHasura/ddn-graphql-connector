@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeePkColumnsInput
+  description: "primary key columns input for table: Employee"
+  fields:
+    - name: employeeId
+      type: Int!
+  graphql:
+    typeName: EmployeePkColumnsInput
+    inputTypeName: EmployeePkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_pk_columns_input
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeePkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateEmployeeByPk
+  outputType: Employee
+  arguments:
+    - name: inc
+      type: EmployeeIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: EmployeeSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: EmployeePkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Employee_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateEmployeeByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateEmployeeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

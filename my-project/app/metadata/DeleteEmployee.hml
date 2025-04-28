@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeMutationResponse
+  description: response of any mutation on the table "Employee"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Employee!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: EmployeeMutationResponse
+    inputTypeName: EmployeeMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteEmployee
+  outputType: EmployeeMutationResponse
+  arguments:
+    - name: where
+      type: EmployeeBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Employee
+  graphql:
+    rootFieldName: deleteEmployee
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteEmployee
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: CartItemsByPk
+  outputType: CartItems
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: cart_items_by_pk
+  graphql:
+    rootFieldName: cartItemsByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "cart_items" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CartItemsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

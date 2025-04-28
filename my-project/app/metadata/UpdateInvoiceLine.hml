@@ -1,0 +1,148 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineIncInput
+  description: input type for incrementing numeric columns in table "InvoiceLine"
+  fields:
+    - name: invoiceId
+      type: Int
+    - name: invoiceLineId
+      type: Int
+    - name: quantity
+      type: Int
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: InvoiceLineIncInput
+    inputTypeName: InvoiceLineIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_inc_input
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineSetInput
+  description: input type for updating data in table "InvoiceLine"
+  fields:
+    - name: invoiceId
+      type: Int
+    - name: invoiceLineId
+      type: Int
+    - name: quantity
+      type: Int
+    - name: trackId
+      type: Int
+    - name: unitPrice
+      type: Numeric
+  graphql:
+    typeName: InvoiceLineSetInput
+    inputTypeName: InvoiceLineSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_set_input
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+        invoiceLineId:
+          column:
+            name: InvoiceLineId
+        quantity:
+          column:
+            name: Quantity
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+          - invoiceLineId
+          - quantity
+          - trackId
+          - unitPrice
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateInvoiceLine
+  outputType: InvoiceLineMutationResponse
+  arguments:
+    - name: inc
+      type: InvoiceLineIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: InvoiceLineSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: InvoiceLineBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_InvoiceLine
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateInvoiceLine
+    rootFieldKind: Mutation
+  description: 'update data of the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateInvoiceLine
+  permissions:
+    - role: admin
+      allowExecution: true
+

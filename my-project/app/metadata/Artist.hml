@@ -1,0 +1,176 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistOrderBy
+  description: Ordering options when selecting data from "Artist".
+  fields:
+    - name: artistId
+      type: OrderBy
+    - name: name
+      type: OrderBy
+  graphql:
+    typeName: ArtistOrderBy
+    inputTypeName: ArtistOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_order_by
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistBoolExp
+  description: Boolean expression to filter rows from the table "Artist". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[ArtistBoolExp!]"
+    - name: not
+      type: ArtistBoolExp
+    - name: or
+      type: "[ArtistBoolExp!]"
+    - name: artistId
+      type: IntComparisonExp
+    - name: name
+      type: StringComparisonExp
+  graphql:
+    typeName: ArtistBoolExp
+    inputTypeName: ArtistBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - artistId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Artist
+  description: columns and relationships of "Artist"
+  fields:
+    - name: artistId
+      type: Int!
+    - name: name
+      type: String
+  graphql:
+    typeName: Artist
+    inputTypeName: ArtistInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Artist
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: Artist
+  outputType: "[Artist!]!"
+  arguments:
+    - name: distinctOn
+      type: "[ArtistSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ArtistOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ArtistBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Artist
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: artist
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Artist
+  permissions:
+    - role: admin
+      allowExecution: true
+

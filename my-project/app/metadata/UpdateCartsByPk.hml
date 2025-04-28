@@ -1,0 +1,60 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsPkColumnsInput
+  description: "primary key columns input for table: carts"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: CartsPkColumnsInput
+    inputTypeName: CartsPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCartsByPk
+  outputType: Carts
+  arguments:
+    - name: set
+      type: CartsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: CartsPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_carts_by_pk
+    argumentMapping:
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateCartsByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "carts"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCartsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

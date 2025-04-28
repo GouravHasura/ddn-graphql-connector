@@ -1,0 +1,112 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackIncInput
+  description: input type for incrementing numeric columns in table "PlaylistTrack"
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackIncInput
+    inputTypeName: PlaylistTrackIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_inc_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistTrackSetInput
+  description: input type for updating data in table "PlaylistTrack"
+  fields:
+    - name: playlistId
+      type: Int
+    - name: trackId
+      type: Int
+  graphql:
+    typeName: PlaylistTrackSetInput
+    inputTypeName: PlaylistTrackSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: PlaylistTrack_set_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+        trackId:
+          column:
+            name: TrackId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistTrackSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+          - trackId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdatePlaylistTrack
+  outputType: PlaylistTrackMutationResponse
+  arguments:
+    - name: inc
+      type: PlaylistTrackIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: PlaylistTrackSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: PlaylistTrackBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_PlaylistTrack
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updatePlaylistTrack
+    rootFieldKind: Mutation
+  description: 'update data of the table: "PlaylistTrack"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdatePlaylistTrack
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: ManufacturersByPk
+  outputType: Manufacturers
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: manufacturers_by_pk
+  graphql:
+    rootFieldName: manufacturersByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "manufacturers" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ManufacturersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

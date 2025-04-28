@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteArtistByPk
+  outputType: Artist
+  arguments:
+    - name: artistId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Artist_by_pk
+    argumentMapping:
+      artistId: ArtistId
+  graphql:
+    rootFieldName: deleteArtistByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteArtistByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

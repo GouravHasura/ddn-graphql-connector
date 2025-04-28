@@ -1,0 +1,162 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersOrderBy
+  description: Ordering options when selecting data from "manufacturers".
+  fields:
+    - name: id
+      type: OrderBy
+    - name: name
+      type: OrderBy
+  graphql:
+    typeName: ManufacturersOrderBy
+    inputTypeName: ManufacturersOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_order_by
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersBoolExp
+  description: Boolean expression to filter rows from the table "manufacturers".
+    All fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[ManufacturersBoolExp!]"
+    - name: not
+      type: ManufacturersBoolExp
+    - name: or
+      type: "[ManufacturersBoolExp!]"
+    - name: id
+      type: UuidComparisonExp
+    - name: name
+      type: StringComparisonExp
+  graphql:
+    typeName: ManufacturersBoolExp
+    inputTypeName: ManufacturersBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        id:
+          column:
+            name: id
+        name:
+          column:
+            name: name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Manufacturers
+  description: columns and relationships of "manufacturers"
+  fields:
+    - name: id
+      type: Uuid!
+    - name: name
+      type: String!
+  graphql:
+    typeName: Manufacturers
+    inputTypeName: ManufacturersInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Manufacturers
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: Manufacturers
+  outputType: "[Manufacturers!]!"
+  arguments:
+    - name: distinctOn
+      type: "[ManufacturersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ManufacturersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ManufacturersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: manufacturers
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: manufacturers
+    rootFieldKind: Query
+  description: 'fetch data from the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Manufacturers
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,60 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsPkColumnsInput
+  description: "primary key columns input for table: notifications"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: NotificationsPkColumnsInput
+    inputTypeName: NotificationsPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateNotificationsByPk
+  outputType: Notifications
+  arguments:
+    - name: set
+      type: NotificationsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: NotificationsPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_notifications_by_pk
+    argumentMapping:
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateNotificationsByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateNotificationsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,2776 @@
+---
+kind: ScalarType
+version: v1
+definition:
+  name: AlbumSelectColumn
+  graphql:
+    typeName: AlbumSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: AlbumSelectColumnBoolExp
+  operand:
+    scalar:
+      type: AlbumSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Album_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: AlbumSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Album_select_column
+  representation: AlbumSelectColumn
+  graphql:
+    comparisonExpressionTypeName: AlbumSelectColumnComparisonExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Int
+  representation: Int
+  graphql:
+    comparisonExpressionTypeName: IntComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: OrderBy
+  graphql:
+    typeName: OrderBy
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: OrderByBoolExp
+  operand:
+    scalar:
+      type: OrderBy
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: order_by
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: OrderByBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: order_by
+  representation: OrderBy
+  graphql:
+    comparisonExpressionTypeName: OrderByComparisonExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Boolean
+  representation: Boolean
+  graphql:
+    comparisonExpressionTypeName: BooleanComparisonExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: String
+  representation: String
+  graphql:
+    comparisonExpressionTypeName: StringComparisonExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Float
+  representation: Float
+  graphql:
+    comparisonExpressionTypeName: FloatComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ArtistSelectColumn
+  graphql:
+    typeName: ArtistSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ArtistSelectColumnBoolExp
+  operand:
+    scalar:
+      type: ArtistSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Artist_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ArtistSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Artist_select_column
+  representation: ArtistSelectColumn
+  graphql:
+    comparisonExpressionTypeName: ArtistSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CustomerSelectColumn
+  graphql:
+    typeName: CustomerSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CustomerSelectColumnBoolExp
+  operand:
+    scalar:
+      type: CustomerSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Customer_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CustomerSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Customer_select_column
+  representation: CustomerSelectColumn
+  graphql:
+    comparisonExpressionTypeName: CustomerSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: EmployeeSelectColumn
+  graphql:
+    typeName: EmployeeSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: EmployeeSelectColumnBoolExp
+  operand:
+    scalar:
+      type: EmployeeSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Employee_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: EmployeeSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Employee_select_column
+  representation: EmployeeSelectColumn
+  graphql:
+    comparisonExpressionTypeName: EmployeeSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Timestamp
+  graphql:
+    typeName: Timestamp
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TimestampBoolExp
+  operand:
+    scalar:
+      type: Timestamp
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: timestamp
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TimestampBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: timestamp
+  representation: Timestamp
+  graphql:
+    comparisonExpressionTypeName: TimestampComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: GenreSelectColumn
+  graphql:
+    typeName: GenreSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: GenreSelectColumnBoolExp
+  operand:
+    scalar:
+      type: GenreSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Genre_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: GenreSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Genre_select_column
+  representation: GenreSelectColumn
+  graphql:
+    comparisonExpressionTypeName: GenreSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceSelectColumn
+  graphql:
+    typeName: InvoiceSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceSelectColumnBoolExp
+  operand:
+    scalar:
+      type: InvoiceSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Invoice_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Invoice_select_column
+  representation: InvoiceSelectColumn
+  graphql:
+    comparisonExpressionTypeName: InvoiceSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Numeric
+  graphql:
+    typeName: Numeric
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NumericBoolExp
+  operand:
+    scalar:
+      type: Numeric
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: numeric
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NumericBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: numeric
+  representation: Numeric
+  graphql:
+    comparisonExpressionTypeName: NumericComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceLineSelectColumn
+  graphql:
+    typeName: InvoiceLineSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceLineSelectColumnBoolExp
+  operand:
+    scalar:
+      type: InvoiceLineSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: InvoiceLine_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceLineSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: InvoiceLine_select_column
+  representation: InvoiceLineSelectColumn
+  graphql:
+    comparisonExpressionTypeName: InvoiceLineSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: MediaTypeSelectColumn
+  graphql:
+    typeName: MediaTypeSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: MediaTypeSelectColumnBoolExp
+  operand:
+    scalar:
+      type: MediaTypeSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: MediaType_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: MediaTypeSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: MediaType_select_column
+  representation: MediaTypeSelectColumn
+  graphql:
+    comparisonExpressionTypeName: MediaTypeSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistSelectColumn
+  graphql:
+    typeName: PlaylistSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistSelectColumnBoolExp
+  operand:
+    scalar:
+      type: PlaylistSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Playlist_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Playlist_select_column
+  representation: PlaylistSelectColumn
+  graphql:
+    comparisonExpressionTypeName: PlaylistSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistTrackSelectColumn
+  graphql:
+    typeName: PlaylistTrackSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistTrackSelectColumnBoolExp
+  operand:
+    scalar:
+      type: PlaylistTrackSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: PlaylistTrack_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistTrackSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: PlaylistTrack_select_column
+  representation: PlaylistTrackSelectColumn
+  graphql:
+    comparisonExpressionTypeName: PlaylistTrackSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: TrackSelectColumn
+  graphql:
+    typeName: TrackSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TrackSelectColumnBoolExp
+  operand:
+    scalar:
+      type: TrackSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Track_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TrackSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Track_select_column
+  representation: TrackSelectColumn
+  graphql:
+    comparisonExpressionTypeName: TrackSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartItemsSelectColumn
+  graphql:
+    typeName: CartItemsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartItemsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: CartItemsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: cart_items_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartItemsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: cart_items_select_column
+  representation: CartItemsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: CartItemsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Uuid
+  graphql:
+    typeName: Uuid
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: UuidBoolExp
+  operand:
+    scalar:
+      type: Uuid
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: uuid
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: UuidBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: uuid
+  representation: Uuid
+  graphql:
+    comparisonExpressionTypeName: UuidComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Timestamptz
+  graphql:
+    typeName: Timestamptz
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TimestamptzBoolExp
+  operand:
+    scalar:
+      type: Timestamptz
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: timestamptz
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TimestamptzBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: timestamptz
+  representation: Timestamptz
+  graphql:
+    comparisonExpressionTypeName: TimestamptzComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartsSelectColumn
+  graphql:
+    typeName: CartsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: CartsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: carts_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: carts_select_column
+  representation: CartsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: CartsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CategoriesSelectColumn
+  graphql:
+    typeName: CategoriesSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CategoriesSelectColumnBoolExp
+  operand:
+    scalar:
+      type: CategoriesSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: categories_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CategoriesSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: categories_select_column
+  representation: CategoriesSelectColumn
+  graphql:
+    comparisonExpressionTypeName: CategoriesSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CouponsSelectColumn
+  graphql:
+    typeName: CouponsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CouponsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: CouponsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: coupons_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CouponsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: coupons_select_column
+  representation: CouponsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: CouponsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ManufacturersSelectColumn
+  graphql:
+    typeName: ManufacturersSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ManufacturersSelectColumnBoolExp
+  operand:
+    scalar:
+      type: ManufacturersSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: manufacturers_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ManufacturersSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: manufacturers_select_column
+  representation: ManufacturersSelectColumn
+  graphql:
+    comparisonExpressionTypeName: ManufacturersSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: NotificationsSelectColumn
+  graphql:
+    typeName: NotificationsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NotificationsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: NotificationsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: notifications_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NotificationsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: notifications_select_column
+  representation: NotificationsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: NotificationsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: OrdersSelectColumn
+  graphql:
+    typeName: OrdersSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: OrdersSelectColumnBoolExp
+  operand:
+    scalar:
+      type: OrdersSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: orders_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: OrdersSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: orders_select_column
+  representation: OrdersSelectColumn
+  graphql:
+    comparisonExpressionTypeName: OrdersSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ProductsSelectColumn
+  graphql:
+    typeName: ProductsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ProductsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: ProductsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: products_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ProductsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: products_select_column
+  representation: ProductsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: ProductsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Vector
+  graphql:
+    typeName: Vector
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: VectorBoolExp
+  operand:
+    scalar:
+      type: Vector
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: vector
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: VectorBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: vector
+  representation: Vector
+  graphql:
+    comparisonExpressionTypeName: VectorComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ReviewsSelectColumn
+  graphql:
+    typeName: ReviewsSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ReviewsSelectColumnBoolExp
+  operand:
+    scalar:
+      type: ReviewsSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: reviews_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ReviewsSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: reviews_select_column
+  representation: ReviewsSelectColumn
+  graphql:
+    comparisonExpressionTypeName: ReviewsSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: SecurityEventSelectColumn
+  graphql:
+    typeName: SecurityEventSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: SecurityEventSelectColumnBoolExp
+  operand:
+    scalar:
+      type: SecurityEventSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: security_event_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: SecurityEventSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: security_event_select_column
+  representation: SecurityEventSelectColumn
+  graphql:
+    comparisonExpressionTypeName: SecurityEventSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: UsersSelectColumn
+  graphql:
+    typeName: UsersSelectColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: UsersSelectColumnBoolExp
+  operand:
+    scalar:
+      type: UsersSelectColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: users_select_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: UsersSelectColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: users_select_column
+  representation: UsersSelectColumn
+  graphql:
+    comparisonExpressionTypeName: UsersSelectColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: AlbumConstraint
+  graphql:
+    typeName: AlbumConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: AlbumConstraintBoolExp
+  operand:
+    scalar:
+      type: AlbumConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Album_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: AlbumConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Album_constraint
+  representation: AlbumConstraint
+  graphql:
+    comparisonExpressionTypeName: AlbumConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: AlbumUpdateColumn
+  graphql:
+    typeName: AlbumUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: AlbumUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: AlbumUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Album_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: AlbumUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Album_update_column
+  representation: AlbumUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: AlbumUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ArtistConstraint
+  graphql:
+    typeName: ArtistConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ArtistConstraintBoolExp
+  operand:
+    scalar:
+      type: ArtistConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Artist_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ArtistConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Artist_constraint
+  representation: ArtistConstraint
+  graphql:
+    comparisonExpressionTypeName: ArtistConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ArtistUpdateColumn
+  graphql:
+    typeName: ArtistUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ArtistUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: ArtistUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Artist_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ArtistUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Artist_update_column
+  representation: ArtistUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: ArtistUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CustomerConstraint
+  graphql:
+    typeName: CustomerConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CustomerConstraintBoolExp
+  operand:
+    scalar:
+      type: CustomerConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Customer_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CustomerConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Customer_constraint
+  representation: CustomerConstraint
+  graphql:
+    comparisonExpressionTypeName: CustomerConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CustomerUpdateColumn
+  graphql:
+    typeName: CustomerUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CustomerUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: CustomerUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Customer_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CustomerUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Customer_update_column
+  representation: CustomerUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: CustomerUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: EmployeeConstraint
+  graphql:
+    typeName: EmployeeConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: EmployeeConstraintBoolExp
+  operand:
+    scalar:
+      type: EmployeeConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Employee_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: EmployeeConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Employee_constraint
+  representation: EmployeeConstraint
+  graphql:
+    comparisonExpressionTypeName: EmployeeConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: EmployeeUpdateColumn
+  graphql:
+    typeName: EmployeeUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: EmployeeUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: EmployeeUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Employee_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: EmployeeUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Employee_update_column
+  representation: EmployeeUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: EmployeeUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: GenreConstraint
+  graphql:
+    typeName: GenreConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: GenreConstraintBoolExp
+  operand:
+    scalar:
+      type: GenreConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Genre_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: GenreConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Genre_constraint
+  representation: GenreConstraint
+  graphql:
+    comparisonExpressionTypeName: GenreConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: GenreUpdateColumn
+  graphql:
+    typeName: GenreUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: GenreUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: GenreUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Genre_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: GenreUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Genre_update_column
+  representation: GenreUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: GenreUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceConstraint
+  graphql:
+    typeName: InvoiceConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceConstraintBoolExp
+  operand:
+    scalar:
+      type: InvoiceConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Invoice_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Invoice_constraint
+  representation: InvoiceConstraint
+  graphql:
+    comparisonExpressionTypeName: InvoiceConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceUpdateColumn
+  graphql:
+    typeName: InvoiceUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: InvoiceUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Invoice_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Invoice_update_column
+  representation: InvoiceUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: InvoiceUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceLineConstraint
+  graphql:
+    typeName: InvoiceLineConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceLineConstraintBoolExp
+  operand:
+    scalar:
+      type: InvoiceLineConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: InvoiceLine_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceLineConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: InvoiceLine_constraint
+  representation: InvoiceLineConstraint
+  graphql:
+    comparisonExpressionTypeName: InvoiceLineConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: InvoiceLineUpdateColumn
+  graphql:
+    typeName: InvoiceLineUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: InvoiceLineUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: InvoiceLineUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: InvoiceLine_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: InvoiceLineUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: InvoiceLine_update_column
+  representation: InvoiceLineUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: InvoiceLineUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: MediaTypeConstraint
+  graphql:
+    typeName: MediaTypeConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: MediaTypeConstraintBoolExp
+  operand:
+    scalar:
+      type: MediaTypeConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: MediaType_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: MediaTypeConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: MediaType_constraint
+  representation: MediaTypeConstraint
+  graphql:
+    comparisonExpressionTypeName: MediaTypeConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: MediaTypeUpdateColumn
+  graphql:
+    typeName: MediaTypeUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: MediaTypeUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: MediaTypeUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: MediaType_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: MediaTypeUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: MediaType_update_column
+  representation: MediaTypeUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: MediaTypeUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistConstraint
+  graphql:
+    typeName: PlaylistConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistConstraintBoolExp
+  operand:
+    scalar:
+      type: PlaylistConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Playlist_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Playlist_constraint
+  representation: PlaylistConstraint
+  graphql:
+    comparisonExpressionTypeName: PlaylistConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistUpdateColumn
+  graphql:
+    typeName: PlaylistUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: PlaylistUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Playlist_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Playlist_update_column
+  representation: PlaylistUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: PlaylistUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistTrackConstraint
+  graphql:
+    typeName: PlaylistTrackConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistTrackConstraintBoolExp
+  operand:
+    scalar:
+      type: PlaylistTrackConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: PlaylistTrack_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistTrackConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: PlaylistTrack_constraint
+  representation: PlaylistTrackConstraint
+  graphql:
+    comparisonExpressionTypeName: PlaylistTrackConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: PlaylistTrackUpdateColumn
+  graphql:
+    typeName: PlaylistTrackUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: PlaylistTrackUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: PlaylistTrackUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: PlaylistTrack_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: PlaylistTrackUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: PlaylistTrack_update_column
+  representation: PlaylistTrackUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: PlaylistTrackUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: TrackConstraint
+  graphql:
+    typeName: TrackConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TrackConstraintBoolExp
+  operand:
+    scalar:
+      type: TrackConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Track_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TrackConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Track_constraint
+  representation: TrackConstraint
+  graphql:
+    comparisonExpressionTypeName: TrackConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: TrackUpdateColumn
+  graphql:
+    typeName: TrackUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: TrackUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: TrackUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: Track_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: TrackUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: Track_update_column
+  representation: TrackUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: TrackUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartItemsConstraint
+  graphql:
+    typeName: CartItemsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartItemsConstraintBoolExp
+  operand:
+    scalar:
+      type: CartItemsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: cart_items_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartItemsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: cart_items_constraint
+  representation: CartItemsConstraint
+  graphql:
+    comparisonExpressionTypeName: CartItemsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartItemsUpdateColumn
+  graphql:
+    typeName: CartItemsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartItemsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: CartItemsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: cart_items_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartItemsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: cart_items_update_column
+  representation: CartItemsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: CartItemsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartsConstraint
+  graphql:
+    typeName: CartsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartsConstraintBoolExp
+  operand:
+    scalar:
+      type: CartsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: carts_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: carts_constraint
+  representation: CartsConstraint
+  graphql:
+    comparisonExpressionTypeName: CartsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CartsUpdateColumn
+  graphql:
+    typeName: CartsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CartsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: CartsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: carts_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CartsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: carts_update_column
+  representation: CartsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: CartsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CategoriesConstraint
+  graphql:
+    typeName: CategoriesConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CategoriesConstraintBoolExp
+  operand:
+    scalar:
+      type: CategoriesConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: categories_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CategoriesConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: categories_constraint
+  representation: CategoriesConstraint
+  graphql:
+    comparisonExpressionTypeName: CategoriesConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CategoriesUpdateColumn
+  graphql:
+    typeName: CategoriesUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CategoriesUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: CategoriesUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: categories_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CategoriesUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: categories_update_column
+  representation: CategoriesUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: CategoriesUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CouponsConstraint
+  graphql:
+    typeName: CouponsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CouponsConstraintBoolExp
+  operand:
+    scalar:
+      type: CouponsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: coupons_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CouponsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: coupons_constraint
+  representation: CouponsConstraint
+  graphql:
+    comparisonExpressionTypeName: CouponsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: CouponsUpdateColumn
+  graphql:
+    typeName: CouponsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CouponsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: CouponsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: coupons_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CouponsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: coupons_update_column
+  representation: CouponsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: CouponsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ManufacturersConstraint
+  graphql:
+    typeName: ManufacturersConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ManufacturersConstraintBoolExp
+  operand:
+    scalar:
+      type: ManufacturersConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: manufacturers_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ManufacturersConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: manufacturers_constraint
+  representation: ManufacturersConstraint
+  graphql:
+    comparisonExpressionTypeName: ManufacturersConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ManufacturersUpdateColumn
+  graphql:
+    typeName: ManufacturersUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ManufacturersUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: ManufacturersUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: manufacturers_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ManufacturersUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: manufacturers_update_column
+  representation: ManufacturersUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: ManufacturersUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: NotificationsConstraint
+  graphql:
+    typeName: NotificationsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NotificationsConstraintBoolExp
+  operand:
+    scalar:
+      type: NotificationsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: notifications_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NotificationsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: notifications_constraint
+  representation: NotificationsConstraint
+  graphql:
+    comparisonExpressionTypeName: NotificationsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: NotificationsUpdateColumn
+  graphql:
+    typeName: NotificationsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: NotificationsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: NotificationsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: notifications_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: NotificationsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: notifications_update_column
+  representation: NotificationsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: NotificationsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: OrdersConstraint
+  graphql:
+    typeName: OrdersConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: OrdersConstraintBoolExp
+  operand:
+    scalar:
+      type: OrdersConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: orders_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: OrdersConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: orders_constraint
+  representation: OrdersConstraint
+  graphql:
+    comparisonExpressionTypeName: OrdersConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: OrdersUpdateColumn
+  graphql:
+    typeName: OrdersUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: OrdersUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: OrdersUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: orders_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: OrdersUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: orders_update_column
+  representation: OrdersUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: OrdersUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ProductsConstraint
+  graphql:
+    typeName: ProductsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ProductsConstraintBoolExp
+  operand:
+    scalar:
+      type: ProductsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: products_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ProductsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: products_constraint
+  representation: ProductsConstraint
+  graphql:
+    comparisonExpressionTypeName: ProductsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ProductsUpdateColumn
+  graphql:
+    typeName: ProductsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ProductsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: ProductsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: products_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ProductsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: products_update_column
+  representation: ProductsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: ProductsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ReviewsConstraint
+  graphql:
+    typeName: ReviewsConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ReviewsConstraintBoolExp
+  operand:
+    scalar:
+      type: ReviewsConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: reviews_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ReviewsConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: reviews_constraint
+  representation: ReviewsConstraint
+  graphql:
+    comparisonExpressionTypeName: ReviewsConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: ReviewsUpdateColumn
+  graphql:
+    typeName: ReviewsUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: ReviewsUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: ReviewsUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: reviews_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: ReviewsUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: reviews_update_column
+  representation: ReviewsUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: ReviewsUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: SecurityEventConstraint
+  graphql:
+    typeName: SecurityEventConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: SecurityEventConstraintBoolExp
+  operand:
+    scalar:
+      type: SecurityEventConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: security_event_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: SecurityEventConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: security_event_constraint
+  representation: SecurityEventConstraint
+  graphql:
+    comparisonExpressionTypeName: SecurityEventConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: SecurityEventUpdateColumn
+  graphql:
+    typeName: SecurityEventUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: SecurityEventUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: SecurityEventUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: security_event_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: SecurityEventUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: security_event_update_column
+  representation: SecurityEventUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: SecurityEventUpdateColumnComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: UsersConstraint
+  graphql:
+    typeName: UsersConstraint
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: UsersConstraintBoolExp
+  operand:
+    scalar:
+      type: UsersConstraint
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: users_constraint
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: UsersConstraintBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: users_constraint
+  representation: UsersConstraint
+  graphql:
+    comparisonExpressionTypeName: UsersConstraintComparisonExp
+
+---
+kind: ScalarType
+version: v1
+definition:
+  name: UsersUpdateColumn
+  graphql:
+    typeName: UsersUpdateColumn
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: UsersUpdateColumnBoolExp
+  operand:
+    scalar:
+      type: UsersUpdateColumn
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: my_graphql
+          dataConnectorScalarType: users_update_column
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: UsersUpdateColumnBoolExp
+
+---
+kind: DataConnectorScalarRepresentation
+version: v1
+definition:
+  dataConnectorName: my_graphql
+  dataConnectorScalarType: users_update_column
+  representation: UsersUpdateColumn
+  graphql:
+    comparisonExpressionTypeName: UsersUpdateColumnComparisonExp
+

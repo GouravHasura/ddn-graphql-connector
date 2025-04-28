@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteAlbumByPk
+  outputType: Album
+  arguments:
+    - name: albumId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Album_by_pk
+    argumentMapping:
+      albumId: AlbumId
+  graphql:
+    rootFieldName: deleteAlbumByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteAlbumByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

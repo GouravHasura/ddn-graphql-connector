@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerPkColumnsInput
+  description: "primary key columns input for table: Customer"
+  fields:
+    - name: customerId
+      type: Int!
+  graphql:
+    typeName: CustomerPkColumnsInput
+    inputTypeName: CustomerPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_pk_columns_input
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCustomerByPk
+  outputType: Customer
+  arguments:
+    - name: inc
+      type: CustomerIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CustomerSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: CustomerPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Customer_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateCustomerByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCustomerByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

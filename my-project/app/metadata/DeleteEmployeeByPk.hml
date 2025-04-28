@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteEmployeeByPk
+  outputType: Employee
+  arguments:
+    - name: employeeId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Employee_by_pk
+    argumentMapping:
+      employeeId: EmployeeId
+  graphql:
+    rootFieldName: deleteEmployeeByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteEmployeeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

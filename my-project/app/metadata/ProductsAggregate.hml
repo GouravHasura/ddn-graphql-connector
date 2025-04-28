@@ -1,0 +1,558 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsAvgFields
+    inputTypeName: ProductsAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_avg_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: categoryId
+      type: Uuid
+    - name: countryOfOrigin
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: description
+      type: String
+    - name: id
+      type: Uuid
+    - name: image
+      type: String
+    - name: manufacturerId
+      type: Uuid
+    - name: name
+      type: String
+    - name: price
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: ProductsMaxFields
+    inputTypeName: ProductsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_max_fields
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: categoryId
+      type: Uuid
+    - name: countryOfOrigin
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: description
+      type: String
+    - name: id
+      type: Uuid
+    - name: image
+      type: String
+    - name: manufacturerId
+      type: Uuid
+    - name: name
+      type: String
+    - name: price
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: ProductsMinFields
+    inputTypeName: ProductsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_min_fields
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsStddevFields
+    inputTypeName: ProductsStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_stddev_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsStddevPopFields
+    inputTypeName: ProductsStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_stddev_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsStddevSampFields
+    inputTypeName: ProductsStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_stddev_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: price
+      type: Int
+  graphql:
+    typeName: ProductsSumFields
+    inputTypeName: ProductsSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_sum_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsVarPopFields
+    inputTypeName: ProductsVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_var_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsVarSampFields
+    inputTypeName: ProductsVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_var_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: price
+      type: Float
+  graphql:
+    typeName: ProductsVarianceFields
+    inputTypeName: ProductsVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_variance_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - price
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsAggregateFields
+  description: aggregate fields of "products"
+  fields:
+    - name: avg
+      type: ProductsAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[ProductsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: ProductsMaxFields
+    - name: min
+      type: ProductsMinFields
+    - name: stddev
+      type: ProductsStddevFields
+    - name: stddevPop
+      type: ProductsStddevPopFields
+    - name: stddevSamp
+      type: ProductsStddevSampFields
+    - name: sum
+      type: ProductsSumFields
+    - name: varPop
+      type: ProductsVarPopFields
+    - name: varSamp
+      type: ProductsVarSampFields
+    - name: variance
+      type: ProductsVarianceFields
+  graphql:
+    typeName: ProductsAggregateFields
+    inputTypeName: ProductsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsAggregate
+  description: aggregated selection of "products"
+  fields:
+    - name: aggregate
+      type: ProductsAggregateFields
+    - name: nodes
+      type: "[Products!]!"
+  graphql:
+    typeName: ProductsAggregate
+    inputTypeName: ProductsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: ProductsAggregate
+  outputType: ProductsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[ProductsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ProductsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ProductsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: products_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: productsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ProductsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

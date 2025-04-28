@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceLineUpdates
+  fields:
+    - name: inc
+      type: InvoiceLineIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: InvoiceLineSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: InvoiceLineBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: InvoiceLineUpdates
+    inputTypeName: InvoiceLineUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: InvoiceLine_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceLineUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateInvoiceLineMany
+  outputType: "[InvoiceLineMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[InvoiceLineUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_InvoiceLine_many
+  graphql:
+    rootFieldName: updateInvoiceLineMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateInvoiceLineMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

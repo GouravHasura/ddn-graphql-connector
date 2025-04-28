@@ -1,0 +1,522 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsAvgFields
+    inputTypeName: ReviewsAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_avg_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: rating
+      type: Int
+    - name: text
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: ReviewsMaxFields
+    inputTypeName: ReviewsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_max_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: rating
+      type: Int
+    - name: text
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: ReviewsMinFields
+    inputTypeName: ReviewsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_min_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsStddevFields
+    inputTypeName: ReviewsStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_stddev_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsStddevPopFields
+    inputTypeName: ReviewsStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_stddev_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsStddevSampFields
+    inputTypeName: ReviewsStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_stddev_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: rating
+      type: Int
+  graphql:
+    typeName: ReviewsSumFields
+    inputTypeName: ReviewsSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_sum_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsVarPopFields
+    inputTypeName: ReviewsVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_var_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsVarSampFields
+    inputTypeName: ReviewsVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_var_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: rating
+      type: Float
+  graphql:
+    typeName: ReviewsVarianceFields
+    inputTypeName: ReviewsVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_variance_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsAggregateFields
+  description: aggregate fields of "reviews"
+  fields:
+    - name: avg
+      type: ReviewsAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[ReviewsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: ReviewsMaxFields
+    - name: min
+      type: ReviewsMinFields
+    - name: stddev
+      type: ReviewsStddevFields
+    - name: stddevPop
+      type: ReviewsStddevPopFields
+    - name: stddevSamp
+      type: ReviewsStddevSampFields
+    - name: sum
+      type: ReviewsSumFields
+    - name: varPop
+      type: ReviewsVarPopFields
+    - name: varSamp
+      type: ReviewsVarSampFields
+    - name: variance
+      type: ReviewsVarianceFields
+  graphql:
+    typeName: ReviewsAggregateFields
+    inputTypeName: ReviewsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsAggregate
+  description: aggregated selection of "reviews"
+  fields:
+    - name: aggregate
+      type: ReviewsAggregateFields
+    - name: nodes
+      type: "[Reviews!]!"
+  graphql:
+    typeName: ReviewsAggregate
+    inputTypeName: ReviewsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: ReviewsAggregate
+  outputType: ReviewsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[ReviewsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ReviewsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ReviewsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: reviews_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: reviewsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ReviewsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersMutationResponse
+  description: response of any mutation on the table "users"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Users!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: UsersMutationResponse
+    inputTypeName: UsersMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteUsers
+  outputType: UsersMutationResponse
+  arguments:
+    - name: where
+      type: UsersBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_users
+  graphql:
+    rootFieldName: deleteUsers
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteUsers
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,248 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: deliveryDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: status
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: OrdersMaxFields
+    inputTypeName: OrdersMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_max_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersMinFields
+  description: aggregate min on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: deliveryDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: status
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: OrdersMinFields
+    inputTypeName: OrdersMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_min_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        deliveryDate:
+          column:
+            name: delivery_date
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        status:
+          column:
+            name: status
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - deliveryDate
+          - id
+          - productId
+          - status
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersAggregateFields
+  description: aggregate fields of "orders"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[OrdersSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: OrdersMaxFields
+    - name: min
+      type: OrdersMinFields
+  graphql:
+    typeName: OrdersAggregateFields
+    inputTypeName: OrdersAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersAggregate
+  description: aggregated selection of "orders"
+  fields:
+    - name: aggregate
+      type: OrdersAggregateFields
+    - name: nodes
+      type: "[Orders!]!"
+  graphql:
+    typeName: OrdersAggregate
+    inputTypeName: OrdersAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: OrdersAggregate
+  outputType: OrdersAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[OrdersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[OrdersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: OrdersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: orders_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: ordersAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: OrdersAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

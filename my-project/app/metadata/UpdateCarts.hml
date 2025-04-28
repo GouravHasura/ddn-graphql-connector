@@ -1,0 +1,95 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsSetInput
+  description: input type for updating data in table "carts"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: isComplete
+      type: Boolean
+    - name: isReminderSent
+      type: Boolean
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CartsSetInput
+    inputTypeName: CartsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_set_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isComplete:
+          column:
+            name: is_complete
+        isReminderSent:
+          column:
+            name: is_reminder_sent
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isComplete
+          - isReminderSent
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCarts
+  outputType: CartsMutationResponse
+  arguments:
+    - name: set
+      type: CartsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CartsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_carts
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateCarts
+    rootFieldKind: Mutation
+  description: 'update data of the table: "carts"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCarts
+  permissions:
+    - role: admin
+      allowExecution: true
+

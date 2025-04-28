@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteMediaTypeByPk
+  outputType: MediaType
+  arguments:
+    - name: mediaTypeId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_MediaType_by_pk
+    argumentMapping:
+      mediaTypeId: MediaTypeId
+  graphql:
+    rootFieldName: deleteMediaTypeByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteMediaTypeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

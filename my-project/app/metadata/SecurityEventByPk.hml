@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: SecurityEventByPk
+  outputType: SecurityEvent
+  arguments:
+    - name: evtId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: security_event_by_pk
+    argumentMapping:
+      evtId: evt_id
+  graphql:
+    rootFieldName: securityEventByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "security_event" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: SecurityEventByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

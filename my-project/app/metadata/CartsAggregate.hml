@@ -1,0 +1,212 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CartsMaxFields
+    inputTypeName: CartsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_max_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CartsMinFields
+    inputTypeName: CartsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_min_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsAggregateFields
+  description: aggregate fields of "carts"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[CartsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: CartsMaxFields
+    - name: min
+      type: CartsMinFields
+  graphql:
+    typeName: CartsAggregateFields
+    inputTypeName: CartsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsAggregate
+  description: aggregated selection of "carts"
+  fields:
+    - name: aggregate
+      type: CartsAggregateFields
+    - name: nodes
+      type: "[Carts!]!"
+  graphql:
+    typeName: CartsAggregate
+    inputTypeName: CartsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: CartsAggregate
+  outputType: CartsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[CartsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CartsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CartsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: carts_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: cartsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "carts"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CartsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

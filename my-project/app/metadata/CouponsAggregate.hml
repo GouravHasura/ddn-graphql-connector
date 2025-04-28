@@ -1,0 +1,534 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsAvgFields
+    inputTypeName: CouponsAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_avg_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: amount
+      type: Int
+    - name: code
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: expirationDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: percentOrValue
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CouponsMaxFields
+    inputTypeName: CouponsMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_max_fields
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsMinFields
+  description: aggregate min on columns
+  fields:
+    - name: amount
+      type: Int
+    - name: code
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: expirationDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: percentOrValue
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CouponsMinFields
+    inputTypeName: CouponsMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_min_fields
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsStddevFields
+    inputTypeName: CouponsStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_stddev_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsStddevPopFields
+    inputTypeName: CouponsStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_stddev_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsStddevSampFields
+    inputTypeName: CouponsStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_stddev_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: amount
+      type: Int
+  graphql:
+    typeName: CouponsSumFields
+    inputTypeName: CouponsSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_sum_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsVarPopFields
+    inputTypeName: CouponsVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_var_pop_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsVarSampFields
+    inputTypeName: CouponsVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_var_samp_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: amount
+      type: Float
+  graphql:
+    typeName: CouponsVarianceFields
+    inputTypeName: CouponsVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_variance_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsAggregateFields
+  description: aggregate fields of "coupons"
+  fields:
+    - name: avg
+      type: CouponsAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[CouponsSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: CouponsMaxFields
+    - name: min
+      type: CouponsMinFields
+    - name: stddev
+      type: CouponsStddevFields
+    - name: stddevPop
+      type: CouponsStddevPopFields
+    - name: stddevSamp
+      type: CouponsStddevSampFields
+    - name: sum
+      type: CouponsSumFields
+    - name: varPop
+      type: CouponsVarPopFields
+    - name: varSamp
+      type: CouponsVarSampFields
+    - name: variance
+      type: CouponsVarianceFields
+  graphql:
+    typeName: CouponsAggregateFields
+    inputTypeName: CouponsAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsAggregate
+  description: aggregated selection of "coupons"
+  fields:
+    - name: aggregate
+      type: CouponsAggregateFields
+    - name: nodes
+      type: "[Coupons!]!"
+  graphql:
+    typeName: CouponsAggregate
+    inputTypeName: CouponsAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: CouponsAggregate
+  outputType: CouponsAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[CouponsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CouponsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CouponsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: coupons_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: couponsAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CouponsAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

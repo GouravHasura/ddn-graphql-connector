@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsUpdates
+  fields:
+    - name: inc
+      type: CouponsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CouponsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CouponsBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: CouponsUpdates
+    inputTypeName: CouponsUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCouponsMany
+  outputType: "[CouponsMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[CouponsUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_coupons_many
+  graphql:
+    rootFieldName: updateCouponsMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCouponsMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

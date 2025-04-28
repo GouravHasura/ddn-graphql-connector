@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsMutationResponse
+  description: response of any mutation on the table "reviews"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Reviews!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: ReviewsMutationResponse
+    inputTypeName: ReviewsMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteReviews
+  outputType: ReviewsMutationResponse
+  arguments:
+    - name: where
+      type: ReviewsBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_reviews
+  graphql:
+    rootFieldName: deleteReviews
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteReviews
+  permissions:
+    - role: admin
+      allowExecution: true
+

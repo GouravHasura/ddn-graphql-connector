@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteInvoiceLineByPk
+  outputType: InvoiceLine
+  arguments:
+    - name: invoiceLineId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_InvoiceLine_by_pk
+    argumentMapping:
+      invoiceLineId: InvoiceLineId
+  graphql:
+    rootFieldName: deleteInvoiceLineByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "InvoiceLine"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteInvoiceLineByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

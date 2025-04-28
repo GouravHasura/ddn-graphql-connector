@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: GenreByPk
+  outputType: Genre
+  arguments:
+    - name: genreId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Genre_by_pk
+    argumentMapping:
+      genreId: GenreId
+  graphql:
+    rootFieldName: genreByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Genre" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: GenreByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

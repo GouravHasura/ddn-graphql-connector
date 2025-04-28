@@ -1,0 +1,60 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesPkColumnsInput
+  description: "primary key columns input for table: categories"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: CategoriesPkColumnsInput
+    inputTypeName: CategoriesPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCategoriesByPk
+  outputType: Categories
+  arguments:
+    - name: set
+      type: CategoriesSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: CategoriesPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_categories_by_pk
+    argumentMapping:
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateCategoriesByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCategoriesByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

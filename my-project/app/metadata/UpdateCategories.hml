@@ -1,0 +1,64 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CategoriesSetInput
+  description: input type for updating data in table "categories"
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: CategoriesSetInput
+    inputTypeName: CategoriesSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: categories_set_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CategoriesSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCategories
+  outputType: CategoriesMutationResponse
+  arguments:
+    - name: set
+      type: CategoriesSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CategoriesBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_categories
+    argumentMapping:
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateCategories
+    rootFieldKind: Mutation
+  description: 'update data of the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCategories
+  permissions:
+    - role: admin
+      allowExecution: true
+

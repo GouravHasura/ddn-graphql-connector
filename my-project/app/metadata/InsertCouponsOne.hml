@@ -1,0 +1,34 @@
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCouponsOne
+  outputType: Coupons
+  arguments:
+    - name: object
+      type: CouponsInsertInput!
+      description: the row to be inserted
+    - name: onConflict
+      type: CouponsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_coupons_one
+    argumentMapping:
+      object: object
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCouponsOne
+    rootFieldKind: Mutation
+  description: 'insert a single row into the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCouponsOne
+  permissions:
+    - role: admin
+      allowExecution: true
+

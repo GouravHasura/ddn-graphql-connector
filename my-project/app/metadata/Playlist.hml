@@ -1,0 +1,176 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistOrderBy
+  description: Ordering options when selecting data from "Playlist".
+  fields:
+    - name: name
+      type: OrderBy
+    - name: playlistId
+      type: OrderBy
+  graphql:
+    typeName: PlaylistOrderBy
+    inputTypeName: PlaylistOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_order_by
+      fieldMapping:
+        name:
+          column:
+            name: Name
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - name
+          - playlistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistBoolExp
+  description: Boolean expression to filter rows from the table "Playlist". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[PlaylistBoolExp!]"
+    - name: not
+      type: PlaylistBoolExp
+    - name: or
+      type: "[PlaylistBoolExp!]"
+    - name: name
+      type: StringComparisonExp
+    - name: playlistId
+      type: IntComparisonExp
+  graphql:
+    typeName: PlaylistBoolExp
+    inputTypeName: PlaylistBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        name:
+          column:
+            name: Name
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - name
+          - playlistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Playlist
+  description: columns and relationships of "Playlist"
+  fields:
+    - name: name
+      type: String
+    - name: playlistId
+      type: Int!
+  graphql:
+    typeName: Playlist
+    inputTypeName: PlaylistInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist
+      fieldMapping:
+        name:
+          column:
+            name: Name
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Playlist
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - name
+          - playlistId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Playlist
+  outputType: "[Playlist!]!"
+  arguments:
+    - name: distinctOn
+      type: "[PlaylistSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[PlaylistOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: PlaylistBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Playlist
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: playlist
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Playlist
+  permissions:
+    - role: admin
+      allowExecution: true
+

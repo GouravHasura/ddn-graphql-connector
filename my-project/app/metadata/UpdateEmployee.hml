@@ -1,0 +1,190 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeIncInput
+  description: input type for incrementing numeric columns in table "Employee"
+  fields:
+    - name: employeeId
+      type: Int
+    - name: reportsTo
+      type: Int
+  graphql:
+    typeName: EmployeeIncInput
+    inputTypeName: EmployeeIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_inc_input
+      fieldMapping:
+        employeeId:
+          column:
+            name: EmployeeId
+        reportsTo:
+          column:
+            name: ReportsTo
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - employeeId
+          - reportsTo
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: EmployeeSetInput
+  description: input type for updating data in table "Employee"
+  fields:
+    - name: address
+      type: String
+    - name: birthDate
+      type: Timestamp
+    - name: city
+      type: String
+    - name: country
+      type: String
+    - name: email
+      type: String
+    - name: employeeId
+      type: Int
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: hireDate
+      type: Timestamp
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: reportsTo
+      type: Int
+    - name: state
+      type: String
+    - name: title
+      type: String
+  graphql:
+    typeName: EmployeeSetInput
+    inputTypeName: EmployeeSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Employee_set_input
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        birthDate:
+          column:
+            name: BirthDate
+        city:
+          column:
+            name: City
+        country:
+          column:
+            name: Country
+        email:
+          column:
+            name: Email
+        employeeId:
+          column:
+            name: EmployeeId
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        hireDate:
+          column:
+            name: HireDate
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        reportsTo:
+          column:
+            name: ReportsTo
+        state:
+          column:
+            name: State
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: EmployeeSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - birthDate
+          - city
+          - country
+          - email
+          - employeeId
+          - fax
+          - firstName
+          - hireDate
+          - lastName
+          - phone
+          - postalCode
+          - reportsTo
+          - state
+          - title
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateEmployee
+  outputType: EmployeeMutationResponse
+  arguments:
+    - name: inc
+      type: EmployeeIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: EmployeeSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: EmployeeBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Employee
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateEmployee
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Employee"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateEmployee
+  permissions:
+    - role: admin
+      allowExecution: true
+

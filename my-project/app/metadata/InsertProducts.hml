@@ -1,0 +1,168 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsInsertInput
+  description: input type for inserting data into table "products"
+  fields:
+    - name: categoryId
+      type: Uuid
+    - name: countryOfOrigin
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: description
+      type: String
+    - name: id
+      type: Uuid
+    - name: image
+      type: String
+    - name: manufacturerId
+      type: Uuid
+    - name: name
+      type: String
+    - name: price
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+    - name: vector
+      type: Vector
+  graphql:
+    typeName: ProductsInsertInput
+    inputTypeName: ProductsInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_insert_input
+      fieldMapping:
+        categoryId:
+          column:
+            name: category_id
+        countryOfOrigin:
+          column:
+            name: country_of_origin
+        createdAt:
+          column:
+            name: created_at
+        description:
+          column:
+            name: description
+        id:
+          column:
+            name: id
+        image:
+          column:
+            name: image
+        manufacturerId:
+          column:
+            name: manufacturer_id
+        name:
+          column:
+            name: name
+        price:
+          column:
+            name: price
+        updatedAt:
+          column:
+            name: updated_at
+        vector:
+          column:
+            name: vector
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - categoryId
+          - countryOfOrigin
+          - createdAt
+          - description
+          - id
+          - image
+          - manufacturerId
+          - name
+          - price
+          - updatedAt
+          - vector
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ProductsOnConflict
+  description: on_conflict condition type for table "products"
+  fields:
+    - name: constraint
+      type: ProductsConstraint!
+    - name: updateColumns
+      type: "[ProductsUpdateColumn!]!"
+    - name: where
+      type: ProductsBoolExp
+  graphql:
+    typeName: ProductsOnConflict
+    inputTypeName: ProductsOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: products_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ProductsOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertProducts
+  outputType: ProductsMutationResponse
+  arguments:
+    - name: objects
+      type: "[ProductsInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: ProductsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_products
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertProducts
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "products"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertProducts
+  permissions:
+    - role: admin
+      allowExecution: true
+

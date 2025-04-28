@@ -1,0 +1,284 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsOrderBy
+  description: Ordering options when selecting data from "reviews".
+  fields:
+    - name: createdAt
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: isVisible
+      type: OrderBy
+    - name: productId
+      type: OrderBy
+    - name: rating
+      type: OrderBy
+    - name: text
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: userId
+      type: OrderBy
+  graphql:
+    typeName: ReviewsOrderBy
+    inputTypeName: ReviewsOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_order_by
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isVisible:
+          column:
+            name: is_visible
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isVisible
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsBoolExp
+  description: Boolean expression to filter rows from the table "reviews". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[ReviewsBoolExp!]"
+    - name: not
+      type: ReviewsBoolExp
+    - name: or
+      type: "[ReviewsBoolExp!]"
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: isVisible
+      type: BooleanComparisonExp
+    - name: productId
+      type: UuidComparisonExp
+    - name: rating
+      type: IntComparisonExp
+    - name: text
+      type: StringComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: userId
+      type: UuidComparisonExp
+  graphql:
+    typeName: ReviewsBoolExp
+    inputTypeName: ReviewsBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isVisible:
+          column:
+            name: is_visible
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - createdAt
+          - id
+          - isVisible
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Reviews
+  description: columns and relationships of "reviews"
+  fields:
+    - name: createdAt
+      type: Timestamptz!
+    - name: id
+      type: Uuid!
+    - name: isVisible
+      type: Boolean!
+    - name: productId
+      type: Uuid!
+    - name: rating
+      type: Int!
+    - name: text
+      type: String!
+    - name: updatedAt
+      type: Timestamptz!
+    - name: userId
+      type: Uuid!
+  graphql:
+    typeName: Reviews
+    inputTypeName: ReviewsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isVisible:
+          column:
+            name: is_visible
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Reviews
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isVisible
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Reviews
+  outputType: "[Reviews!]!"
+  arguments:
+    - name: distinctOn
+      type: "[ReviewsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ReviewsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ReviewsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: reviews
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: reviews
+    rootFieldKind: Query
+  description: 'fetch data from the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Reviews
+  permissions:
+    - role: admin
+      allowExecution: true
+

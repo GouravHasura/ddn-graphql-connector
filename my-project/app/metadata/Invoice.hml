@@ -1,0 +1,382 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceOrderBy
+  description: Ordering options when selecting data from "Invoice".
+  fields:
+    - name: billingAddress
+      type: OrderBy
+    - name: billingCity
+      type: OrderBy
+    - name: billingCountry
+      type: OrderBy
+    - name: billingPostalCode
+      type: OrderBy
+    - name: billingState
+      type: OrderBy
+    - name: customerId
+      type: OrderBy
+    - name: invoiceDate
+      type: OrderBy
+    - name: invoiceId
+      type: OrderBy
+    - name: total
+      type: OrderBy
+  graphql:
+    typeName: InvoiceOrderBy
+    inputTypeName: InvoiceOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_order_by
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NumericComparisonExp
+  description: Boolean expression to compare columns of type "numeric". All fields
+    are combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: Numeric
+    - name: gt
+      type: Numeric
+    - name: gte
+      type: Numeric
+    - name: in
+      type: "[Numeric!]"
+    - name: isNull
+      type: Boolean
+    - name: lt
+      type: Numeric
+    - name: lte
+      type: Numeric
+    - name: neq
+      type: Numeric
+    - name: nin
+      type: "[Numeric!]"
+  graphql:
+    typeName: NumericComparisonExp_1
+    inputTypeName: NumericComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: numeric_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        in:
+          column:
+            name: _in
+        isNull:
+          column:
+            name: _is_null
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nin:
+          column:
+            name: _nin
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NumericComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - in
+          - isNull
+          - lt
+          - lte
+          - neq
+          - nin
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceBoolExp
+  description: Boolean expression to filter rows from the table "Invoice". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[InvoiceBoolExp!]"
+    - name: not
+      type: InvoiceBoolExp
+    - name: or
+      type: "[InvoiceBoolExp!]"
+    - name: billingAddress
+      type: StringComparisonExp
+    - name: billingCity
+      type: StringComparisonExp
+    - name: billingCountry
+      type: StringComparisonExp
+    - name: billingPostalCode
+      type: StringComparisonExp
+    - name: billingState
+      type: StringComparisonExp
+    - name: customerId
+      type: IntComparisonExp
+    - name: invoiceDate
+      type: TimestampComparisonExp
+    - name: invoiceId
+      type: IntComparisonExp
+    - name: total
+      type: NumericComparisonExp
+  graphql:
+    typeName: InvoiceBoolExp
+    inputTypeName: InvoiceBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Invoice
+  description: columns and relationships of "Invoice"
+  fields:
+    - name: billingAddress
+      type: String
+    - name: billingCity
+      type: String
+    - name: billingCountry
+      type: String
+    - name: billingPostalCode
+      type: String
+    - name: billingState
+      type: String
+    - name: customerId
+      type: Int!
+    - name: invoiceDate
+      type: Timestamp!
+    - name: invoiceId
+      type: Int!
+    - name: total
+      type: Numeric!
+  graphql:
+    typeName: Invoice
+    inputTypeName: InvoiceInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Invoice
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: Command
+version: v1
+definition:
+  name: Invoice
+  outputType: "[Invoice!]!"
+  arguments:
+    - name: distinctOn
+      type: "[InvoiceSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[InvoiceOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: InvoiceBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Invoice
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: invoice
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Invoice"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Invoice
+  permissions:
+    - role: admin
+      allowExecution: true
+

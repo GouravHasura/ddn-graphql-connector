@@ -1,0 +1,160 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceIncInput
+  description: input type for incrementing numeric columns in table "Invoice"
+  fields:
+    - name: customerId
+      type: Int
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceIncInput
+    inputTypeName: InvoiceIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_inc_input
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceSetInput
+  description: input type for updating data in table "Invoice"
+  fields:
+    - name: billingAddress
+      type: String
+    - name: billingCity
+      type: String
+    - name: billingCountry
+      type: String
+    - name: billingPostalCode
+      type: String
+    - name: billingState
+      type: String
+    - name: customerId
+      type: Int
+    - name: invoiceDate
+      type: Timestamp
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceSetInput
+    inputTypeName: InvoiceSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_set_input
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateInvoice
+  outputType: InvoiceMutationResponse
+  arguments:
+    - name: inc
+      type: InvoiceIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: InvoiceSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: InvoiceBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Invoice
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateInvoice
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Invoice"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateInvoice
+  permissions:
+    - role: admin
+      allowExecution: true
+

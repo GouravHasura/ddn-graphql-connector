@@ -1,0 +1,138 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsIncInput
+  description: input type for incrementing numeric columns in table "reviews"
+  fields:
+    - name: rating
+      type: Int
+  graphql:
+    typeName: ReviewsIncInput
+    inputTypeName: ReviewsIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_inc_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - rating
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsSetInput
+  description: input type for updating data in table "reviews"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: isVisible
+      type: Boolean
+    - name: productId
+      type: Uuid
+    - name: rating
+      type: Int
+    - name: text
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: ReviewsSetInput
+    inputTypeName: ReviewsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_set_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isVisible:
+          column:
+            name: is_visible
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isVisible
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateReviews
+  outputType: ReviewsMutationResponse
+  arguments:
+    - name: inc
+      type: ReviewsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: ReviewsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: ReviewsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_reviews
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateReviews
+    rootFieldKind: Mutation
+  description: 'update data of the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateReviews
+  permissions:
+    - role: admin
+      allowExecution: true
+

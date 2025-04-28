@@ -1,0 +1,674 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceAvgFields
+    inputTypeName: InvoiceAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_avg_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: billingAddress
+      type: String
+    - name: billingCity
+      type: String
+    - name: billingCountry
+      type: String
+    - name: billingPostalCode
+      type: String
+    - name: billingState
+      type: String
+    - name: customerId
+      type: Int
+    - name: invoiceDate
+      type: Timestamp
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceMaxFields
+    inputTypeName: InvoiceMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_max_fields
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceMinFields
+  description: aggregate min on columns
+  fields:
+    - name: billingAddress
+      type: String
+    - name: billingCity
+      type: String
+    - name: billingCountry
+      type: String
+    - name: billingPostalCode
+      type: String
+    - name: billingState
+      type: String
+    - name: customerId
+      type: Int
+    - name: invoiceDate
+      type: Timestamp
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceMinFields
+    inputTypeName: InvoiceMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_min_fields
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceStddevFields
+    inputTypeName: InvoiceStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_stddev_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceStddevPopFields
+    inputTypeName: InvoiceStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_stddev_pop_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceStddevSampFields
+    inputTypeName: InvoiceStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_stddev_samp_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: customerId
+      type: Int
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceSumFields
+    inputTypeName: InvoiceSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_sum_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceVarPopFields
+    inputTypeName: InvoiceVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_var_pop_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceVarSampFields
+    inputTypeName: InvoiceVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_var_samp_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: invoiceId
+      type: Float
+    - name: total
+      type: Float
+  graphql:
+    typeName: InvoiceVarianceFields
+    inputTypeName: InvoiceVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_variance_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceAggregateFields
+  description: aggregate fields of "Invoice"
+  fields:
+    - name: avg
+      type: InvoiceAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[InvoiceSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: InvoiceMaxFields
+    - name: min
+      type: InvoiceMinFields
+    - name: stddev
+      type: InvoiceStddevFields
+    - name: stddevPop
+      type: InvoiceStddevPopFields
+    - name: stddevSamp
+      type: InvoiceStddevSampFields
+    - name: sum
+      type: InvoiceSumFields
+    - name: varPop
+      type: InvoiceVarPopFields
+    - name: varSamp
+      type: InvoiceVarSampFields
+    - name: variance
+      type: InvoiceVarianceFields
+  graphql:
+    typeName: InvoiceAggregateFields
+    inputTypeName: InvoiceAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceAggregate
+  description: aggregated selection of "Invoice"
+  fields:
+    - name: aggregate
+      type: InvoiceAggregateFields
+    - name: nodes
+      type: "[Invoice!]!"
+  graphql:
+    typeName: InvoiceAggregate
+    inputTypeName: InvoiceAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: InvoiceAggregate
+  outputType: InvoiceAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[InvoiceSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[InvoiceOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: InvoiceBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Invoice_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: invoiceAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Invoice"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InvoiceAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,328 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsOrderBy
+  description: Ordering options when selecting data from "carts".
+  fields:
+    - name: createdAt
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: isComplete
+      type: OrderBy
+    - name: isReminderSent
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+    - name: userId
+      type: OrderBy
+  graphql:
+    typeName: CartsOrderBy
+    inputTypeName: CartsOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_order_by
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isComplete:
+          column:
+            name: is_complete
+        isReminderSent:
+          column:
+            name: is_reminder_sent
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isComplete
+          - isReminderSent
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: BooleanComparisonExp
+  description: Boolean expression to compare columns of type "Boolean". All fields
+    are combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: Boolean
+    - name: gt
+      type: Boolean
+    - name: gte
+      type: Boolean
+    - name: in
+      type: "[Boolean!]"
+    - name: isNull
+      type: Boolean
+    - name: lt
+      type: Boolean
+    - name: lte
+      type: Boolean
+    - name: neq
+      type: Boolean
+    - name: nin
+      type: "[Boolean!]"
+  graphql:
+    typeName: BooleanComparisonExp_1
+    inputTypeName: BooleanComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Boolean_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        in:
+          column:
+            name: _in
+        isNull:
+          column:
+            name: _is_null
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nin:
+          column:
+            name: _nin
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: BooleanComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - in
+          - isNull
+          - lt
+          - lte
+          - neq
+          - nin
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartsBoolExp
+  description: Boolean expression to filter rows from the table "carts". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[CartsBoolExp!]"
+    - name: not
+      type: CartsBoolExp
+    - name: or
+      type: "[CartsBoolExp!]"
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: isComplete
+      type: BooleanComparisonExp
+    - name: isReminderSent
+      type: BooleanComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+    - name: userId
+      type: UuidComparisonExp
+  graphql:
+    typeName: CartsBoolExp
+    inputTypeName: CartsBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isComplete:
+          column:
+            name: is_complete
+        isReminderSent:
+          column:
+            name: is_reminder_sent
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartsBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - createdAt
+          - id
+          - isComplete
+          - isReminderSent
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Carts
+  description: columns and relationships of "carts"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid!
+    - name: isComplete
+      type: Boolean!
+    - name: isReminderSent
+      type: Boolean!
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid!
+  graphql:
+    typeName: Carts
+    inputTypeName: CartsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: carts
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isComplete:
+          column:
+            name: is_complete
+        isReminderSent:
+          column:
+            name: is_reminder_sent
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Carts
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isComplete
+          - isReminderSent
+          - updatedAt
+          - userId
+
+---
+kind: Command
+version: v1
+definition:
+  name: Carts
+  outputType: "[Carts!]!"
+  arguments:
+    - name: distinctOn
+      type: "[CartsSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CartsOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CartsBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: carts
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: carts
+    rootFieldKind: Query
+  description: 'fetch data from the table: "carts"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Carts
+  permissions:
+    - role: admin
+      allowExecution: true
+

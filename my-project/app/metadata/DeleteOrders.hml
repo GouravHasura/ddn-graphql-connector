@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersMutationResponse
+  description: response of any mutation on the table "orders"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Orders!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: OrdersMutationResponse
+    inputTypeName: OrdersMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteOrders
+  outputType: OrdersMutationResponse
+  arguments:
+    - name: where
+      type: OrdersBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_orders
+  graphql:
+    rootFieldName: deleteOrders
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteOrders
+  permissions:
+    - role: admin
+      allowExecution: true
+

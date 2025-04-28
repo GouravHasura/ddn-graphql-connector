@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: OrdersByPk
+  outputType: Orders
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: orders_by_pk
+  graphql:
+    rootFieldName: ordersByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "orders" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: OrdersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

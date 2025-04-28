@@ -1,0 +1,150 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsInsertInput
+  description: input type for inserting data into table "coupons"
+  fields:
+    - name: amount
+      type: Int
+    - name: code
+      type: String
+    - name: createdAt
+      type: Timestamptz
+    - name: expirationDate
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: percentOrValue
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: CouponsInsertInput
+    inputTypeName: CouponsInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_insert_input
+      fieldMapping:
+        amount:
+          column:
+            name: amount
+        code:
+          column:
+            name: code
+        createdAt:
+          column:
+            name: created_at
+        expirationDate:
+          column:
+            name: expiration_date
+        id:
+          column:
+            name: id
+        percentOrValue:
+          column:
+            name: percent_or_value
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - createdAt
+          - expirationDate
+          - id
+          - percentOrValue
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsOnConflict
+  description: on_conflict condition type for table "coupons"
+  fields:
+    - name: constraint
+      type: CouponsConstraint!
+    - name: updateColumns
+      type: "[CouponsUpdateColumn!]!"
+    - name: where
+      type: CouponsBoolExp
+  graphql:
+    typeName: CouponsOnConflict
+    inputTypeName: CouponsOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCoupons
+  outputType: CouponsMutationResponse
+  arguments:
+    - name: objects
+      type: "[CouponsInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: CouponsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_coupons
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCoupons
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCoupons
+  permissions:
+    - role: admin
+      allowExecution: true
+

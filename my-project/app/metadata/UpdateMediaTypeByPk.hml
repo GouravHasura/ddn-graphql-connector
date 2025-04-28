@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypePkColumnsInput
+  description: "primary key columns input for table: MediaType"
+  fields:
+    - name: mediaTypeId
+      type: Int!
+  graphql:
+    typeName: MediaTypePkColumnsInput
+    inputTypeName: MediaTypePkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_pk_columns_input
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypePkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateMediaTypeByPk
+  outputType: MediaType
+  arguments:
+    - name: inc
+      type: MediaTypeIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: MediaTypeSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: MediaTypePkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_MediaType_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateMediaTypeByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateMediaTypeByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

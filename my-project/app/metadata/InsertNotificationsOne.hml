@@ -1,0 +1,34 @@
+---
+kind: Command
+version: v1
+definition:
+  name: InsertNotificationsOne
+  outputType: Notifications
+  arguments:
+    - name: object
+      type: NotificationsInsertInput!
+      description: the row to be inserted
+    - name: onConflict
+      type: NotificationsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_notifications_one
+    argumentMapping:
+      object: object
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertNotificationsOne
+    rootFieldKind: Mutation
+  description: 'insert a single row into the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertNotificationsOne
+  permissions:
+    - role: admin
+      allowExecution: true
+

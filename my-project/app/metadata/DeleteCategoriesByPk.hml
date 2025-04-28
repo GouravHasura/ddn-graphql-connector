@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteCategoriesByPk
+  outputType: Categories
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_categories_by_pk
+  graphql:
+    rootFieldName: deleteCategoriesByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "categories"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteCategoriesByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

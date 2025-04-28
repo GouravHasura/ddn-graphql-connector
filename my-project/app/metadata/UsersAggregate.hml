@@ -1,0 +1,248 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: email
+      type: String
+    - name: id
+      type: Uuid
+    - name: lastSeen
+      type: Timestamptz
+    - name: name
+      type: String
+    - name: password
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: UsersMaxFields
+    inputTypeName: UsersMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_max_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - email
+          - id
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersMinFields
+  description: aggregate min on columns
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: email
+      type: String
+    - name: id
+      type: Uuid
+    - name: lastSeen
+      type: Timestamptz
+    - name: name
+      type: String
+    - name: password
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: UsersMinFields
+    inputTypeName: UsersMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_min_fields
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - email
+          - id
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersAggregateFields
+  description: aggregate fields of "users"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[UsersSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: UsersMaxFields
+    - name: min
+      type: UsersMinFields
+  graphql:
+    typeName: UsersAggregateFields
+    inputTypeName: UsersAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersAggregate
+  description: aggregated selection of "users"
+  fields:
+    - name: aggregate
+      type: UsersAggregateFields
+    - name: nodes
+      type: "[Users!]!"
+  graphql:
+    typeName: UsersAggregate
+    inputTypeName: UsersAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: UsersAggregate
+  outputType: UsersAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[UsersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[UsersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: UsersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: users_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: usersAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UsersAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

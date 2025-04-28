@@ -1,0 +1,427 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumOrderBy
+  description: Ordering options when selecting data from "Album".
+  fields:
+    - name: albumId
+      type: OrderBy
+    - name: artistId
+      type: OrderBy
+    - name: title
+      type: OrderBy
+  graphql:
+    typeName: AlbumOrderBy
+    inputTypeName: AlbumOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_order_by
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - artistId
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: IntComparisonExp
+  description: Boolean expression to compare columns of type "Int". All fields are
+    combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: Int
+    - name: gt
+      type: Int
+    - name: gte
+      type: Int
+    - name: in
+      type: "[Int!]"
+    - name: isNull
+      type: Boolean
+    - name: lt
+      type: Int
+    - name: lte
+      type: Int
+    - name: neq
+      type: Int
+    - name: nin
+      type: "[Int!]"
+  graphql:
+    typeName: IntComparisonExp_1
+    inputTypeName: IntComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Int_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        in:
+          column:
+            name: _in
+        isNull:
+          column:
+            name: _is_null
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nin:
+          column:
+            name: _nin
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: IntComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - in
+          - isNull
+          - lt
+          - lte
+          - neq
+          - nin
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: StringComparisonExp
+  description: Boolean expression to compare columns of type "String". All fields
+    are combined with logical 'AND'.
+  fields:
+    - name: eq
+      type: String
+    - name: gt
+      type: String
+    - name: gte
+      type: String
+    - name: ilike
+      type: String
+      description: does the column match the given case-insensitive pattern
+    - name: in
+      type: "[String!]"
+    - name: iregex
+      type: String
+      description: does the column match the given POSIX regular expression, case
+        insensitive
+    - name: isNull
+      type: Boolean
+    - name: like
+      type: String
+      description: does the column match the given pattern
+    - name: lt
+      type: String
+    - name: lte
+      type: String
+    - name: neq
+      type: String
+    - name: nilike
+      type: String
+      description: does the column NOT match the given case-insensitive pattern
+    - name: nin
+      type: "[String!]"
+    - name: niregex
+      type: String
+      description: does the column NOT match the given POSIX regular expression, case
+        insensitive
+    - name: nlike
+      type: String
+      description: does the column NOT match the given pattern
+    - name: nregex
+      type: String
+      description: does the column NOT match the given POSIX regular expression, case
+        sensitive
+    - name: nsimilar
+      type: String
+      description: does the column NOT match the given SQL regular expression
+    - name: regex
+      type: String
+      description: does the column match the given POSIX regular expression, case sensitive
+    - name: similar
+      type: String
+      description: does the column match the given SQL regular expression
+  graphql:
+    typeName: StringComparisonExp_1
+    inputTypeName: StringComparisonExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: String_comparison_exp
+      fieldMapping:
+        eq:
+          column:
+            name: _eq
+        gt:
+          column:
+            name: _gt
+        gte:
+          column:
+            name: _gte
+        ilike:
+          column:
+            name: _ilike
+        in:
+          column:
+            name: _in
+        iregex:
+          column:
+            name: _iregex
+        isNull:
+          column:
+            name: _is_null
+        like:
+          column:
+            name: _like
+        lt:
+          column:
+            name: _lt
+        lte:
+          column:
+            name: _lte
+        neq:
+          column:
+            name: _neq
+        nilike:
+          column:
+            name: _nilike
+        nin:
+          column:
+            name: _nin
+        niregex:
+          column:
+            name: _niregex
+        nlike:
+          column:
+            name: _nlike
+        nregex:
+          column:
+            name: _nregex
+        nsimilar:
+          column:
+            name: _nsimilar
+        regex:
+          column:
+            name: _regex
+        similar:
+          column:
+            name: _similar
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: StringComparisonExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - eq
+          - gt
+          - gte
+          - ilike
+          - in
+          - iregex
+          - isNull
+          - like
+          - lt
+          - lte
+          - neq
+          - nilike
+          - nin
+          - niregex
+          - nlike
+          - nregex
+          - nsimilar
+          - regex
+          - similar
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumBoolExp
+  description: Boolean expression to filter rows from the table "Album". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[AlbumBoolExp!]"
+    - name: not
+      type: AlbumBoolExp
+    - name: or
+      type: "[AlbumBoolExp!]"
+    - name: albumId
+      type: IntComparisonExp
+    - name: artistId
+      type: IntComparisonExp
+    - name: title
+      type: StringComparisonExp
+  graphql:
+    typeName: AlbumBoolExp
+    inputTypeName: AlbumBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - albumId
+          - artistId
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Album
+  description: columns and relationships of "Album"
+  fields:
+    - name: albumId
+      type: Int!
+    - name: artistId
+      type: Int!
+    - name: title
+      type: String!
+  graphql:
+    typeName: Album
+    inputTypeName: AlbumInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Album
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - artistId
+          - title
+
+---
+kind: Command
+version: v1
+definition:
+  name: Album
+  outputType: "[Album!]!"
+  arguments:
+    - name: distinctOn
+      type: "[AlbumSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[AlbumOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: AlbumBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Album
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: album
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Album
+  permissions:
+    - role: admin
+      allowExecution: true
+

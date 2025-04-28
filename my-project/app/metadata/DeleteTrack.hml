@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackMutationResponse
+  description: response of any mutation on the table "Track"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Track!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: TrackMutationResponse
+    inputTypeName: TrackMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteTrack
+  outputType: TrackMutationResponse
+  arguments:
+    - name: where
+      type: TrackBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Track
+  graphql:
+    rootFieldName: deleteTrack
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteTrack
+  permissions:
+    - role: admin
+      allowExecution: true
+

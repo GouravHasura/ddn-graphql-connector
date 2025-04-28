@@ -1,0 +1,34 @@
+---
+kind: Command
+version: v1
+definition:
+  name: InsertCustomerOne
+  outputType: Customer
+  arguments:
+    - name: object
+      type: CustomerInsertInput!
+      description: the row to be inserted
+    - name: onConflict
+      type: CustomerOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Customer_one
+    argumentMapping:
+      object: object
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertCustomerOne
+    rootFieldKind: Mutation
+  description: 'insert a single row into the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertCustomerOne
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: ArtistByPk
+  outputType: Artist
+  arguments:
+    - name: artistId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Artist_by_pk
+    argumentMapping:
+      artistId: ArtistId
+  graphql:
+    rootFieldName: artistByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Artist" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ArtistByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: GenreUpdates
+  fields:
+    - name: inc
+      type: GenreIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: GenreSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: GenreBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: GenreUpdates
+    inputTypeName: GenreUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Genre_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: GenreUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateGenreMany
+  outputType: "[GenreMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[GenreUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Genre_many
+  graphql:
+    rootFieldName: updateGenreMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "Genre"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateGenreMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

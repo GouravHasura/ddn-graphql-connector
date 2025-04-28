@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistPkColumnsInput
+  description: "primary key columns input for table: Playlist"
+  fields:
+    - name: playlistId
+      type: Int!
+  graphql:
+    typeName: PlaylistPkColumnsInput
+    inputTypeName: PlaylistPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_pk_columns_input
+      fieldMapping:
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - playlistId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdatePlaylistByPk
+  outputType: Playlist
+  arguments:
+    - name: inc
+      type: PlaylistIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: PlaylistSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: PlaylistPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Playlist_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updatePlaylistByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdatePlaylistByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

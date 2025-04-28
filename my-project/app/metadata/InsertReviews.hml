@@ -1,0 +1,150 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsInsertInput
+  description: input type for inserting data into table "reviews"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: isVisible
+      type: Boolean
+    - name: productId
+      type: Uuid
+    - name: rating
+      type: Int
+    - name: text
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: ReviewsInsertInput
+    inputTypeName: ReviewsInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_insert_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        isVisible:
+          column:
+            name: is_visible
+        productId:
+          column:
+            name: product_id
+        rating:
+          column:
+            name: rating
+        text:
+          column:
+            name: text
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - isVisible
+          - productId
+          - rating
+          - text
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ReviewsOnConflict
+  description: on_conflict condition type for table "reviews"
+  fields:
+    - name: constraint
+      type: ReviewsConstraint!
+    - name: updateColumns
+      type: "[ReviewsUpdateColumn!]!"
+    - name: where
+      type: ReviewsBoolExp
+  graphql:
+    typeName: ReviewsOnConflict
+    inputTypeName: ReviewsOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: reviews_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ReviewsOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertReviews
+  outputType: ReviewsMutationResponse
+  arguments:
+    - name: objects
+      type: "[ReviewsInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: ReviewsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_reviews
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertReviews
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "reviews"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertReviews
+  permissions:
+    - role: admin
+      allowExecution: true
+

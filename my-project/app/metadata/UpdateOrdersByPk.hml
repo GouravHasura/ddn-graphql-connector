@@ -1,0 +1,60 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: OrdersPkColumnsInput
+  description: "primary key columns input for table: orders"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: OrdersPkColumnsInput
+    inputTypeName: OrdersPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: orders_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: OrdersPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateOrdersByPk
+  outputType: Orders
+  arguments:
+    - name: set
+      type: OrdersSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: OrdersPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_orders_by_pk
+    argumentMapping:
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateOrdersByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "orders"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateOrdersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

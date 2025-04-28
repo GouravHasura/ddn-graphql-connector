@@ -1,0 +1,114 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistInsertInput
+  description: input type for inserting data into table "Artist"
+  fields:
+    - name: artistId
+      type: Int
+    - name: name
+      type: String
+  graphql:
+    typeName: ArtistInsertInput
+    inputTypeName: ArtistInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_insert_input
+      fieldMapping:
+        artistId:
+          column:
+            name: ArtistId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - artistId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ArtistOnConflict
+  description: on_conflict condition type for table "Artist"
+  fields:
+    - name: constraint
+      type: ArtistConstraint!
+    - name: updateColumns
+      type: "[ArtistUpdateColumn!]!"
+    - name: where
+      type: ArtistBoolExp
+  graphql:
+    typeName: ArtistOnConflict
+    inputTypeName: ArtistOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Artist_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ArtistOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertArtist
+  outputType: ArtistMutationResponse
+  arguments:
+    - name: objects
+      type: "[ArtistInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: ArtistOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Artist
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertArtist
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Artist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertArtist
+  permissions:
+    - role: admin
+      allowExecution: true
+

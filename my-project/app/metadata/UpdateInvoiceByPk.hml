@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoicePkColumnsInput
+  description: "primary key columns input for table: Invoice"
+  fields:
+    - name: invoiceId
+      type: Int!
+  graphql:
+    typeName: InvoicePkColumnsInput
+    inputTypeName: InvoicePkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_pk_columns_input
+      fieldMapping:
+        invoiceId:
+          column:
+            name: InvoiceId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoicePkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - invoiceId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateInvoiceByPk
+  outputType: Invoice
+  arguments:
+    - name: inc
+      type: InvoiceIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: InvoiceSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: InvoicePkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Invoice_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateInvoiceByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "Invoice"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateInvoiceByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

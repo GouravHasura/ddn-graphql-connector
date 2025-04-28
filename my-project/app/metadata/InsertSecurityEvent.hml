@@ -1,0 +1,120 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventInsertInput
+  description: input type for inserting data into table "security_event"
+  fields:
+    - name: evtDesc
+      type: String
+    - name: evtId
+      type: Int
+    - name: evtRootCause
+      type: String
+  graphql:
+    typeName: SecurityEventInsertInput
+    inputTypeName: SecurityEventInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_insert_input
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventOnConflict
+  description: on_conflict condition type for table "security_event"
+  fields:
+    - name: constraint
+      type: SecurityEventConstraint!
+    - name: updateColumns
+      type: "[SecurityEventUpdateColumn!]!"
+    - name: where
+      type: SecurityEventBoolExp
+  graphql:
+    typeName: SecurityEventOnConflict
+    inputTypeName: SecurityEventOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertSecurityEvent
+  outputType: SecurityEventMutationResponse
+  arguments:
+    - name: objects
+      type: "[SecurityEventInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: SecurityEventOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_security_event
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertSecurityEvent
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertSecurityEvent
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,174 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: ManufacturersMaxFields
+    inputTypeName: ManufacturersMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_max_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersMinFields
+  description: aggregate min on columns
+  fields:
+    - name: id
+      type: Uuid
+    - name: name
+      type: String
+  graphql:
+    typeName: ManufacturersMinFields
+    inputTypeName: ManufacturersMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_min_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersAggregateFields
+  description: aggregate fields of "manufacturers"
+  fields:
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[ManufacturersSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: ManufacturersMaxFields
+    - name: min
+      type: ManufacturersMinFields
+  graphql:
+    typeName: ManufacturersAggregateFields
+    inputTypeName: ManufacturersAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_aggregate_fields
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - count
+          - max
+          - min
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ManufacturersAggregate
+  description: aggregated selection of "manufacturers"
+  fields:
+    - name: aggregate
+      type: ManufacturersAggregateFields
+    - name: nodes
+      type: "[Manufacturers!]!"
+  graphql:
+    typeName: ManufacturersAggregate
+    inputTypeName: ManufacturersAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: manufacturers_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ManufacturersAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: ManufacturersAggregate
+  outputType: ManufacturersAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[ManufacturersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[ManufacturersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: ManufacturersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: manufacturers_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: manufacturersAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "manufacturers"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ManufacturersAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

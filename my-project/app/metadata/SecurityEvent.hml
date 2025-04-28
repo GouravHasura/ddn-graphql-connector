@@ -1,0 +1,194 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventOrderBy
+  description: Ordering options when selecting data from "security_event".
+  fields:
+    - name: evtDesc
+      type: OrderBy
+    - name: evtId
+      type: OrderBy
+    - name: evtRootCause
+      type: OrderBy
+  graphql:
+    typeName: SecurityEventOrderBy
+    inputTypeName: SecurityEventOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_order_by
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventBoolExp
+  description: Boolean expression to filter rows from the table "security_event".
+    All fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[SecurityEventBoolExp!]"
+    - name: not
+      type: SecurityEventBoolExp
+    - name: or
+      type: "[SecurityEventBoolExp!]"
+    - name: evtDesc
+      type: StringComparisonExp
+    - name: evtId
+      type: IntComparisonExp
+    - name: evtRootCause
+      type: StringComparisonExp
+  graphql:
+    typeName: SecurityEventBoolExp
+    inputTypeName: SecurityEventBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEvent
+  description: columns and relationships of "security_event"
+  fields:
+    - name: evtDesc
+      type: String!
+    - name: evtId
+      type: Int!
+    - name: evtRootCause
+      type: String
+  graphql:
+    typeName: SecurityEvent
+    inputTypeName: SecurityEventInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event
+      fieldMapping:
+        evtDesc:
+          column:
+            name: evt_desc
+        evtId:
+          column:
+            name: evt_id
+        evtRootCause:
+          column:
+            name: evt_root_cause
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEvent
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtDesc
+          - evtId
+          - evtRootCause
+
+---
+kind: Command
+version: v1
+definition:
+  name: SecurityEvent
+  outputType: "[SecurityEvent!]!"
+  arguments:
+    - name: distinctOn
+      type: "[SecurityEventSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[SecurityEventOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: SecurityEventBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: security_event
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: securityEvent
+    rootFieldKind: Query
+  description: 'fetch data from the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: SecurityEvent
+  permissions:
+    - role: admin
+      allowExecution: true
+

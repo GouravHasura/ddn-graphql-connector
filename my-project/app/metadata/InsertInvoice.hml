@@ -1,0 +1,156 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceInsertInput
+  description: input type for inserting data into table "Invoice"
+  fields:
+    - name: billingAddress
+      type: String
+    - name: billingCity
+      type: String
+    - name: billingCountry
+      type: String
+    - name: billingPostalCode
+      type: String
+    - name: billingState
+      type: String
+    - name: customerId
+      type: Int
+    - name: invoiceDate
+      type: Timestamp
+    - name: invoiceId
+      type: Int
+    - name: total
+      type: Numeric
+  graphql:
+    typeName: InvoiceInsertInput
+    inputTypeName: InvoiceInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_insert_input
+      fieldMapping:
+        billingAddress:
+          column:
+            name: BillingAddress
+        billingCity:
+          column:
+            name: BillingCity
+        billingCountry:
+          column:
+            name: BillingCountry
+        billingPostalCode:
+          column:
+            name: BillingPostalCode
+        billingState:
+          column:
+            name: BillingState
+        customerId:
+          column:
+            name: CustomerId
+        invoiceDate:
+          column:
+            name: InvoiceDate
+        invoiceId:
+          column:
+            name: InvoiceId
+        total:
+          column:
+            name: Total
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - billingAddress
+          - billingCity
+          - billingCountry
+          - billingPostalCode
+          - billingState
+          - customerId
+          - invoiceDate
+          - invoiceId
+          - total
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InvoiceOnConflict
+  description: on_conflict condition type for table "Invoice"
+  fields:
+    - name: constraint
+      type: InvoiceConstraint!
+    - name: updateColumns
+      type: "[InvoiceUpdateColumn!]!"
+    - name: where
+      type: InvoiceBoolExp
+  graphql:
+    typeName: InvoiceOnConflict
+    inputTypeName: InvoiceOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Invoice_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InvoiceOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertInvoice
+  outputType: InvoiceMutationResponse
+  arguments:
+    - name: objects
+      type: "[InvoiceInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: InvoiceOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Invoice
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertInvoice
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Invoice"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertInvoice
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: NotificationsByPk
+  outputType: Notifications
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: notifications_by_pk
+  graphql:
+    rootFieldName: notificationsByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "notifications" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: NotificationsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

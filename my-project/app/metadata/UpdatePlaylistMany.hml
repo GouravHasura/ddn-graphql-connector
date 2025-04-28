@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistUpdates
+  fields:
+    - name: inc
+      type: PlaylistIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: PlaylistSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: PlaylistBoolExp!
+      description: filter the rows which have to be updated
+  graphql:
+    typeName: PlaylistUpdates
+    inputTypeName: PlaylistUpdatesInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_updates
+      fieldMapping:
+        inc:
+          column:
+            name: _inc
+        set:
+          column:
+            name: _set
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistUpdates
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - inc
+          - set
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdatePlaylistMany
+  outputType: "[PlaylistMutationResponse]"
+  arguments:
+    - name: updates
+      type: "[PlaylistUpdates!]!"
+      description: updates to execute, in order
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Playlist_many
+  graphql:
+    rootFieldName: updatePlaylistMany
+    rootFieldKind: Mutation
+  description: 'update multiples rows of table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdatePlaylistMany
+  permissions:
+    - role: admin
+      allowExecution: true
+

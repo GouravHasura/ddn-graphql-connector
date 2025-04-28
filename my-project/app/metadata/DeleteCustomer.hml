@@ -1,0 +1,67 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerMutationResponse
+  description: response of any mutation on the table "Customer"
+  fields:
+    - name: affectedRows
+      type: Int!
+      description: number of rows affected by the mutation
+    - name: returning
+      type: "[Customer!]!"
+      description: data from the rows affected by the mutation
+  graphql:
+    typeName: CustomerMutationResponse
+    inputTypeName: CustomerMutationResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_mutation_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerMutationResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteCustomer
+  outputType: CustomerMutationResponse
+  arguments:
+    - name: where
+      type: CustomerBoolExp!
+      description: filter the rows which have to be deleted
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_Customer
+  graphql:
+    rootFieldName: deleteCustomer
+    rootFieldKind: Mutation
+  description: 'delete data from the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteCustomer
+  permissions:
+    - role: admin
+      allowExecution: true
+

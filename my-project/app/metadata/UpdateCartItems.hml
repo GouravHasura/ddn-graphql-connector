@@ -1,0 +1,126 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsIncInput
+  description: input type for incrementing numeric columns in table "cart_items"
+  fields:
+    - name: quantity
+      type: Int
+  graphql:
+    typeName: CartItemsIncInput
+    inputTypeName: CartItemsIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_inc_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - quantity
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CartItemsSetInput
+  description: input type for updating data in table "cart_items"
+  fields:
+    - name: cartId
+      type: Uuid
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: productId
+      type: Uuid
+    - name: quantity
+      type: Int
+    - name: updatedAt
+      type: Timestamptz
+  graphql:
+    typeName: CartItemsSetInput
+    inputTypeName: CartItemsSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: cart_items_set_input
+      fieldMapping:
+        cartId:
+          column:
+            name: cart_id
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        productId:
+          column:
+            name: product_id
+        quantity:
+          column:
+            name: quantity
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CartItemsSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cartId
+          - createdAt
+          - id
+          - productId
+          - quantity
+          - updatedAt
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCartItems
+  outputType: CartItemsMutationResponse
+  arguments:
+    - name: inc
+      type: CartItemsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CartItemsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: CartItemsBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_cart_items
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateCartItems
+    rootFieldKind: Mutation
+  description: 'update data of the table: "cart_items"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCartItems
+  permissions:
+    - role: admin
+      allowExecution: true
+

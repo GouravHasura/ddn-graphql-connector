@@ -1,0 +1,114 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistInsertInput
+  description: input type for inserting data into table "Playlist"
+  fields:
+    - name: name
+      type: String
+    - name: playlistId
+      type: Int
+  graphql:
+    typeName: PlaylistInsertInput
+    inputTypeName: PlaylistInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_insert_input
+      fieldMapping:
+        name:
+          column:
+            name: Name
+        playlistId:
+          column:
+            name: PlaylistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - name
+          - playlistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PlaylistOnConflict
+  description: on_conflict condition type for table "Playlist"
+  fields:
+    - name: constraint
+      type: PlaylistConstraint!
+    - name: updateColumns
+      type: "[PlaylistUpdateColumn!]!"
+    - name: where
+      type: PlaylistBoolExp
+  graphql:
+    typeName: PlaylistOnConflict
+    inputTypeName: PlaylistOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Playlist_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PlaylistOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertPlaylist
+  outputType: PlaylistMutationResponse
+  arguments:
+    - name: objects
+      type: "[PlaylistInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: PlaylistOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Playlist
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertPlaylist
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Playlist"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertPlaylist
+  permissions:
+    - role: admin
+      allowExecution: true
+

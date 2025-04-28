@@ -1,0 +1,64 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CouponsPkColumnsInput
+  description: "primary key columns input for table: coupons"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: CouponsPkColumnsInput
+    inputTypeName: CouponsPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: coupons_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CouponsPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateCouponsByPk
+  outputType: Coupons
+  arguments:
+    - name: inc
+      type: CouponsIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: CouponsSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: CouponsPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_coupons_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateCouponsByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "coupons"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateCouponsByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

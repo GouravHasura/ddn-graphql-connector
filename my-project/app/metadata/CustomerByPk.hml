@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: CustomerByPk
+  outputType: Customer
+  arguments:
+    - name: customerId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Customer_by_pk
+    argumentMapping:
+      customerId: CustomerId
+  graphql:
+    rootFieldName: customerByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Customer" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CustomerByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

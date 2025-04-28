@@ -1,0 +1,32 @@
+---
+kind: Command
+version: v1
+definition:
+  name: DeletePlaylistTrackByPk
+  outputType: PlaylistTrack
+  arguments:
+    - name: playlistId
+      type: Int!
+    - name: trackId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: delete_PlaylistTrack_by_pk
+    argumentMapping:
+      playlistId: PlaylistId
+      trackId: TrackId
+  graphql:
+    rootFieldName: deletePlaylistTrackByPk
+    rootFieldKind: Mutation
+  description: 'delete single row from the table: "PlaylistTrack"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeletePlaylistTrackByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,176 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeOrderBy
+  description: Ordering options when selecting data from "MediaType".
+  fields:
+    - name: mediaTypeId
+      type: OrderBy
+    - name: name
+      type: OrderBy
+  graphql:
+    typeName: MediaTypeOrderBy
+    inputTypeName: MediaTypeOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_order_by
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaTypeBoolExp
+  description: Boolean expression to filter rows from the table "MediaType". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[MediaTypeBoolExp!]"
+    - name: not
+      type: MediaTypeBoolExp
+    - name: or
+      type: "[MediaTypeBoolExp!]"
+    - name: mediaTypeId
+      type: IntComparisonExp
+    - name: name
+      type: StringComparisonExp
+  graphql:
+    typeName: MediaTypeBoolExp
+    inputTypeName: MediaTypeBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaTypeBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - mediaTypeId
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: MediaType
+  description: columns and relationships of "MediaType"
+  fields:
+    - name: mediaTypeId
+      type: Int!
+    - name: name
+      type: String
+  graphql:
+    typeName: MediaType
+    inputTypeName: MediaTypeInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: MediaType
+      fieldMapping:
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        name:
+          column:
+            name: Name
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: MediaType
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - mediaTypeId
+          - name
+
+---
+kind: Command
+version: v1
+definition:
+  name: MediaType
+  outputType: "[MediaType!]!"
+  arguments:
+    - name: distinctOn
+      type: "[MediaTypeSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[MediaTypeOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: MediaTypeBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: MediaType
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: mediaType
+    rootFieldKind: Query
+  description: 'fetch data from the table: "MediaType"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: MediaType
+  permissions:
+    - role: admin
+      allowExecution: true
+

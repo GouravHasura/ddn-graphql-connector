@@ -1,0 +1,120 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumInsertInput
+  description: input type for inserting data into table "Album"
+  fields:
+    - name: albumId
+      type: Int
+    - name: artistId
+      type: Int
+    - name: title
+      type: String
+  graphql:
+    typeName: AlbumInsertInput
+    inputTypeName: AlbumInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_insert_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - artistId
+          - title
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumOnConflict
+  description: on_conflict condition type for table "Album"
+  fields:
+    - name: constraint
+      type: AlbumConstraint!
+    - name: updateColumns
+      type: "[AlbumUpdateColumn!]!"
+    - name: where
+      type: AlbumBoolExp
+  graphql:
+    typeName: AlbumOnConflict
+    inputTypeName: AlbumOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertAlbum
+  outputType: AlbumMutationResponse
+  arguments:
+    - name: objects
+      type: "[AlbumInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: AlbumOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_Album
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertAlbum
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertAlbum
+  permissions:
+    - role: admin
+      allowExecution: true
+

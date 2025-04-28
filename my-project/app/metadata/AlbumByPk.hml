@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: AlbumByPk
+  outputType: Album
+  arguments:
+    - name: albumId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Album_by_pk
+    argumentMapping:
+      albumId: AlbumId
+  graphql:
+    rootFieldName: albumByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Album" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: AlbumByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

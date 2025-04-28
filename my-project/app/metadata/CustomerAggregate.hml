@@ -1,0 +1,674 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerAvgFields
+  description: aggregate avg on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerAvgFields
+    inputTypeName: CustomerAvgFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_avg_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerAvgFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerMaxFields
+  description: aggregate max on columns
+  fields:
+    - name: address
+      type: String
+    - name: city
+      type: String
+    - name: company
+      type: String
+    - name: country
+      type: String
+    - name: customerId
+      type: Int
+    - name: email
+      type: String
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: state
+      type: String
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerMaxFields
+    inputTypeName: CustomerMaxFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_max_fields
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerMaxFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerMinFields
+  description: aggregate min on columns
+  fields:
+    - name: address
+      type: String
+    - name: city
+      type: String
+    - name: company
+      type: String
+    - name: country
+      type: String
+    - name: customerId
+      type: Int
+    - name: email
+      type: String
+    - name: fax
+      type: String
+    - name: firstName
+      type: String
+    - name: lastName
+      type: String
+    - name: phone
+      type: String
+    - name: postalCode
+      type: String
+    - name: state
+      type: String
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerMinFields
+    inputTypeName: CustomerMinFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_min_fields
+      fieldMapping:
+        address:
+          column:
+            name: Address
+        city:
+          column:
+            name: City
+        company:
+          column:
+            name: Company
+        country:
+          column:
+            name: Country
+        customerId:
+          column:
+            name: CustomerId
+        email:
+          column:
+            name: Email
+        fax:
+          column:
+            name: Fax
+        firstName:
+          column:
+            name: FirstName
+        lastName:
+          column:
+            name: LastName
+        phone:
+          column:
+            name: Phone
+        postalCode:
+          column:
+            name: PostalCode
+        state:
+          column:
+            name: State
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerMinFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - address
+          - city
+          - company
+          - country
+          - customerId
+          - email
+          - fax
+          - firstName
+          - lastName
+          - phone
+          - postalCode
+          - state
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerStddevFields
+  description: aggregate stddev on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerStddevFields
+    inputTypeName: CustomerStddevFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_stddev_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerStddevFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerStddevPopFields
+  description: aggregate stddev_pop on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerStddevPopFields
+    inputTypeName: CustomerStddevPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_stddev_pop_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerStddevPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerStddevSampFields
+  description: aggregate stddev_samp on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerStddevSampFields
+    inputTypeName: CustomerStddevSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_stddev_samp_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerStddevSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerSumFields
+  description: aggregate sum on columns
+  fields:
+    - name: customerId
+      type: Int
+    - name: supportRepId
+      type: Int
+  graphql:
+    typeName: CustomerSumFields
+    inputTypeName: CustomerSumFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_sum_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerSumFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerVarPopFields
+  description: aggregate var_pop on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerVarPopFields
+    inputTypeName: CustomerVarPopFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_var_pop_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerVarPopFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerVarSampFields
+  description: aggregate var_samp on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerVarSampFields
+    inputTypeName: CustomerVarSampFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_var_samp_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerVarSampFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerVarianceFields
+  description: aggregate variance on columns
+  fields:
+    - name: customerId
+      type: Float
+    - name: supportRepId
+      type: Float
+  graphql:
+    typeName: CustomerVarianceFields
+    inputTypeName: CustomerVarianceFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_variance_fields
+      fieldMapping:
+        customerId:
+          column:
+            name: CustomerId
+        supportRepId:
+          column:
+            name: SupportRepId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerVarianceFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customerId
+          - supportRepId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerAggregateFields
+  description: aggregate fields of "Customer"
+  fields:
+    - name: avg
+      type: CustomerAvgFields
+    - name: count
+      type: Int!
+      arguments:
+        - name: columns
+          argumentType: "[CustomerSelectColumn!]"
+        - name: distinct
+          argumentType: Boolean
+    - name: max
+      type: CustomerMaxFields
+    - name: min
+      type: CustomerMinFields
+    - name: stddev
+      type: CustomerStddevFields
+    - name: stddevPop
+      type: CustomerStddevPopFields
+    - name: stddevSamp
+      type: CustomerStddevSampFields
+    - name: sum
+      type: CustomerSumFields
+    - name: varPop
+      type: CustomerVarPopFields
+    - name: varSamp
+      type: CustomerVarSampFields
+    - name: variance
+      type: CustomerVarianceFields
+  graphql:
+    typeName: CustomerAggregateFields
+    inputTypeName: CustomerAggregateFieldsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_aggregate_fields
+      fieldMapping:
+        avg:
+          column:
+            name: avg
+        count:
+          column:
+            name: count
+        max:
+          column:
+            name: max
+        min:
+          column:
+            name: min
+        stddev:
+          column:
+            name: stddev
+        stddevPop:
+          column:
+            name: stddev_pop
+        stddevSamp:
+          column:
+            name: stddev_samp
+        sum:
+          column:
+            name: sum
+        varPop:
+          column:
+            name: var_pop
+        varSamp:
+          column:
+            name: var_samp
+        variance:
+          column:
+            name: variance
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerAggregateFields
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - avg
+          - count
+          - max
+          - min
+          - stddev
+          - stddevPop
+          - stddevSamp
+          - sum
+          - varPop
+          - varSamp
+          - variance
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CustomerAggregate
+  description: aggregated selection of "Customer"
+  fields:
+    - name: aggregate
+      type: CustomerAggregateFields
+    - name: nodes
+      type: "[Customer!]!"
+  graphql:
+    typeName: CustomerAggregate
+    inputTypeName: CustomerAggregateInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Customer_aggregate
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CustomerAggregate
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - aggregate
+          - nodes
+
+---
+kind: Command
+version: v1
+definition:
+  name: CustomerAggregate
+  outputType: CustomerAggregate!
+  arguments:
+    - name: distinctOn
+      type: "[CustomerSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[CustomerOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: CustomerBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Customer_aggregate
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: customerAggregate
+    rootFieldKind: Query
+  description: 'fetch aggregated fields from the table: "Customer"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CustomerAggregate
+  permissions:
+    - role: admin
+      allowExecution: true
+

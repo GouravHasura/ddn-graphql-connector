@@ -1,0 +1,60 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersPkColumnsInput
+  description: "primary key columns input for table: users"
+  fields:
+    - name: id
+      type: Uuid!
+  graphql:
+    typeName: UsersPkColumnsInput
+    inputTypeName: UsersPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_pk_columns_input
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateUsersByPk
+  outputType: Users
+  arguments:
+    - name: set
+      type: UsersSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: UsersPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_users_by_pk
+    argumentMapping:
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateUsersByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateUsersByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,302 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackOrderBy
+  description: Ordering options when selecting data from "Track".
+  fields:
+    - name: albumId
+      type: OrderBy
+    - name: bytes
+      type: OrderBy
+    - name: composer
+      type: OrderBy
+    - name: genreId
+      type: OrderBy
+    - name: mediaTypeId
+      type: OrderBy
+    - name: milliseconds
+      type: OrderBy
+    - name: name
+      type: OrderBy
+    - name: trackId
+      type: OrderBy
+    - name: unitPrice
+      type: OrderBy
+  graphql:
+    typeName: TrackOrderBy
+    inputTypeName: TrackOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_order_by
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: TrackBoolExp
+  description: Boolean expression to filter rows from the table "Track". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[TrackBoolExp!]"
+    - name: not
+      type: TrackBoolExp
+    - name: or
+      type: "[TrackBoolExp!]"
+    - name: albumId
+      type: IntComparisonExp
+    - name: bytes
+      type: IntComparisonExp
+    - name: composer
+      type: StringComparisonExp
+    - name: genreId
+      type: IntComparisonExp
+    - name: mediaTypeId
+      type: IntComparisonExp
+    - name: milliseconds
+      type: IntComparisonExp
+    - name: name
+      type: StringComparisonExp
+    - name: trackId
+      type: IntComparisonExp
+    - name: unitPrice
+      type: NumericComparisonExp
+  graphql:
+    typeName: TrackBoolExp
+    inputTypeName: TrackBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: TrackBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Track
+  description: columns and relationships of "Track"
+  fields:
+    - name: albumId
+      type: Int
+    - name: bytes
+      type: Int
+    - name: composer
+      type: String
+    - name: genreId
+      type: Int
+    - name: mediaTypeId
+      type: Int!
+    - name: milliseconds
+      type: Int!
+    - name: name
+      type: String!
+    - name: trackId
+      type: Int!
+    - name: unitPrice
+      type: Numeric!
+  graphql:
+    typeName: Track
+    inputTypeName: TrackInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Track
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        bytes:
+          column:
+            name: Bytes
+        composer:
+          column:
+            name: Composer
+        genreId:
+          column:
+            name: GenreId
+        mediaTypeId:
+          column:
+            name: MediaTypeId
+        milliseconds:
+          column:
+            name: Milliseconds
+        name:
+          column:
+            name: Name
+        trackId:
+          column:
+            name: TrackId
+        unitPrice:
+          column:
+            name: UnitPrice
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Track
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - bytes
+          - composer
+          - genreId
+          - mediaTypeId
+          - milliseconds
+          - name
+          - trackId
+          - unitPrice
+
+---
+kind: Command
+version: v1
+definition:
+  name: Track
+  outputType: "[Track!]!"
+  arguments:
+    - name: distinctOn
+      type: "[TrackSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[TrackOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: TrackBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: Track
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: track
+    rootFieldKind: Query
+  description: 'fetch data from the table: "Track"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Track
+  permissions:
+    - role: admin
+      allowExecution: true
+

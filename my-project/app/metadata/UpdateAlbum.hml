@@ -1,0 +1,118 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumIncInput
+  description: input type for incrementing numeric columns in table "Album"
+  fields:
+    - name: albumId
+      type: Int
+    - name: artistId
+      type: Int
+  graphql:
+    typeName: AlbumIncInput
+    inputTypeName: AlbumIncInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_inc_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumIncInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - artistId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: AlbumSetInput
+  description: input type for updating data in table "Album"
+  fields:
+    - name: albumId
+      type: Int
+    - name: artistId
+      type: Int
+    - name: title
+      type: String
+  graphql:
+    typeName: AlbumSetInput
+    inputTypeName: AlbumSetInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: Album_set_input
+      fieldMapping:
+        albumId:
+          column:
+            name: AlbumId
+        artistId:
+          column:
+            name: ArtistId
+        title:
+          column:
+            name: Title
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: AlbumSetInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - albumId
+          - artistId
+          - title
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateAlbum
+  outputType: AlbumMutationResponse
+  arguments:
+    - name: inc
+      type: AlbumIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: AlbumSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: where
+      type: AlbumBoolExp!
+      description: filter the rows which have to be updated
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_Album
+    argumentMapping:
+      inc: _inc
+      set: _set
+      where: where
+  graphql:
+    rootFieldName: updateAlbum
+    rootFieldKind: Mutation
+  description: 'update data of the table: "Album"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateAlbum
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,29 @@
+---
+kind: Command
+version: v1
+definition:
+  name: InvoiceLineByPk
+  outputType: InvoiceLine
+  arguments:
+    - name: invoiceLineId
+      type: Int!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: InvoiceLine_by_pk
+    argumentMapping:
+      invoiceLineId: InvoiceLineId
+  graphql:
+    rootFieldName: invoiceLineByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "InvoiceLine" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InvoiceLineByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,132 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsInsertInput
+  description: input type for inserting data into table "notifications"
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Uuid
+    - name: message
+      type: String
+    - name: updatedAt
+      type: Timestamptz
+    - name: userId
+      type: Uuid
+  graphql:
+    typeName: NotificationsInsertInput
+    inputTypeName: NotificationsInsertInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_insert_input
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        message:
+          column:
+            name: message
+        updatedAt:
+          column:
+            name: updated_at
+        userId:
+          column:
+            name: user_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsInsertInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - message
+          - updatedAt
+          - userId
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: NotificationsOnConflict
+  description: on_conflict condition type for table "notifications"
+  fields:
+    - name: constraint
+      type: NotificationsConstraint!
+    - name: updateColumns
+      type: "[NotificationsUpdateColumn!]!"
+    - name: where
+      type: NotificationsBoolExp
+  graphql:
+    typeName: NotificationsOnConflict
+    inputTypeName: NotificationsOnConflictInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: notifications_on_conflict
+      fieldMapping:
+        constraint:
+          column:
+            name: constraint
+        updateColumns:
+          column:
+            name: update_columns
+        where:
+          column:
+            name: where
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: NotificationsOnConflict
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - constraint
+          - updateColumns
+          - where
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertNotifications
+  outputType: NotificationsMutationResponse
+  arguments:
+    - name: objects
+      type: "[NotificationsInsertInput!]!"
+      description: the rows to be inserted
+    - name: onConflict
+      type: NotificationsOnConflict
+      description: upsert condition
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: insert_notifications
+    argumentMapping:
+      objects: objects
+      onConflict: on_conflict
+  graphql:
+    rootFieldName: insertNotifications
+    rootFieldKind: Mutation
+  description: 'insert data into the table: "notifications"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertNotifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

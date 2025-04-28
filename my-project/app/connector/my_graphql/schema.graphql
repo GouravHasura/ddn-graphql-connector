@@ -1,0 +1,5119 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+"columns and relationships of \"Album\""
+type Album {
+  AlbumId: Int!
+  ArtistId: Int!
+  Title: String!
+}
+
+"aggregated selection of \"Album\""
+type Album_aggregate {
+  aggregate: Album_aggregate_fields
+  nodes: [Album!]!
+}
+
+"aggregate fields of \"Album\""
+type Album_aggregate_fields {
+  avg: Album_avg_fields
+  count(columns: [Album_select_column!], distinct: Boolean): Int!
+  max: Album_max_fields
+  min: Album_min_fields
+  stddev: Album_stddev_fields
+  stddev_pop: Album_stddev_pop_fields
+  stddev_samp: Album_stddev_samp_fields
+  sum: Album_sum_fields
+  var_pop: Album_var_pop_fields
+  var_samp: Album_var_samp_fields
+  variance: Album_variance_fields
+}
+
+"aggregate avg on columns"
+type Album_avg_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"Boolean expression to filter rows from the table \"Album\". All fields are combined with a logical 'AND'."
+input Album_bool_exp {
+  AlbumId: Int_comparison_exp
+  ArtistId: Int_comparison_exp
+  Title: String_comparison_exp
+  _and: [Album_bool_exp!]
+  _not: Album_bool_exp
+  _or: [Album_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Album\""
+enum Album_constraint {
+  "unique or primary key constraint on columns \"AlbumId\"" PK_Album
+}
+
+"input type for incrementing numeric columns in table \"Album\""
+input Album_inc_input {
+  AlbumId: Int
+  ArtistId: Int
+}
+
+"input type for inserting data into table \"Album\""
+input Album_insert_input {
+  AlbumId: Int
+  ArtistId: Int
+  Title: String
+}
+
+"aggregate max on columns"
+type Album_max_fields {
+  AlbumId: Int
+  ArtistId: Int
+  Title: String
+}
+
+"aggregate min on columns"
+type Album_min_fields {
+  AlbumId: Int
+  ArtistId: Int
+  Title: String
+}
+
+"response of any mutation on the table \"Album\""
+type Album_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Album!]!
+}
+
+"on_conflict condition type for table \"Album\""
+input Album_on_conflict {
+  constraint: Album_constraint!
+  update_columns: [Album_update_column!]! = []
+  where: Album_bool_exp
+}
+
+"Ordering options when selecting data from \"Album\"."
+input Album_order_by {
+  AlbumId: order_by
+  ArtistId: order_by
+  Title: order_by
+}
+
+"primary key columns input for table: Album"
+input Album_pk_columns_input {
+  AlbumId: Int!
+}
+
+"select columns of table \"Album\""
+enum Album_select_column {
+  "column name" AlbumId
+  "column name" ArtistId
+  "column name" Title
+}
+
+"input type for updating data in table \"Album\""
+input Album_set_input {
+  AlbumId: Int
+  ArtistId: Int
+  Title: String
+}
+
+"aggregate stddev on columns"
+type Album_stddev_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"aggregate stddev_pop on columns"
+type Album_stddev_pop_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"aggregate stddev_samp on columns"
+type Album_stddev_samp_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"Streaming cursor of the table \"Album\""
+input Album_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Album_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Album_stream_cursor_value_input {
+  AlbumId: Int
+  ArtistId: Int
+  Title: String
+}
+
+"aggregate sum on columns"
+type Album_sum_fields {
+  AlbumId: Int
+  ArtistId: Int
+}
+
+"update columns of table \"Album\""
+enum Album_update_column {
+  "column name" AlbumId
+  "column name" ArtistId
+  "column name" Title
+}
+
+input Album_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Album_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Album_set_input
+  "filter the rows which have to be updated" where: Album_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Album_var_pop_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"aggregate var_samp on columns"
+type Album_var_samp_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"aggregate variance on columns"
+type Album_variance_fields {
+  AlbumId: Float
+  ArtistId: Float
+}
+
+"columns and relationships of \"Artist\""
+type Artist {
+  ArtistId: Int!
+  Name: String
+}
+
+"aggregated selection of \"Artist\""
+type Artist_aggregate {
+  aggregate: Artist_aggregate_fields
+  nodes: [Artist!]!
+}
+
+"aggregate fields of \"Artist\""
+type Artist_aggregate_fields {
+  avg: Artist_avg_fields
+  count(columns: [Artist_select_column!], distinct: Boolean): Int!
+  max: Artist_max_fields
+  min: Artist_min_fields
+  stddev: Artist_stddev_fields
+  stddev_pop: Artist_stddev_pop_fields
+  stddev_samp: Artist_stddev_samp_fields
+  sum: Artist_sum_fields
+  var_pop: Artist_var_pop_fields
+  var_samp: Artist_var_samp_fields
+  variance: Artist_variance_fields
+}
+
+"aggregate avg on columns"
+type Artist_avg_fields {
+  ArtistId: Float
+}
+
+"Boolean expression to filter rows from the table \"Artist\". All fields are combined with a logical 'AND'."
+input Artist_bool_exp {
+  ArtistId: Int_comparison_exp
+  Name: String_comparison_exp
+  _and: [Artist_bool_exp!]
+  _not: Artist_bool_exp
+  _or: [Artist_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Artist\""
+enum Artist_constraint {
+  "unique or primary key constraint on columns \"ArtistId\"" PK_Artist
+}
+
+"input type for incrementing numeric columns in table \"Artist\""
+input Artist_inc_input {
+  ArtistId: Int
+}
+
+"input type for inserting data into table \"Artist\""
+input Artist_insert_input {
+  ArtistId: Int
+  Name: String
+}
+
+"aggregate max on columns"
+type Artist_max_fields {
+  ArtistId: Int
+  Name: String
+}
+
+"aggregate min on columns"
+type Artist_min_fields {
+  ArtistId: Int
+  Name: String
+}
+
+"response of any mutation on the table \"Artist\""
+type Artist_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Artist!]!
+}
+
+"on_conflict condition type for table \"Artist\""
+input Artist_on_conflict {
+  constraint: Artist_constraint!
+  update_columns: [Artist_update_column!]! = []
+  where: Artist_bool_exp
+}
+
+"Ordering options when selecting data from \"Artist\"."
+input Artist_order_by {
+  ArtistId: order_by
+  Name: order_by
+}
+
+"primary key columns input for table: Artist"
+input Artist_pk_columns_input {
+  ArtistId: Int!
+}
+
+"select columns of table \"Artist\""
+enum Artist_select_column {
+  "column name" ArtistId
+  "column name" Name
+}
+
+"input type for updating data in table \"Artist\""
+input Artist_set_input {
+  ArtistId: Int
+  Name: String
+}
+
+"aggregate stddev on columns"
+type Artist_stddev_fields {
+  ArtistId: Float
+}
+
+"aggregate stddev_pop on columns"
+type Artist_stddev_pop_fields {
+  ArtistId: Float
+}
+
+"aggregate stddev_samp on columns"
+type Artist_stddev_samp_fields {
+  ArtistId: Float
+}
+
+"Streaming cursor of the table \"Artist\""
+input Artist_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Artist_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Artist_stream_cursor_value_input {
+  ArtistId: Int
+  Name: String
+}
+
+"aggregate sum on columns"
+type Artist_sum_fields {
+  ArtistId: Int
+}
+
+"update columns of table \"Artist\""
+enum Artist_update_column {
+  "column name" ArtistId
+  "column name" Name
+}
+
+input Artist_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Artist_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Artist_set_input
+  "filter the rows which have to be updated" where: Artist_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Artist_var_pop_fields {
+  ArtistId: Float
+}
+
+"aggregate var_samp on columns"
+type Artist_var_samp_fields {
+  ArtistId: Float
+}
+
+"aggregate variance on columns"
+type Artist_variance_fields {
+  ArtistId: Float
+}
+
+scalar Boolean
+
+"Boolean expression to compare columns of type \"Boolean\". All fields are combined with logical 'AND'."
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+"columns and relationships of \"Customer\""
+type Customer {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int!
+  Email: String!
+  Fax: String
+  FirstName: String!
+  LastName: String!
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"aggregated selection of \"Customer\""
+type Customer_aggregate {
+  aggregate: Customer_aggregate_fields
+  nodes: [Customer!]!
+}
+
+"aggregate fields of \"Customer\""
+type Customer_aggregate_fields {
+  avg: Customer_avg_fields
+  count(columns: [Customer_select_column!], distinct: Boolean): Int!
+  max: Customer_max_fields
+  min: Customer_min_fields
+  stddev: Customer_stddev_fields
+  stddev_pop: Customer_stddev_pop_fields
+  stddev_samp: Customer_stddev_samp_fields
+  sum: Customer_sum_fields
+  var_pop: Customer_var_pop_fields
+  var_samp: Customer_var_samp_fields
+  variance: Customer_variance_fields
+}
+
+"aggregate avg on columns"
+type Customer_avg_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"Boolean expression to filter rows from the table \"Customer\". All fields are combined with a logical 'AND'."
+input Customer_bool_exp {
+  Address: String_comparison_exp
+  City: String_comparison_exp
+  Company: String_comparison_exp
+  Country: String_comparison_exp
+  CustomerId: Int_comparison_exp
+  Email: String_comparison_exp
+  Fax: String_comparison_exp
+  FirstName: String_comparison_exp
+  LastName: String_comparison_exp
+  Phone: String_comparison_exp
+  PostalCode: String_comparison_exp
+  State: String_comparison_exp
+  SupportRepId: Int_comparison_exp
+  _and: [Customer_bool_exp!]
+  _not: Customer_bool_exp
+  _or: [Customer_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Customer\""
+enum Customer_constraint {
+  "unique or primary key constraint on columns \"CustomerId\"" PK_Customer
+}
+
+"input type for incrementing numeric columns in table \"Customer\""
+input Customer_inc_input {
+  CustomerId: Int
+  SupportRepId: Int
+}
+
+"input type for inserting data into table \"Customer\""
+input Customer_insert_input {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int
+  Email: String
+  Fax: String
+  FirstName: String
+  LastName: String
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"aggregate max on columns"
+type Customer_max_fields {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int
+  Email: String
+  Fax: String
+  FirstName: String
+  LastName: String
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"aggregate min on columns"
+type Customer_min_fields {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int
+  Email: String
+  Fax: String
+  FirstName: String
+  LastName: String
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"response of any mutation on the table \"Customer\""
+type Customer_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Customer!]!
+}
+
+"on_conflict condition type for table \"Customer\""
+input Customer_on_conflict {
+  constraint: Customer_constraint!
+  update_columns: [Customer_update_column!]! = []
+  where: Customer_bool_exp
+}
+
+"Ordering options when selecting data from \"Customer\"."
+input Customer_order_by {
+  Address: order_by
+  City: order_by
+  Company: order_by
+  Country: order_by
+  CustomerId: order_by
+  Email: order_by
+  Fax: order_by
+  FirstName: order_by
+  LastName: order_by
+  Phone: order_by
+  PostalCode: order_by
+  State: order_by
+  SupportRepId: order_by
+}
+
+"primary key columns input for table: Customer"
+input Customer_pk_columns_input {
+  CustomerId: Int!
+}
+
+"select columns of table \"Customer\""
+enum Customer_select_column {
+  "column name" Address
+  "column name" City
+  "column name" Company
+  "column name" Country
+  "column name" CustomerId
+  "column name" Email
+  "column name" Fax
+  "column name" FirstName
+  "column name" LastName
+  "column name" Phone
+  "column name" PostalCode
+  "column name" State
+  "column name" SupportRepId
+}
+
+"input type for updating data in table \"Customer\""
+input Customer_set_input {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int
+  Email: String
+  Fax: String
+  FirstName: String
+  LastName: String
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"aggregate stddev on columns"
+type Customer_stddev_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"aggregate stddev_pop on columns"
+type Customer_stddev_pop_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"aggregate stddev_samp on columns"
+type Customer_stddev_samp_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"Streaming cursor of the table \"Customer\""
+input Customer_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Customer_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Customer_stream_cursor_value_input {
+  Address: String
+  City: String
+  Company: String
+  Country: String
+  CustomerId: Int
+  Email: String
+  Fax: String
+  FirstName: String
+  LastName: String
+  Phone: String
+  PostalCode: String
+  State: String
+  SupportRepId: Int
+}
+
+"aggregate sum on columns"
+type Customer_sum_fields {
+  CustomerId: Int
+  SupportRepId: Int
+}
+
+"update columns of table \"Customer\""
+enum Customer_update_column {
+  "column name" Address
+  "column name" City
+  "column name" Company
+  "column name" Country
+  "column name" CustomerId
+  "column name" Email
+  "column name" Fax
+  "column name" FirstName
+  "column name" LastName
+  "column name" Phone
+  "column name" PostalCode
+  "column name" State
+  "column name" SupportRepId
+}
+
+input Customer_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Customer_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Customer_set_input
+  "filter the rows which have to be updated" where: Customer_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Customer_var_pop_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"aggregate var_samp on columns"
+type Customer_var_samp_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"aggregate variance on columns"
+type Customer_variance_fields {
+  CustomerId: Float
+  SupportRepId: Float
+}
+
+"columns and relationships of \"Employee\""
+type Employee {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int!
+  Fax: String
+  FirstName: String!
+  HireDate: timestamp
+  LastName: String!
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"aggregated selection of \"Employee\""
+type Employee_aggregate {
+  aggregate: Employee_aggregate_fields
+  nodes: [Employee!]!
+}
+
+"aggregate fields of \"Employee\""
+type Employee_aggregate_fields {
+  avg: Employee_avg_fields
+  count(columns: [Employee_select_column!], distinct: Boolean): Int!
+  max: Employee_max_fields
+  min: Employee_min_fields
+  stddev: Employee_stddev_fields
+  stddev_pop: Employee_stddev_pop_fields
+  stddev_samp: Employee_stddev_samp_fields
+  sum: Employee_sum_fields
+  var_pop: Employee_var_pop_fields
+  var_samp: Employee_var_samp_fields
+  variance: Employee_variance_fields
+}
+
+"aggregate avg on columns"
+type Employee_avg_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"Boolean expression to filter rows from the table \"Employee\". All fields are combined with a logical 'AND'."
+input Employee_bool_exp {
+  Address: String_comparison_exp
+  BirthDate: timestamp_comparison_exp
+  City: String_comparison_exp
+  Country: String_comparison_exp
+  Email: String_comparison_exp
+  EmployeeId: Int_comparison_exp
+  Fax: String_comparison_exp
+  FirstName: String_comparison_exp
+  HireDate: timestamp_comparison_exp
+  LastName: String_comparison_exp
+  Phone: String_comparison_exp
+  PostalCode: String_comparison_exp
+  ReportsTo: Int_comparison_exp
+  State: String_comparison_exp
+  Title: String_comparison_exp
+  _and: [Employee_bool_exp!]
+  _not: Employee_bool_exp
+  _or: [Employee_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Employee\""
+enum Employee_constraint {
+  "unique or primary key constraint on columns \"EmployeeId\"" PK_Employee
+}
+
+"input type for incrementing numeric columns in table \"Employee\""
+input Employee_inc_input {
+  EmployeeId: Int
+  ReportsTo: Int
+}
+
+"input type for inserting data into table \"Employee\""
+input Employee_insert_input {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int
+  Fax: String
+  FirstName: String
+  HireDate: timestamp
+  LastName: String
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"aggregate max on columns"
+type Employee_max_fields {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int
+  Fax: String
+  FirstName: String
+  HireDate: timestamp
+  LastName: String
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"aggregate min on columns"
+type Employee_min_fields {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int
+  Fax: String
+  FirstName: String
+  HireDate: timestamp
+  LastName: String
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"response of any mutation on the table \"Employee\""
+type Employee_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Employee!]!
+}
+
+"on_conflict condition type for table \"Employee\""
+input Employee_on_conflict {
+  constraint: Employee_constraint!
+  update_columns: [Employee_update_column!]! = []
+  where: Employee_bool_exp
+}
+
+"Ordering options when selecting data from \"Employee\"."
+input Employee_order_by {
+  Address: order_by
+  BirthDate: order_by
+  City: order_by
+  Country: order_by
+  Email: order_by
+  EmployeeId: order_by
+  Fax: order_by
+  FirstName: order_by
+  HireDate: order_by
+  LastName: order_by
+  Phone: order_by
+  PostalCode: order_by
+  ReportsTo: order_by
+  State: order_by
+  Title: order_by
+}
+
+"primary key columns input for table: Employee"
+input Employee_pk_columns_input {
+  EmployeeId: Int!
+}
+
+"select columns of table \"Employee\""
+enum Employee_select_column {
+  "column name" Address
+  "column name" BirthDate
+  "column name" City
+  "column name" Country
+  "column name" Email
+  "column name" EmployeeId
+  "column name" Fax
+  "column name" FirstName
+  "column name" HireDate
+  "column name" LastName
+  "column name" Phone
+  "column name" PostalCode
+  "column name" ReportsTo
+  "column name" State
+  "column name" Title
+}
+
+"input type for updating data in table \"Employee\""
+input Employee_set_input {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int
+  Fax: String
+  FirstName: String
+  HireDate: timestamp
+  LastName: String
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"aggregate stddev on columns"
+type Employee_stddev_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"aggregate stddev_pop on columns"
+type Employee_stddev_pop_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"aggregate stddev_samp on columns"
+type Employee_stddev_samp_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"Streaming cursor of the table \"Employee\""
+input Employee_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Employee_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Employee_stream_cursor_value_input {
+  Address: String
+  BirthDate: timestamp
+  City: String
+  Country: String
+  Email: String
+  EmployeeId: Int
+  Fax: String
+  FirstName: String
+  HireDate: timestamp
+  LastName: String
+  Phone: String
+  PostalCode: String
+  ReportsTo: Int
+  State: String
+  Title: String
+}
+
+"aggregate sum on columns"
+type Employee_sum_fields {
+  EmployeeId: Int
+  ReportsTo: Int
+}
+
+"update columns of table \"Employee\""
+enum Employee_update_column {
+  "column name" Address
+  "column name" BirthDate
+  "column name" City
+  "column name" Country
+  "column name" Email
+  "column name" EmployeeId
+  "column name" Fax
+  "column name" FirstName
+  "column name" HireDate
+  "column name" LastName
+  "column name" Phone
+  "column name" PostalCode
+  "column name" ReportsTo
+  "column name" State
+  "column name" Title
+}
+
+input Employee_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Employee_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Employee_set_input
+  "filter the rows which have to be updated" where: Employee_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Employee_var_pop_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"aggregate var_samp on columns"
+type Employee_var_samp_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+"aggregate variance on columns"
+type Employee_variance_fields {
+  EmployeeId: Float
+  ReportsTo: Float
+}
+
+scalar Float
+
+"columns and relationships of \"Genre\""
+type Genre {
+  GenreId: Int!
+  Name: String
+}
+
+"aggregated selection of \"Genre\""
+type Genre_aggregate {
+  aggregate: Genre_aggregate_fields
+  nodes: [Genre!]!
+}
+
+"aggregate fields of \"Genre\""
+type Genre_aggregate_fields {
+  avg: Genre_avg_fields
+  count(columns: [Genre_select_column!], distinct: Boolean): Int!
+  max: Genre_max_fields
+  min: Genre_min_fields
+  stddev: Genre_stddev_fields
+  stddev_pop: Genre_stddev_pop_fields
+  stddev_samp: Genre_stddev_samp_fields
+  sum: Genre_sum_fields
+  var_pop: Genre_var_pop_fields
+  var_samp: Genre_var_samp_fields
+  variance: Genre_variance_fields
+}
+
+"aggregate avg on columns"
+type Genre_avg_fields {
+  GenreId: Float
+}
+
+"Boolean expression to filter rows from the table \"Genre\". All fields are combined with a logical 'AND'."
+input Genre_bool_exp {
+  GenreId: Int_comparison_exp
+  Name: String_comparison_exp
+  _and: [Genre_bool_exp!]
+  _not: Genre_bool_exp
+  _or: [Genre_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Genre\""
+enum Genre_constraint {
+  "unique or primary key constraint on columns \"GenreId\"" PK_Genre
+}
+
+"input type for incrementing numeric columns in table \"Genre\""
+input Genre_inc_input {
+  GenreId: Int
+}
+
+"input type for inserting data into table \"Genre\""
+input Genre_insert_input {
+  GenreId: Int
+  Name: String
+}
+
+"aggregate max on columns"
+type Genre_max_fields {
+  GenreId: Int
+  Name: String
+}
+
+"aggregate min on columns"
+type Genre_min_fields {
+  GenreId: Int
+  Name: String
+}
+
+"response of any mutation on the table \"Genre\""
+type Genre_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Genre!]!
+}
+
+"on_conflict condition type for table \"Genre\""
+input Genre_on_conflict {
+  constraint: Genre_constraint!
+  update_columns: [Genre_update_column!]! = []
+  where: Genre_bool_exp
+}
+
+"Ordering options when selecting data from \"Genre\"."
+input Genre_order_by {
+  GenreId: order_by
+  Name: order_by
+}
+
+"primary key columns input for table: Genre"
+input Genre_pk_columns_input {
+  GenreId: Int!
+}
+
+"select columns of table \"Genre\""
+enum Genre_select_column {
+  "column name" GenreId
+  "column name" Name
+}
+
+"input type for updating data in table \"Genre\""
+input Genre_set_input {
+  GenreId: Int
+  Name: String
+}
+
+"aggregate stddev on columns"
+type Genre_stddev_fields {
+  GenreId: Float
+}
+
+"aggregate stddev_pop on columns"
+type Genre_stddev_pop_fields {
+  GenreId: Float
+}
+
+"aggregate stddev_samp on columns"
+type Genre_stddev_samp_fields {
+  GenreId: Float
+}
+
+"Streaming cursor of the table \"Genre\""
+input Genre_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Genre_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Genre_stream_cursor_value_input {
+  GenreId: Int
+  Name: String
+}
+
+"aggregate sum on columns"
+type Genre_sum_fields {
+  GenreId: Int
+}
+
+"update columns of table \"Genre\""
+enum Genre_update_column {
+  "column name" GenreId
+  "column name" Name
+}
+
+input Genre_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Genre_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Genre_set_input
+  "filter the rows which have to be updated" where: Genre_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Genre_var_pop_fields {
+  GenreId: Float
+}
+
+"aggregate var_samp on columns"
+type Genre_var_samp_fields {
+  GenreId: Float
+}
+
+"aggregate variance on columns"
+type Genre_variance_fields {
+  GenreId: Float
+}
+
+scalar Int
+
+"Boolean expression to compare columns of type \"Int\". All fields are combined with logical 'AND'."
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"columns and relationships of \"Invoice\""
+type Invoice {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int!
+  InvoiceDate: timestamp!
+  InvoiceId: Int!
+  Total: numeric!
+}
+
+"columns and relationships of \"InvoiceLine\""
+type InvoiceLine {
+  InvoiceId: Int!
+  InvoiceLineId: Int!
+  Quantity: Int!
+  TrackId: Int!
+  UnitPrice: numeric!
+}
+
+"aggregated selection of \"InvoiceLine\""
+type InvoiceLine_aggregate {
+  aggregate: InvoiceLine_aggregate_fields
+  nodes: [InvoiceLine!]!
+}
+
+"aggregate fields of \"InvoiceLine\""
+type InvoiceLine_aggregate_fields {
+  avg: InvoiceLine_avg_fields
+  count(columns: [InvoiceLine_select_column!], distinct: Boolean): Int!
+  max: InvoiceLine_max_fields
+  min: InvoiceLine_min_fields
+  stddev: InvoiceLine_stddev_fields
+  stddev_pop: InvoiceLine_stddev_pop_fields
+  stddev_samp: InvoiceLine_stddev_samp_fields
+  sum: InvoiceLine_sum_fields
+  var_pop: InvoiceLine_var_pop_fields
+  var_samp: InvoiceLine_var_samp_fields
+  variance: InvoiceLine_variance_fields
+}
+
+"aggregate avg on columns"
+type InvoiceLine_avg_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"Boolean expression to filter rows from the table \"InvoiceLine\". All fields are combined with a logical 'AND'."
+input InvoiceLine_bool_exp {
+  InvoiceId: Int_comparison_exp
+  InvoiceLineId: Int_comparison_exp
+  Quantity: Int_comparison_exp
+  TrackId: Int_comparison_exp
+  UnitPrice: numeric_comparison_exp
+  _and: [InvoiceLine_bool_exp!]
+  _not: InvoiceLine_bool_exp
+  _or: [InvoiceLine_bool_exp!]
+}
+
+"unique or primary key constraints on table \"InvoiceLine\""
+enum InvoiceLine_constraint {
+  "unique or primary key constraint on columns \"InvoiceLineId\"" PK_InvoiceLine
+}
+
+"input type for incrementing numeric columns in table \"InvoiceLine\""
+input InvoiceLine_inc_input {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"input type for inserting data into table \"InvoiceLine\""
+input InvoiceLine_insert_input {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate max on columns"
+type InvoiceLine_max_fields {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate min on columns"
+type InvoiceLine_min_fields {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"response of any mutation on the table \"InvoiceLine\""
+type InvoiceLine_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [InvoiceLine!]!
+}
+
+"on_conflict condition type for table \"InvoiceLine\""
+input InvoiceLine_on_conflict {
+  constraint: InvoiceLine_constraint!
+  update_columns: [InvoiceLine_update_column!]! = []
+  where: InvoiceLine_bool_exp
+}
+
+"Ordering options when selecting data from \"InvoiceLine\"."
+input InvoiceLine_order_by {
+  InvoiceId: order_by
+  InvoiceLineId: order_by
+  Quantity: order_by
+  TrackId: order_by
+  UnitPrice: order_by
+}
+
+"primary key columns input for table: InvoiceLine"
+input InvoiceLine_pk_columns_input {
+  InvoiceLineId: Int!
+}
+
+"select columns of table \"InvoiceLine\""
+enum InvoiceLine_select_column {
+  "column name" InvoiceId
+  "column name" InvoiceLineId
+  "column name" Quantity
+  "column name" TrackId
+  "column name" UnitPrice
+}
+
+"input type for updating data in table \"InvoiceLine\""
+input InvoiceLine_set_input {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate stddev on columns"
+type InvoiceLine_stddev_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate stddev_pop on columns"
+type InvoiceLine_stddev_pop_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate stddev_samp on columns"
+type InvoiceLine_stddev_samp_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"Streaming cursor of the table \"InvoiceLine\""
+input InvoiceLine_stream_cursor_input {
+  "Stream column input with initial value" initial_value: InvoiceLine_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input InvoiceLine_stream_cursor_value_input {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate sum on columns"
+type InvoiceLine_sum_fields {
+  InvoiceId: Int
+  InvoiceLineId: Int
+  Quantity: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"update columns of table \"InvoiceLine\""
+enum InvoiceLine_update_column {
+  "column name" InvoiceId
+  "column name" InvoiceLineId
+  "column name" Quantity
+  "column name" TrackId
+  "column name" UnitPrice
+}
+
+input InvoiceLine_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: InvoiceLine_inc_input
+  "sets the columns of the filtered rows to the given values" _set: InvoiceLine_set_input
+  "filter the rows which have to be updated" where: InvoiceLine_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type InvoiceLine_var_pop_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate var_samp on columns"
+type InvoiceLine_var_samp_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate variance on columns"
+type InvoiceLine_variance_fields {
+  InvoiceId: Float
+  InvoiceLineId: Float
+  Quantity: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregated selection of \"Invoice\""
+type Invoice_aggregate {
+  aggregate: Invoice_aggregate_fields
+  nodes: [Invoice!]!
+}
+
+"aggregate fields of \"Invoice\""
+type Invoice_aggregate_fields {
+  avg: Invoice_avg_fields
+  count(columns: [Invoice_select_column!], distinct: Boolean): Int!
+  max: Invoice_max_fields
+  min: Invoice_min_fields
+  stddev: Invoice_stddev_fields
+  stddev_pop: Invoice_stddev_pop_fields
+  stddev_samp: Invoice_stddev_samp_fields
+  sum: Invoice_sum_fields
+  var_pop: Invoice_var_pop_fields
+  var_samp: Invoice_var_samp_fields
+  variance: Invoice_variance_fields
+}
+
+"aggregate avg on columns"
+type Invoice_avg_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"Boolean expression to filter rows from the table \"Invoice\". All fields are combined with a logical 'AND'."
+input Invoice_bool_exp {
+  BillingAddress: String_comparison_exp
+  BillingCity: String_comparison_exp
+  BillingCountry: String_comparison_exp
+  BillingPostalCode: String_comparison_exp
+  BillingState: String_comparison_exp
+  CustomerId: Int_comparison_exp
+  InvoiceDate: timestamp_comparison_exp
+  InvoiceId: Int_comparison_exp
+  Total: numeric_comparison_exp
+  _and: [Invoice_bool_exp!]
+  _not: Invoice_bool_exp
+  _or: [Invoice_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Invoice\""
+enum Invoice_constraint {
+  "unique or primary key constraint on columns \"InvoiceId\"" PK_Invoice
+}
+
+"input type for incrementing numeric columns in table \"Invoice\""
+input Invoice_inc_input {
+  CustomerId: Int
+  InvoiceId: Int
+  Total: numeric
+}
+
+"input type for inserting data into table \"Invoice\""
+input Invoice_insert_input {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int
+  InvoiceDate: timestamp
+  InvoiceId: Int
+  Total: numeric
+}
+
+"aggregate max on columns"
+type Invoice_max_fields {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int
+  InvoiceDate: timestamp
+  InvoiceId: Int
+  Total: numeric
+}
+
+"aggregate min on columns"
+type Invoice_min_fields {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int
+  InvoiceDate: timestamp
+  InvoiceId: Int
+  Total: numeric
+}
+
+"response of any mutation on the table \"Invoice\""
+type Invoice_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Invoice!]!
+}
+
+"on_conflict condition type for table \"Invoice\""
+input Invoice_on_conflict {
+  constraint: Invoice_constraint!
+  update_columns: [Invoice_update_column!]! = []
+  where: Invoice_bool_exp
+}
+
+"Ordering options when selecting data from \"Invoice\"."
+input Invoice_order_by {
+  BillingAddress: order_by
+  BillingCity: order_by
+  BillingCountry: order_by
+  BillingPostalCode: order_by
+  BillingState: order_by
+  CustomerId: order_by
+  InvoiceDate: order_by
+  InvoiceId: order_by
+  Total: order_by
+}
+
+"primary key columns input for table: Invoice"
+input Invoice_pk_columns_input {
+  InvoiceId: Int!
+}
+
+"select columns of table \"Invoice\""
+enum Invoice_select_column {
+  "column name" BillingAddress
+  "column name" BillingCity
+  "column name" BillingCountry
+  "column name" BillingPostalCode
+  "column name" BillingState
+  "column name" CustomerId
+  "column name" InvoiceDate
+  "column name" InvoiceId
+  "column name" Total
+}
+
+"input type for updating data in table \"Invoice\""
+input Invoice_set_input {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int
+  InvoiceDate: timestamp
+  InvoiceId: Int
+  Total: numeric
+}
+
+"aggregate stddev on columns"
+type Invoice_stddev_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"aggregate stddev_pop on columns"
+type Invoice_stddev_pop_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"aggregate stddev_samp on columns"
+type Invoice_stddev_samp_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"Streaming cursor of the table \"Invoice\""
+input Invoice_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Invoice_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Invoice_stream_cursor_value_input {
+  BillingAddress: String
+  BillingCity: String
+  BillingCountry: String
+  BillingPostalCode: String
+  BillingState: String
+  CustomerId: Int
+  InvoiceDate: timestamp
+  InvoiceId: Int
+  Total: numeric
+}
+
+"aggregate sum on columns"
+type Invoice_sum_fields {
+  CustomerId: Int
+  InvoiceId: Int
+  Total: numeric
+}
+
+"update columns of table \"Invoice\""
+enum Invoice_update_column {
+  "column name" BillingAddress
+  "column name" BillingCity
+  "column name" BillingCountry
+  "column name" BillingPostalCode
+  "column name" BillingState
+  "column name" CustomerId
+  "column name" InvoiceDate
+  "column name" InvoiceId
+  "column name" Total
+}
+
+input Invoice_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Invoice_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Invoice_set_input
+  "filter the rows which have to be updated" where: Invoice_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Invoice_var_pop_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"aggregate var_samp on columns"
+type Invoice_var_samp_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"aggregate variance on columns"
+type Invoice_variance_fields {
+  CustomerId: Float
+  InvoiceId: Float
+  Total: Float
+}
+
+"columns and relationships of \"MediaType\""
+type MediaType {
+  MediaTypeId: Int!
+  Name: String
+}
+
+"aggregated selection of \"MediaType\""
+type MediaType_aggregate {
+  aggregate: MediaType_aggregate_fields
+  nodes: [MediaType!]!
+}
+
+"aggregate fields of \"MediaType\""
+type MediaType_aggregate_fields {
+  avg: MediaType_avg_fields
+  count(columns: [MediaType_select_column!], distinct: Boolean): Int!
+  max: MediaType_max_fields
+  min: MediaType_min_fields
+  stddev: MediaType_stddev_fields
+  stddev_pop: MediaType_stddev_pop_fields
+  stddev_samp: MediaType_stddev_samp_fields
+  sum: MediaType_sum_fields
+  var_pop: MediaType_var_pop_fields
+  var_samp: MediaType_var_samp_fields
+  variance: MediaType_variance_fields
+}
+
+"aggregate avg on columns"
+type MediaType_avg_fields {
+  MediaTypeId: Float
+}
+
+"Boolean expression to filter rows from the table \"MediaType\". All fields are combined with a logical 'AND'."
+input MediaType_bool_exp {
+  MediaTypeId: Int_comparison_exp
+  Name: String_comparison_exp
+  _and: [MediaType_bool_exp!]
+  _not: MediaType_bool_exp
+  _or: [MediaType_bool_exp!]
+}
+
+"unique or primary key constraints on table \"MediaType\""
+enum MediaType_constraint {
+  "unique or primary key constraint on columns \"MediaTypeId\"" PK_MediaType
+}
+
+"input type for incrementing numeric columns in table \"MediaType\""
+input MediaType_inc_input {
+  MediaTypeId: Int
+}
+
+"input type for inserting data into table \"MediaType\""
+input MediaType_insert_input {
+  MediaTypeId: Int
+  Name: String
+}
+
+"aggregate max on columns"
+type MediaType_max_fields {
+  MediaTypeId: Int
+  Name: String
+}
+
+"aggregate min on columns"
+type MediaType_min_fields {
+  MediaTypeId: Int
+  Name: String
+}
+
+"response of any mutation on the table \"MediaType\""
+type MediaType_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [MediaType!]!
+}
+
+"on_conflict condition type for table \"MediaType\""
+input MediaType_on_conflict {
+  constraint: MediaType_constraint!
+  update_columns: [MediaType_update_column!]! = []
+  where: MediaType_bool_exp
+}
+
+"Ordering options when selecting data from \"MediaType\"."
+input MediaType_order_by {
+  MediaTypeId: order_by
+  Name: order_by
+}
+
+"primary key columns input for table: MediaType"
+input MediaType_pk_columns_input {
+  MediaTypeId: Int!
+}
+
+"select columns of table \"MediaType\""
+enum MediaType_select_column {
+  "column name" MediaTypeId
+  "column name" Name
+}
+
+"input type for updating data in table \"MediaType\""
+input MediaType_set_input {
+  MediaTypeId: Int
+  Name: String
+}
+
+"aggregate stddev on columns"
+type MediaType_stddev_fields {
+  MediaTypeId: Float
+}
+
+"aggregate stddev_pop on columns"
+type MediaType_stddev_pop_fields {
+  MediaTypeId: Float
+}
+
+"aggregate stddev_samp on columns"
+type MediaType_stddev_samp_fields {
+  MediaTypeId: Float
+}
+
+"Streaming cursor of the table \"MediaType\""
+input MediaType_stream_cursor_input {
+  "Stream column input with initial value" initial_value: MediaType_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input MediaType_stream_cursor_value_input {
+  MediaTypeId: Int
+  Name: String
+}
+
+"aggregate sum on columns"
+type MediaType_sum_fields {
+  MediaTypeId: Int
+}
+
+"update columns of table \"MediaType\""
+enum MediaType_update_column {
+  "column name" MediaTypeId
+  "column name" Name
+}
+
+input MediaType_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: MediaType_inc_input
+  "sets the columns of the filtered rows to the given values" _set: MediaType_set_input
+  "filter the rows which have to be updated" where: MediaType_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type MediaType_var_pop_fields {
+  MediaTypeId: Float
+}
+
+"aggregate var_samp on columns"
+type MediaType_var_samp_fields {
+  MediaTypeId: Float
+}
+
+"aggregate variance on columns"
+type MediaType_variance_fields {
+  MediaTypeId: Float
+}
+
+"columns and relationships of \"Playlist\""
+type Playlist {
+  Name: String
+  PlaylistId: Int!
+}
+
+"columns and relationships of \"PlaylistTrack\""
+type PlaylistTrack {
+  PlaylistId: Int!
+  TrackId: Int!
+}
+
+"aggregated selection of \"PlaylistTrack\""
+type PlaylistTrack_aggregate {
+  aggregate: PlaylistTrack_aggregate_fields
+  nodes: [PlaylistTrack!]!
+}
+
+"aggregate fields of \"PlaylistTrack\""
+type PlaylistTrack_aggregate_fields {
+  avg: PlaylistTrack_avg_fields
+  count(columns: [PlaylistTrack_select_column!], distinct: Boolean): Int!
+  max: PlaylistTrack_max_fields
+  min: PlaylistTrack_min_fields
+  stddev: PlaylistTrack_stddev_fields
+  stddev_pop: PlaylistTrack_stddev_pop_fields
+  stddev_samp: PlaylistTrack_stddev_samp_fields
+  sum: PlaylistTrack_sum_fields
+  var_pop: PlaylistTrack_var_pop_fields
+  var_samp: PlaylistTrack_var_samp_fields
+  variance: PlaylistTrack_variance_fields
+}
+
+"aggregate avg on columns"
+type PlaylistTrack_avg_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"Boolean expression to filter rows from the table \"PlaylistTrack\". All fields are combined with a logical 'AND'."
+input PlaylistTrack_bool_exp {
+  PlaylistId: Int_comparison_exp
+  TrackId: Int_comparison_exp
+  _and: [PlaylistTrack_bool_exp!]
+  _not: PlaylistTrack_bool_exp
+  _or: [PlaylistTrack_bool_exp!]
+}
+
+"unique or primary key constraints on table \"PlaylistTrack\""
+enum PlaylistTrack_constraint {
+  "unique or primary key constraint on columns \"TrackId\", \"PlaylistId\"" PK_PlaylistTrack
+}
+
+"input type for incrementing numeric columns in table \"PlaylistTrack\""
+input PlaylistTrack_inc_input {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"input type for inserting data into table \"PlaylistTrack\""
+input PlaylistTrack_insert_input {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"aggregate max on columns"
+type PlaylistTrack_max_fields {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"aggregate min on columns"
+type PlaylistTrack_min_fields {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"response of any mutation on the table \"PlaylistTrack\""
+type PlaylistTrack_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [PlaylistTrack!]!
+}
+
+"on_conflict condition type for table \"PlaylistTrack\""
+input PlaylistTrack_on_conflict {
+  constraint: PlaylistTrack_constraint!
+  update_columns: [PlaylistTrack_update_column!]! = []
+  where: PlaylistTrack_bool_exp
+}
+
+"Ordering options when selecting data from \"PlaylistTrack\"."
+input PlaylistTrack_order_by {
+  PlaylistId: order_by
+  TrackId: order_by
+}
+
+"primary key columns input for table: PlaylistTrack"
+input PlaylistTrack_pk_columns_input {
+  PlaylistId: Int!
+  TrackId: Int!
+}
+
+"select columns of table \"PlaylistTrack\""
+enum PlaylistTrack_select_column {
+  "column name" PlaylistId
+  "column name" TrackId
+}
+
+"input type for updating data in table \"PlaylistTrack\""
+input PlaylistTrack_set_input {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"aggregate stddev on columns"
+type PlaylistTrack_stddev_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"aggregate stddev_pop on columns"
+type PlaylistTrack_stddev_pop_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"aggregate stddev_samp on columns"
+type PlaylistTrack_stddev_samp_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"Streaming cursor of the table \"PlaylistTrack\""
+input PlaylistTrack_stream_cursor_input {
+  "Stream column input with initial value" initial_value: PlaylistTrack_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input PlaylistTrack_stream_cursor_value_input {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"aggregate sum on columns"
+type PlaylistTrack_sum_fields {
+  PlaylistId: Int
+  TrackId: Int
+}
+
+"update columns of table \"PlaylistTrack\""
+enum PlaylistTrack_update_column {
+  "column name" PlaylistId
+  "column name" TrackId
+}
+
+input PlaylistTrack_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: PlaylistTrack_inc_input
+  "sets the columns of the filtered rows to the given values" _set: PlaylistTrack_set_input
+  "filter the rows which have to be updated" where: PlaylistTrack_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type PlaylistTrack_var_pop_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"aggregate var_samp on columns"
+type PlaylistTrack_var_samp_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"aggregate variance on columns"
+type PlaylistTrack_variance_fields {
+  PlaylistId: Float
+  TrackId: Float
+}
+
+"aggregated selection of \"Playlist\""
+type Playlist_aggregate {
+  aggregate: Playlist_aggregate_fields
+  nodes: [Playlist!]!
+}
+
+"aggregate fields of \"Playlist\""
+type Playlist_aggregate_fields {
+  avg: Playlist_avg_fields
+  count(columns: [Playlist_select_column!], distinct: Boolean): Int!
+  max: Playlist_max_fields
+  min: Playlist_min_fields
+  stddev: Playlist_stddev_fields
+  stddev_pop: Playlist_stddev_pop_fields
+  stddev_samp: Playlist_stddev_samp_fields
+  sum: Playlist_sum_fields
+  var_pop: Playlist_var_pop_fields
+  var_samp: Playlist_var_samp_fields
+  variance: Playlist_variance_fields
+}
+
+"aggregate avg on columns"
+type Playlist_avg_fields {
+  PlaylistId: Float
+}
+
+"Boolean expression to filter rows from the table \"Playlist\". All fields are combined with a logical 'AND'."
+input Playlist_bool_exp {
+  Name: String_comparison_exp
+  PlaylistId: Int_comparison_exp
+  _and: [Playlist_bool_exp!]
+  _not: Playlist_bool_exp
+  _or: [Playlist_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Playlist\""
+enum Playlist_constraint {
+  "unique or primary key constraint on columns \"PlaylistId\"" PK_Playlist
+}
+
+"input type for incrementing numeric columns in table \"Playlist\""
+input Playlist_inc_input {
+  PlaylistId: Int
+}
+
+"input type for inserting data into table \"Playlist\""
+input Playlist_insert_input {
+  Name: String
+  PlaylistId: Int
+}
+
+"aggregate max on columns"
+type Playlist_max_fields {
+  Name: String
+  PlaylistId: Int
+}
+
+"aggregate min on columns"
+type Playlist_min_fields {
+  Name: String
+  PlaylistId: Int
+}
+
+"response of any mutation on the table \"Playlist\""
+type Playlist_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Playlist!]!
+}
+
+"on_conflict condition type for table \"Playlist\""
+input Playlist_on_conflict {
+  constraint: Playlist_constraint!
+  update_columns: [Playlist_update_column!]! = []
+  where: Playlist_bool_exp
+}
+
+"Ordering options when selecting data from \"Playlist\"."
+input Playlist_order_by {
+  Name: order_by
+  PlaylistId: order_by
+}
+
+"primary key columns input for table: Playlist"
+input Playlist_pk_columns_input {
+  PlaylistId: Int!
+}
+
+"select columns of table \"Playlist\""
+enum Playlist_select_column {
+  "column name" Name
+  "column name" PlaylistId
+}
+
+"input type for updating data in table \"Playlist\""
+input Playlist_set_input {
+  Name: String
+  PlaylistId: Int
+}
+
+"aggregate stddev on columns"
+type Playlist_stddev_fields {
+  PlaylistId: Float
+}
+
+"aggregate stddev_pop on columns"
+type Playlist_stddev_pop_fields {
+  PlaylistId: Float
+}
+
+"aggregate stddev_samp on columns"
+type Playlist_stddev_samp_fields {
+  PlaylistId: Float
+}
+
+"Streaming cursor of the table \"Playlist\""
+input Playlist_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Playlist_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Playlist_stream_cursor_value_input {
+  Name: String
+  PlaylistId: Int
+}
+
+"aggregate sum on columns"
+type Playlist_sum_fields {
+  PlaylistId: Int
+}
+
+"update columns of table \"Playlist\""
+enum Playlist_update_column {
+  "column name" Name
+  "column name" PlaylistId
+}
+
+input Playlist_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Playlist_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Playlist_set_input
+  "filter the rows which have to be updated" where: Playlist_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Playlist_var_pop_fields {
+  PlaylistId: Float
+}
+
+"aggregate var_samp on columns"
+type Playlist_var_samp_fields {
+  PlaylistId: Float
+}
+
+"aggregate variance on columns"
+type Playlist_variance_fields {
+  PlaylistId: Float
+}
+
+scalar String
+
+"Boolean expression to compare columns of type \"String\". All fields are combined with logical 'AND'."
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  "does the column match the given case-insensitive pattern" _ilike: String
+  _in: [String!]
+  "does the column match the given POSIX regular expression, case insensitive" _iregex: String
+  _is_null: Boolean
+  "does the column match the given pattern" _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  "does the column NOT match the given case-insensitive pattern" _nilike: String
+  _nin: [String!]
+  "does the column NOT match the given POSIX regular expression, case insensitive" _niregex: String
+  "does the column NOT match the given pattern" _nlike: String
+  "does the column NOT match the given POSIX regular expression, case sensitive" _nregex: String
+  "does the column NOT match the given SQL regular expression" _nsimilar: String
+  "does the column match the given POSIX regular expression, case sensitive" _regex: String
+  "does the column match the given SQL regular expression" _similar: String
+}
+
+"columns and relationships of \"Track\""
+type Track {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int!
+  Milliseconds: Int!
+  Name: String!
+  TrackId: Int!
+  UnitPrice: numeric!
+}
+
+"aggregated selection of \"Track\""
+type Track_aggregate {
+  aggregate: Track_aggregate_fields
+  nodes: [Track!]!
+}
+
+"aggregate fields of \"Track\""
+type Track_aggregate_fields {
+  avg: Track_avg_fields
+  count(columns: [Track_select_column!], distinct: Boolean): Int!
+  max: Track_max_fields
+  min: Track_min_fields
+  stddev: Track_stddev_fields
+  stddev_pop: Track_stddev_pop_fields
+  stddev_samp: Track_stddev_samp_fields
+  sum: Track_sum_fields
+  var_pop: Track_var_pop_fields
+  var_samp: Track_var_samp_fields
+  variance: Track_variance_fields
+}
+
+"aggregate avg on columns"
+type Track_avg_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"Boolean expression to filter rows from the table \"Track\". All fields are combined with a logical 'AND'."
+input Track_bool_exp {
+  AlbumId: Int_comparison_exp
+  Bytes: Int_comparison_exp
+  Composer: String_comparison_exp
+  GenreId: Int_comparison_exp
+  MediaTypeId: Int_comparison_exp
+  Milliseconds: Int_comparison_exp
+  Name: String_comparison_exp
+  TrackId: Int_comparison_exp
+  UnitPrice: numeric_comparison_exp
+  _and: [Track_bool_exp!]
+  _not: Track_bool_exp
+  _or: [Track_bool_exp!]
+}
+
+"unique or primary key constraints on table \"Track\""
+enum Track_constraint {
+  "unique or primary key constraint on columns \"TrackId\"" PK_Track
+}
+
+"input type for incrementing numeric columns in table \"Track\""
+input Track_inc_input {
+  AlbumId: Int
+  Bytes: Int
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"input type for inserting data into table \"Track\""
+input Track_insert_input {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  Name: String
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate max on columns"
+type Track_max_fields {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  Name: String
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate min on columns"
+type Track_min_fields {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  Name: String
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"response of any mutation on the table \"Track\""
+type Track_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [Track!]!
+}
+
+"on_conflict condition type for table \"Track\""
+input Track_on_conflict {
+  constraint: Track_constraint!
+  update_columns: [Track_update_column!]! = []
+  where: Track_bool_exp
+}
+
+"Ordering options when selecting data from \"Track\"."
+input Track_order_by {
+  AlbumId: order_by
+  Bytes: order_by
+  Composer: order_by
+  GenreId: order_by
+  MediaTypeId: order_by
+  Milliseconds: order_by
+  Name: order_by
+  TrackId: order_by
+  UnitPrice: order_by
+}
+
+"primary key columns input for table: Track"
+input Track_pk_columns_input {
+  TrackId: Int!
+}
+
+"select columns of table \"Track\""
+enum Track_select_column {
+  "column name" AlbumId
+  "column name" Bytes
+  "column name" Composer
+  "column name" GenreId
+  "column name" MediaTypeId
+  "column name" Milliseconds
+  "column name" Name
+  "column name" TrackId
+  "column name" UnitPrice
+}
+
+"input type for updating data in table \"Track\""
+input Track_set_input {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  Name: String
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate stddev on columns"
+type Track_stddev_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate stddev_pop on columns"
+type Track_stddev_pop_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate stddev_samp on columns"
+type Track_stddev_samp_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"Streaming cursor of the table \"Track\""
+input Track_stream_cursor_input {
+  "Stream column input with initial value" initial_value: Track_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input Track_stream_cursor_value_input {
+  AlbumId: Int
+  Bytes: Int
+  Composer: String
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  Name: String
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"aggregate sum on columns"
+type Track_sum_fields {
+  AlbumId: Int
+  Bytes: Int
+  GenreId: Int
+  MediaTypeId: Int
+  Milliseconds: Int
+  TrackId: Int
+  UnitPrice: numeric
+}
+
+"update columns of table \"Track\""
+enum Track_update_column {
+  "column name" AlbumId
+  "column name" Bytes
+  "column name" Composer
+  "column name" GenreId
+  "column name" MediaTypeId
+  "column name" Milliseconds
+  "column name" Name
+  "column name" TrackId
+  "column name" UnitPrice
+}
+
+input Track_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: Track_inc_input
+  "sets the columns of the filtered rows to the given values" _set: Track_set_input
+  "filter the rows which have to be updated" where: Track_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type Track_var_pop_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate var_samp on columns"
+type Track_var_samp_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"aggregate variance on columns"
+type Track_variance_fields {
+  AlbumId: Float
+  Bytes: Float
+  GenreId: Float
+  MediaTypeId: Float
+  Milliseconds: Float
+  TrackId: Float
+  UnitPrice: Float
+}
+
+"columns and relationships of \"cart_items\""
+type cart_items {
+  cart_id: uuid!
+  created_at: timestamptz
+  id: uuid!
+  product_id: uuid!
+  quantity: Int!
+  updated_at: timestamptz
+}
+
+"aggregated selection of \"cart_items\""
+type cart_items_aggregate {
+  aggregate: cart_items_aggregate_fields
+  nodes: [cart_items!]!
+}
+
+"aggregate fields of \"cart_items\""
+type cart_items_aggregate_fields {
+  avg: cart_items_avg_fields
+  count(columns: [cart_items_select_column!], distinct: Boolean): Int!
+  max: cart_items_max_fields
+  min: cart_items_min_fields
+  stddev: cart_items_stddev_fields
+  stddev_pop: cart_items_stddev_pop_fields
+  stddev_samp: cart_items_stddev_samp_fields
+  sum: cart_items_sum_fields
+  var_pop: cart_items_var_pop_fields
+  var_samp: cart_items_var_samp_fields
+  variance: cart_items_variance_fields
+}
+
+"aggregate avg on columns"
+type cart_items_avg_fields {
+  quantity: Float
+}
+
+"Boolean expression to filter rows from the table \"cart_items\". All fields are combined with a logical 'AND'."
+input cart_items_bool_exp {
+  _and: [cart_items_bool_exp!]
+  _not: cart_items_bool_exp
+  _or: [cart_items_bool_exp!]
+  cart_id: uuid_comparison_exp
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  product_id: uuid_comparison_exp
+  quantity: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"unique or primary key constraints on table \"cart_items\""
+enum cart_items_constraint {
+  "unique or primary key constraint on columns \"id\"" cart_items_pkey
+}
+
+"input type for incrementing numeric columns in table \"cart_items\""
+input cart_items_inc_input {
+  quantity: Int
+}
+
+"input type for inserting data into table \"cart_items\""
+input cart_items_insert_input {
+  cart_id: uuid
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  quantity: Int
+  updated_at: timestamptz
+}
+
+"aggregate max on columns"
+type cart_items_max_fields {
+  cart_id: uuid
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  quantity: Int
+  updated_at: timestamptz
+}
+
+"aggregate min on columns"
+type cart_items_min_fields {
+  cart_id: uuid
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  quantity: Int
+  updated_at: timestamptz
+}
+
+"response of any mutation on the table \"cart_items\""
+type cart_items_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [cart_items!]!
+}
+
+"on_conflict condition type for table \"cart_items\""
+input cart_items_on_conflict {
+  constraint: cart_items_constraint!
+  update_columns: [cart_items_update_column!]! = []
+  where: cart_items_bool_exp
+}
+
+"Ordering options when selecting data from \"cart_items\"."
+input cart_items_order_by {
+  cart_id: order_by
+  created_at: order_by
+  id: order_by
+  product_id: order_by
+  quantity: order_by
+  updated_at: order_by
+}
+
+"primary key columns input for table: cart_items"
+input cart_items_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"cart_items\""
+enum cart_items_select_column {
+  "column name" cart_id
+  "column name" created_at
+  "column name" id
+  "column name" product_id
+  "column name" quantity
+  "column name" updated_at
+}
+
+"input type for updating data in table \"cart_items\""
+input cart_items_set_input {
+  cart_id: uuid
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  quantity: Int
+  updated_at: timestamptz
+}
+
+"aggregate stddev on columns"
+type cart_items_stddev_fields {
+  quantity: Float
+}
+
+"aggregate stddev_pop on columns"
+type cart_items_stddev_pop_fields {
+  quantity: Float
+}
+
+"aggregate stddev_samp on columns"
+type cart_items_stddev_samp_fields {
+  quantity: Float
+}
+
+"Streaming cursor of the table \"cart_items\""
+input cart_items_stream_cursor_input {
+  "Stream column input with initial value" initial_value: cart_items_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cart_items_stream_cursor_value_input {
+  cart_id: uuid
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  quantity: Int
+  updated_at: timestamptz
+}
+
+"aggregate sum on columns"
+type cart_items_sum_fields {
+  quantity: Int
+}
+
+"update columns of table \"cart_items\""
+enum cart_items_update_column {
+  "column name" cart_id
+  "column name" created_at
+  "column name" id
+  "column name" product_id
+  "column name" quantity
+  "column name" updated_at
+}
+
+input cart_items_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: cart_items_inc_input
+  "sets the columns of the filtered rows to the given values" _set: cart_items_set_input
+  "filter the rows which have to be updated" where: cart_items_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type cart_items_var_pop_fields {
+  quantity: Float
+}
+
+"aggregate var_samp on columns"
+type cart_items_var_samp_fields {
+  quantity: Float
+}
+
+"aggregate variance on columns"
+type cart_items_variance_fields {
+  quantity: Float
+}
+
+"columns and relationships of \"carts\""
+type carts {
+  created_at: timestamptz
+  id: uuid!
+  is_complete: Boolean!
+  is_reminder_sent: Boolean!
+  updated_at: timestamptz
+  user_id: uuid!
+}
+
+"aggregated selection of \"carts\""
+type carts_aggregate {
+  aggregate: carts_aggregate_fields
+  nodes: [carts!]!
+}
+
+"aggregate fields of \"carts\""
+type carts_aggregate_fields {
+  count(columns: [carts_select_column!], distinct: Boolean): Int!
+  max: carts_max_fields
+  min: carts_min_fields
+}
+
+"Boolean expression to filter rows from the table \"carts\". All fields are combined with a logical 'AND'."
+input carts_bool_exp {
+  _and: [carts_bool_exp!]
+  _not: carts_bool_exp
+  _or: [carts_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  is_complete: Boolean_comparison_exp
+  is_reminder_sent: Boolean_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: uuid_comparison_exp
+}
+
+"unique or primary key constraints on table \"carts\""
+enum carts_constraint {
+  "unique or primary key constraint on columns \"id\"" carts_pkey
+}
+
+"input type for inserting data into table \"carts\""
+input carts_insert_input {
+  created_at: timestamptz
+  id: uuid
+  is_complete: Boolean
+  is_reminder_sent: Boolean
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate max on columns"
+type carts_max_fields {
+  created_at: timestamptz
+  id: uuid
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate min on columns"
+type carts_min_fields {
+  created_at: timestamptz
+  id: uuid
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"response of any mutation on the table \"carts\""
+type carts_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [carts!]!
+}
+
+"on_conflict condition type for table \"carts\""
+input carts_on_conflict {
+  constraint: carts_constraint!
+  update_columns: [carts_update_column!]! = []
+  where: carts_bool_exp
+}
+
+"Ordering options when selecting data from \"carts\"."
+input carts_order_by {
+  created_at: order_by
+  id: order_by
+  is_complete: order_by
+  is_reminder_sent: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
+"primary key columns input for table: carts"
+input carts_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"carts\""
+enum carts_select_column {
+  "column name" created_at
+  "column name" id
+  "column name" is_complete
+  "column name" is_reminder_sent
+  "column name" updated_at
+  "column name" user_id
+}
+
+"input type for updating data in table \"carts\""
+input carts_set_input {
+  created_at: timestamptz
+  id: uuid
+  is_complete: Boolean
+  is_reminder_sent: Boolean
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"Streaming cursor of the table \"carts\""
+input carts_stream_cursor_input {
+  "Stream column input with initial value" initial_value: carts_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input carts_stream_cursor_value_input {
+  created_at: timestamptz
+  id: uuid
+  is_complete: Boolean
+  is_reminder_sent: Boolean
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"update columns of table \"carts\""
+enum carts_update_column {
+  "column name" created_at
+  "column name" id
+  "column name" is_complete
+  "column name" is_reminder_sent
+  "column name" updated_at
+  "column name" user_id
+}
+
+input carts_updates {
+  "sets the columns of the filtered rows to the given values" _set: carts_set_input
+  "filter the rows which have to be updated" where: carts_bool_exp!
+}
+
+"columns and relationships of \"categories\""
+type categories {
+  id: uuid!
+  name: String!
+}
+
+"aggregated selection of \"categories\""
+type categories_aggregate {
+  aggregate: categories_aggregate_fields
+  nodes: [categories!]!
+}
+
+"aggregate fields of \"categories\""
+type categories_aggregate_fields {
+  count(columns: [categories_select_column!], distinct: Boolean): Int!
+  max: categories_max_fields
+  min: categories_min_fields
+}
+
+"Boolean expression to filter rows from the table \"categories\". All fields are combined with a logical 'AND'."
+input categories_bool_exp {
+  _and: [categories_bool_exp!]
+  _not: categories_bool_exp
+  _or: [categories_bool_exp!]
+  id: uuid_comparison_exp
+  name: String_comparison_exp
+}
+
+"unique or primary key constraints on table \"categories\""
+enum categories_constraint {
+  "unique or primary key constraint on columns \"id\"" categories_pkey
+}
+
+"input type for inserting data into table \"categories\""
+input categories_insert_input {
+  id: uuid
+  name: String
+}
+
+"aggregate max on columns"
+type categories_max_fields {
+  id: uuid
+  name: String
+}
+
+"aggregate min on columns"
+type categories_min_fields {
+  id: uuid
+  name: String
+}
+
+"response of any mutation on the table \"categories\""
+type categories_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [categories!]!
+}
+
+"on_conflict condition type for table \"categories\""
+input categories_on_conflict {
+  constraint: categories_constraint!
+  update_columns: [categories_update_column!]! = []
+  where: categories_bool_exp
+}
+
+"Ordering options when selecting data from \"categories\"."
+input categories_order_by {
+  id: order_by
+  name: order_by
+}
+
+"primary key columns input for table: categories"
+input categories_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"categories\""
+enum categories_select_column {
+  "column name" id
+  "column name" name
+}
+
+"input type for updating data in table \"categories\""
+input categories_set_input {
+  id: uuid
+  name: String
+}
+
+"Streaming cursor of the table \"categories\""
+input categories_stream_cursor_input {
+  "Stream column input with initial value" initial_value: categories_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input categories_stream_cursor_value_input {
+  id: uuid
+  name: String
+}
+
+"update columns of table \"categories\""
+enum categories_update_column {
+  "column name" id
+  "column name" name
+}
+
+input categories_updates {
+  "sets the columns of the filtered rows to the given values" _set: categories_set_input
+  "filter the rows which have to be updated" where: categories_bool_exp!
+}
+
+"columns and relationships of \"coupons\""
+type coupons {
+  amount: Int
+  code: String!
+  created_at: timestamptz!
+  expiration_date: timestamptz!
+  id: uuid!
+  percent_or_value: String
+  updated_at: timestamptz!
+  user_id: uuid!
+}
+
+"aggregated selection of \"coupons\""
+type coupons_aggregate {
+  aggregate: coupons_aggregate_fields
+  nodes: [coupons!]!
+}
+
+"aggregate fields of \"coupons\""
+type coupons_aggregate_fields {
+  avg: coupons_avg_fields
+  count(columns: [coupons_select_column!], distinct: Boolean): Int!
+  max: coupons_max_fields
+  min: coupons_min_fields
+  stddev: coupons_stddev_fields
+  stddev_pop: coupons_stddev_pop_fields
+  stddev_samp: coupons_stddev_samp_fields
+  sum: coupons_sum_fields
+  var_pop: coupons_var_pop_fields
+  var_samp: coupons_var_samp_fields
+  variance: coupons_variance_fields
+}
+
+"aggregate avg on columns"
+type coupons_avg_fields {
+  amount: Float
+}
+
+"Boolean expression to filter rows from the table \"coupons\". All fields are combined with a logical 'AND'."
+input coupons_bool_exp {
+  _and: [coupons_bool_exp!]
+  _not: coupons_bool_exp
+  _or: [coupons_bool_exp!]
+  amount: Int_comparison_exp
+  code: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  expiration_date: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  percent_or_value: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: uuid_comparison_exp
+}
+
+"unique or primary key constraints on table \"coupons\""
+enum coupons_constraint {
+  "unique or primary key constraint on columns \"id\"" coupons_pkey
+}
+
+"input type for incrementing numeric columns in table \"coupons\""
+input coupons_inc_input {
+  amount: Int
+}
+
+"input type for inserting data into table \"coupons\""
+input coupons_insert_input {
+  amount: Int
+  code: String
+  created_at: timestamptz
+  expiration_date: timestamptz
+  id: uuid
+  percent_or_value: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate max on columns"
+type coupons_max_fields {
+  amount: Int
+  code: String
+  created_at: timestamptz
+  expiration_date: timestamptz
+  id: uuid
+  percent_or_value: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate min on columns"
+type coupons_min_fields {
+  amount: Int
+  code: String
+  created_at: timestamptz
+  expiration_date: timestamptz
+  id: uuid
+  percent_or_value: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"response of any mutation on the table \"coupons\""
+type coupons_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [coupons!]!
+}
+
+"on_conflict condition type for table \"coupons\""
+input coupons_on_conflict {
+  constraint: coupons_constraint!
+  update_columns: [coupons_update_column!]! = []
+  where: coupons_bool_exp
+}
+
+"Ordering options when selecting data from \"coupons\"."
+input coupons_order_by {
+  amount: order_by
+  code: order_by
+  created_at: order_by
+  expiration_date: order_by
+  id: order_by
+  percent_or_value: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
+"primary key columns input for table: coupons"
+input coupons_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"coupons\""
+enum coupons_select_column {
+  "column name" amount
+  "column name" code
+  "column name" created_at
+  "column name" expiration_date
+  "column name" id
+  "column name" percent_or_value
+  "column name" updated_at
+  "column name" user_id
+}
+
+"input type for updating data in table \"coupons\""
+input coupons_set_input {
+  amount: Int
+  code: String
+  created_at: timestamptz
+  expiration_date: timestamptz
+  id: uuid
+  percent_or_value: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate stddev on columns"
+type coupons_stddev_fields {
+  amount: Float
+}
+
+"aggregate stddev_pop on columns"
+type coupons_stddev_pop_fields {
+  amount: Float
+}
+
+"aggregate stddev_samp on columns"
+type coupons_stddev_samp_fields {
+  amount: Float
+}
+
+"Streaming cursor of the table \"coupons\""
+input coupons_stream_cursor_input {
+  "Stream column input with initial value" initial_value: coupons_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input coupons_stream_cursor_value_input {
+  amount: Int
+  code: String
+  created_at: timestamptz
+  expiration_date: timestamptz
+  id: uuid
+  percent_or_value: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate sum on columns"
+type coupons_sum_fields {
+  amount: Int
+}
+
+"update columns of table \"coupons\""
+enum coupons_update_column {
+  "column name" amount
+  "column name" code
+  "column name" created_at
+  "column name" expiration_date
+  "column name" id
+  "column name" percent_or_value
+  "column name" updated_at
+  "column name" user_id
+}
+
+input coupons_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: coupons_inc_input
+  "sets the columns of the filtered rows to the given values" _set: coupons_set_input
+  "filter the rows which have to be updated" where: coupons_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type coupons_var_pop_fields {
+  amount: Float
+}
+
+"aggregate var_samp on columns"
+type coupons_var_samp_fields {
+  amount: Float
+}
+
+"aggregate variance on columns"
+type coupons_variance_fields {
+  amount: Float
+}
+
+"ordering argument of a cursor"
+enum cursor_ordering {
+  "ascending ordering of the cursor" ASC
+  "descending ordering of the cursor" DESC
+}
+
+"columns and relationships of \"manufacturers\""
+type manufacturers {
+  id: uuid!
+  name: String!
+}
+
+"aggregated selection of \"manufacturers\""
+type manufacturers_aggregate {
+  aggregate: manufacturers_aggregate_fields
+  nodes: [manufacturers!]!
+}
+
+"aggregate fields of \"manufacturers\""
+type manufacturers_aggregate_fields {
+  count(columns: [manufacturers_select_column!], distinct: Boolean): Int!
+  max: manufacturers_max_fields
+  min: manufacturers_min_fields
+}
+
+"Boolean expression to filter rows from the table \"manufacturers\". All fields are combined with a logical 'AND'."
+input manufacturers_bool_exp {
+  _and: [manufacturers_bool_exp!]
+  _not: manufacturers_bool_exp
+  _or: [manufacturers_bool_exp!]
+  id: uuid_comparison_exp
+  name: String_comparison_exp
+}
+
+"unique or primary key constraints on table \"manufacturers\""
+enum manufacturers_constraint {
+  "unique or primary key constraint on columns \"id\"" manufacturers_pkey
+}
+
+"input type for inserting data into table \"manufacturers\""
+input manufacturers_insert_input {
+  id: uuid
+  name: String
+}
+
+"aggregate max on columns"
+type manufacturers_max_fields {
+  id: uuid
+  name: String
+}
+
+"aggregate min on columns"
+type manufacturers_min_fields {
+  id: uuid
+  name: String
+}
+
+"response of any mutation on the table \"manufacturers\""
+type manufacturers_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [manufacturers!]!
+}
+
+"on_conflict condition type for table \"manufacturers\""
+input manufacturers_on_conflict {
+  constraint: manufacturers_constraint!
+  update_columns: [manufacturers_update_column!]! = []
+  where: manufacturers_bool_exp
+}
+
+"Ordering options when selecting data from \"manufacturers\"."
+input manufacturers_order_by {
+  id: order_by
+  name: order_by
+}
+
+"primary key columns input for table: manufacturers"
+input manufacturers_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"manufacturers\""
+enum manufacturers_select_column {
+  "column name" id
+  "column name" name
+}
+
+"input type for updating data in table \"manufacturers\""
+input manufacturers_set_input {
+  id: uuid
+  name: String
+}
+
+"Streaming cursor of the table \"manufacturers\""
+input manufacturers_stream_cursor_input {
+  "Stream column input with initial value" initial_value: manufacturers_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input manufacturers_stream_cursor_value_input {
+  id: uuid
+  name: String
+}
+
+"update columns of table \"manufacturers\""
+enum manufacturers_update_column {
+  "column name" id
+  "column name" name
+}
+
+input manufacturers_updates {
+  "sets the columns of the filtered rows to the given values" _set: manufacturers_set_input
+  "filter the rows which have to be updated" where: manufacturers_bool_exp!
+}
+
+"mutation root"
+type mutation_root {
+  "delete data from the table: \"Album\""
+  delete_Album("filter the rows which have to be deleted" where: Album_bool_exp!): Album_mutation_response
+  "delete single row from the table: \"Album\""
+  delete_Album_by_pk(AlbumId: Int!): Album
+  "delete data from the table: \"Artist\""
+  delete_Artist("filter the rows which have to be deleted" where: Artist_bool_exp!): Artist_mutation_response
+  "delete single row from the table: \"Artist\""
+  delete_Artist_by_pk(ArtistId: Int!): Artist
+  "delete data from the table: \"Customer\""
+  delete_Customer("filter the rows which have to be deleted" where: Customer_bool_exp!): Customer_mutation_response
+  "delete single row from the table: \"Customer\""
+  delete_Customer_by_pk(CustomerId: Int!): Customer
+  "delete data from the table: \"Employee\""
+  delete_Employee("filter the rows which have to be deleted" where: Employee_bool_exp!): Employee_mutation_response
+  "delete single row from the table: \"Employee\""
+  delete_Employee_by_pk(EmployeeId: Int!): Employee
+  "delete data from the table: \"Genre\""
+  delete_Genre("filter the rows which have to be deleted" where: Genre_bool_exp!): Genre_mutation_response
+  "delete single row from the table: \"Genre\""
+  delete_Genre_by_pk(GenreId: Int!): Genre
+  "delete data from the table: \"Invoice\""
+  delete_Invoice("filter the rows which have to be deleted" where: Invoice_bool_exp!): Invoice_mutation_response
+  "delete data from the table: \"InvoiceLine\""
+  delete_InvoiceLine("filter the rows which have to be deleted" where: InvoiceLine_bool_exp!): InvoiceLine_mutation_response
+  "delete single row from the table: \"InvoiceLine\""
+  delete_InvoiceLine_by_pk(InvoiceLineId: Int!): InvoiceLine
+  "delete single row from the table: \"Invoice\""
+  delete_Invoice_by_pk(InvoiceId: Int!): Invoice
+  "delete data from the table: \"MediaType\""
+  delete_MediaType("filter the rows which have to be deleted" where: MediaType_bool_exp!): MediaType_mutation_response
+  "delete single row from the table: \"MediaType\""
+  delete_MediaType_by_pk(MediaTypeId: Int!): MediaType
+  "delete data from the table: \"Playlist\""
+  delete_Playlist("filter the rows which have to be deleted" where: Playlist_bool_exp!): Playlist_mutation_response
+  "delete data from the table: \"PlaylistTrack\""
+  delete_PlaylistTrack("filter the rows which have to be deleted" where: PlaylistTrack_bool_exp!): PlaylistTrack_mutation_response
+  "delete single row from the table: \"PlaylistTrack\""
+  delete_PlaylistTrack_by_pk(PlaylistId: Int!, TrackId: Int!): PlaylistTrack
+  "delete single row from the table: \"Playlist\""
+  delete_Playlist_by_pk(PlaylistId: Int!): Playlist
+  "delete data from the table: \"Track\""
+  delete_Track("filter the rows which have to be deleted" where: Track_bool_exp!): Track_mutation_response
+  "delete single row from the table: \"Track\""
+  delete_Track_by_pk(TrackId: Int!): Track
+  "delete data from the table: \"cart_items\""
+  delete_cart_items("filter the rows which have to be deleted" where: cart_items_bool_exp!): cart_items_mutation_response
+  "delete single row from the table: \"cart_items\""
+  delete_cart_items_by_pk(id: uuid!): cart_items
+  "delete data from the table: \"carts\""
+  delete_carts("filter the rows which have to be deleted" where: carts_bool_exp!): carts_mutation_response
+  "delete single row from the table: \"carts\""
+  delete_carts_by_pk(id: uuid!): carts
+  "delete data from the table: \"categories\""
+  delete_categories("filter the rows which have to be deleted" where: categories_bool_exp!): categories_mutation_response
+  "delete single row from the table: \"categories\""
+  delete_categories_by_pk(id: uuid!): categories
+  "delete data from the table: \"coupons\""
+  delete_coupons("filter the rows which have to be deleted" where: coupons_bool_exp!): coupons_mutation_response
+  "delete single row from the table: \"coupons\""
+  delete_coupons_by_pk(id: uuid!): coupons
+  "delete data from the table: \"manufacturers\""
+  delete_manufacturers("filter the rows which have to be deleted" where: manufacturers_bool_exp!): manufacturers_mutation_response
+  "delete single row from the table: \"manufacturers\""
+  delete_manufacturers_by_pk(id: uuid!): manufacturers
+  "delete data from the table: \"notifications\""
+  delete_notifications("filter the rows which have to be deleted" where: notifications_bool_exp!): notifications_mutation_response
+  "delete single row from the table: \"notifications\""
+  delete_notifications_by_pk(id: uuid!): notifications
+  "delete data from the table: \"orders\""
+  delete_orders("filter the rows which have to be deleted" where: orders_bool_exp!): orders_mutation_response
+  "delete single row from the table: \"orders\""
+  delete_orders_by_pk(id: uuid!): orders
+  "delete data from the table: \"products\""
+  delete_products("filter the rows which have to be deleted" where: products_bool_exp!): products_mutation_response
+  "delete single row from the table: \"products\""
+  delete_products_by_pk(id: uuid!): products
+  "delete data from the table: \"reviews\""
+  delete_reviews("filter the rows which have to be deleted" where: reviews_bool_exp!): reviews_mutation_response
+  "delete single row from the table: \"reviews\""
+  delete_reviews_by_pk(id: uuid!): reviews
+  "delete data from the table: \"security_event\""
+  delete_security_event("filter the rows which have to be deleted" where: security_event_bool_exp!): security_event_mutation_response
+  "delete single row from the table: \"security_event\""
+  delete_security_event_by_pk(evt_id: Int!): security_event
+  "delete data from the table: \"users\""
+  delete_users("filter the rows which have to be deleted" where: users_bool_exp!): users_mutation_response
+  "delete single row from the table: \"users\""
+  delete_users_by_pk(id: uuid!): users
+  "insert data into the table: \"Album\""
+  insert_Album("the rows to be inserted" objects: [Album_insert_input!]!, "upsert condition" on_conflict: Album_on_conflict): Album_mutation_response
+  "insert a single row into the table: \"Album\""
+  insert_Album_one("the row to be inserted" object: Album_insert_input!, "upsert condition" on_conflict: Album_on_conflict): Album
+  "insert data into the table: \"Artist\""
+  insert_Artist("the rows to be inserted" objects: [Artist_insert_input!]!, "upsert condition" on_conflict: Artist_on_conflict): Artist_mutation_response
+  "insert a single row into the table: \"Artist\""
+  insert_Artist_one("the row to be inserted" object: Artist_insert_input!, "upsert condition" on_conflict: Artist_on_conflict): Artist
+  "insert data into the table: \"Customer\""
+  insert_Customer("the rows to be inserted" objects: [Customer_insert_input!]!, "upsert condition" on_conflict: Customer_on_conflict): Customer_mutation_response
+  "insert a single row into the table: \"Customer\""
+  insert_Customer_one("the row to be inserted" object: Customer_insert_input!, "upsert condition" on_conflict: Customer_on_conflict): Customer
+  "insert data into the table: \"Employee\""
+  insert_Employee("the rows to be inserted" objects: [Employee_insert_input!]!, "upsert condition" on_conflict: Employee_on_conflict): Employee_mutation_response
+  "insert a single row into the table: \"Employee\""
+  insert_Employee_one("the row to be inserted" object: Employee_insert_input!, "upsert condition" on_conflict: Employee_on_conflict): Employee
+  "insert data into the table: \"Genre\""
+  insert_Genre("the rows to be inserted" objects: [Genre_insert_input!]!, "upsert condition" on_conflict: Genre_on_conflict): Genre_mutation_response
+  "insert a single row into the table: \"Genre\""
+  insert_Genre_one("the row to be inserted" object: Genre_insert_input!, "upsert condition" on_conflict: Genre_on_conflict): Genre
+  "insert data into the table: \"Invoice\""
+  insert_Invoice("the rows to be inserted" objects: [Invoice_insert_input!]!, "upsert condition" on_conflict: Invoice_on_conflict): Invoice_mutation_response
+  "insert data into the table: \"InvoiceLine\""
+  insert_InvoiceLine("the rows to be inserted" objects: [InvoiceLine_insert_input!]!, "upsert condition" on_conflict: InvoiceLine_on_conflict): InvoiceLine_mutation_response
+  "insert a single row into the table: \"InvoiceLine\""
+  insert_InvoiceLine_one("the row to be inserted" object: InvoiceLine_insert_input!, "upsert condition" on_conflict: InvoiceLine_on_conflict): InvoiceLine
+  "insert a single row into the table: \"Invoice\""
+  insert_Invoice_one("the row to be inserted" object: Invoice_insert_input!, "upsert condition" on_conflict: Invoice_on_conflict): Invoice
+  "insert data into the table: \"MediaType\""
+  insert_MediaType("the rows to be inserted" objects: [MediaType_insert_input!]!, "upsert condition" on_conflict: MediaType_on_conflict): MediaType_mutation_response
+  "insert a single row into the table: \"MediaType\""
+  insert_MediaType_one("the row to be inserted" object: MediaType_insert_input!, "upsert condition" on_conflict: MediaType_on_conflict): MediaType
+  "insert data into the table: \"Playlist\""
+  insert_Playlist("the rows to be inserted" objects: [Playlist_insert_input!]!, "upsert condition" on_conflict: Playlist_on_conflict): Playlist_mutation_response
+  "insert data into the table: \"PlaylistTrack\""
+  insert_PlaylistTrack("the rows to be inserted" objects: [PlaylistTrack_insert_input!]!, "upsert condition" on_conflict: PlaylistTrack_on_conflict): PlaylistTrack_mutation_response
+  "insert a single row into the table: \"PlaylistTrack\""
+  insert_PlaylistTrack_one("the row to be inserted" object: PlaylistTrack_insert_input!, "upsert condition" on_conflict: PlaylistTrack_on_conflict): PlaylistTrack
+  "insert a single row into the table: \"Playlist\""
+  insert_Playlist_one("the row to be inserted" object: Playlist_insert_input!, "upsert condition" on_conflict: Playlist_on_conflict): Playlist
+  "insert data into the table: \"Track\""
+  insert_Track("the rows to be inserted" objects: [Track_insert_input!]!, "upsert condition" on_conflict: Track_on_conflict): Track_mutation_response
+  "insert a single row into the table: \"Track\""
+  insert_Track_one("the row to be inserted" object: Track_insert_input!, "upsert condition" on_conflict: Track_on_conflict): Track
+  "insert data into the table: \"cart_items\""
+  insert_cart_items("the rows to be inserted" objects: [cart_items_insert_input!]!, "upsert condition" on_conflict: cart_items_on_conflict): cart_items_mutation_response
+  "insert a single row into the table: \"cart_items\""
+  insert_cart_items_one("the row to be inserted" object: cart_items_insert_input!, "upsert condition" on_conflict: cart_items_on_conflict): cart_items
+  "insert data into the table: \"carts\""
+  insert_carts("the rows to be inserted" objects: [carts_insert_input!]!, "upsert condition" on_conflict: carts_on_conflict): carts_mutation_response
+  "insert a single row into the table: \"carts\""
+  insert_carts_one("the row to be inserted" object: carts_insert_input!, "upsert condition" on_conflict: carts_on_conflict): carts
+  "insert data into the table: \"categories\""
+  insert_categories("the rows to be inserted" objects: [categories_insert_input!]!, "upsert condition" on_conflict: categories_on_conflict): categories_mutation_response
+  "insert a single row into the table: \"categories\""
+  insert_categories_one("the row to be inserted" object: categories_insert_input!, "upsert condition" on_conflict: categories_on_conflict): categories
+  "insert data into the table: \"coupons\""
+  insert_coupons("the rows to be inserted" objects: [coupons_insert_input!]!, "upsert condition" on_conflict: coupons_on_conflict): coupons_mutation_response
+  "insert a single row into the table: \"coupons\""
+  insert_coupons_one("the row to be inserted" object: coupons_insert_input!, "upsert condition" on_conflict: coupons_on_conflict): coupons
+  "insert data into the table: \"manufacturers\""
+  insert_manufacturers("the rows to be inserted" objects: [manufacturers_insert_input!]!, "upsert condition" on_conflict: manufacturers_on_conflict): manufacturers_mutation_response
+  "insert a single row into the table: \"manufacturers\""
+  insert_manufacturers_one("the row to be inserted" object: manufacturers_insert_input!, "upsert condition" on_conflict: manufacturers_on_conflict): manufacturers
+  "insert data into the table: \"notifications\""
+  insert_notifications("the rows to be inserted" objects: [notifications_insert_input!]!, "upsert condition" on_conflict: notifications_on_conflict): notifications_mutation_response
+  "insert a single row into the table: \"notifications\""
+  insert_notifications_one("the row to be inserted" object: notifications_insert_input!, "upsert condition" on_conflict: notifications_on_conflict): notifications
+  "insert data into the table: \"orders\""
+  insert_orders("the rows to be inserted" objects: [orders_insert_input!]!, "upsert condition" on_conflict: orders_on_conflict): orders_mutation_response
+  "insert a single row into the table: \"orders\""
+  insert_orders_one("the row to be inserted" object: orders_insert_input!, "upsert condition" on_conflict: orders_on_conflict): orders
+  "insert data into the table: \"products\""
+  insert_products("the rows to be inserted" objects: [products_insert_input!]!, "upsert condition" on_conflict: products_on_conflict): products_mutation_response
+  "insert a single row into the table: \"products\""
+  insert_products_one("the row to be inserted" object: products_insert_input!, "upsert condition" on_conflict: products_on_conflict): products
+  "insert data into the table: \"reviews\""
+  insert_reviews("the rows to be inserted" objects: [reviews_insert_input!]!, "upsert condition" on_conflict: reviews_on_conflict): reviews_mutation_response
+  "insert a single row into the table: \"reviews\""
+  insert_reviews_one("the row to be inserted" object: reviews_insert_input!, "upsert condition" on_conflict: reviews_on_conflict): reviews
+  "insert data into the table: \"security_event\""
+  insert_security_event("the rows to be inserted" objects: [security_event_insert_input!]!, "upsert condition" on_conflict: security_event_on_conflict): security_event_mutation_response
+  "insert a single row into the table: \"security_event\""
+  insert_security_event_one("the row to be inserted" object: security_event_insert_input!, "upsert condition" on_conflict: security_event_on_conflict): security_event
+  "insert data into the table: \"users\""
+  insert_users("the rows to be inserted" objects: [users_insert_input!]!, "upsert condition" on_conflict: users_on_conflict): users_mutation_response
+  "insert a single row into the table: \"users\""
+  insert_users_one("the row to be inserted" object: users_insert_input!, "upsert condition" on_conflict: users_on_conflict): users
+  "update data of the table: \"Album\""
+  update_Album("increments the numeric columns with given value of the filtered values" _inc: Album_inc_input, "sets the columns of the filtered rows to the given values" _set: Album_set_input, "filter the rows which have to be updated" where: Album_bool_exp!): Album_mutation_response
+  "update single row of the table: \"Album\""
+  update_Album_by_pk("increments the numeric columns with given value of the filtered values" _inc: Album_inc_input, "sets the columns of the filtered rows to the given values" _set: Album_set_input, pk_columns: Album_pk_columns_input!): Album
+  "update multiples rows of table: \"Album\""
+  update_Album_many("updates to execute, in order" updates: [Album_updates!]!): [Album_mutation_response]
+  "update data of the table: \"Artist\""
+  update_Artist("increments the numeric columns with given value of the filtered values" _inc: Artist_inc_input, "sets the columns of the filtered rows to the given values" _set: Artist_set_input, "filter the rows which have to be updated" where: Artist_bool_exp!): Artist_mutation_response
+  "update single row of the table: \"Artist\""
+  update_Artist_by_pk("increments the numeric columns with given value of the filtered values" _inc: Artist_inc_input, "sets the columns of the filtered rows to the given values" _set: Artist_set_input, pk_columns: Artist_pk_columns_input!): Artist
+  "update multiples rows of table: \"Artist\""
+  update_Artist_many("updates to execute, in order" updates: [Artist_updates!]!): [Artist_mutation_response]
+  "update data of the table: \"Customer\""
+  update_Customer("increments the numeric columns with given value of the filtered values" _inc: Customer_inc_input, "sets the columns of the filtered rows to the given values" _set: Customer_set_input, "filter the rows which have to be updated" where: Customer_bool_exp!): Customer_mutation_response
+  "update single row of the table: \"Customer\""
+  update_Customer_by_pk("increments the numeric columns with given value of the filtered values" _inc: Customer_inc_input, "sets the columns of the filtered rows to the given values" _set: Customer_set_input, pk_columns: Customer_pk_columns_input!): Customer
+  "update multiples rows of table: \"Customer\""
+  update_Customer_many("updates to execute, in order" updates: [Customer_updates!]!): [Customer_mutation_response]
+  "update data of the table: \"Employee\""
+  update_Employee("increments the numeric columns with given value of the filtered values" _inc: Employee_inc_input, "sets the columns of the filtered rows to the given values" _set: Employee_set_input, "filter the rows which have to be updated" where: Employee_bool_exp!): Employee_mutation_response
+  "update single row of the table: \"Employee\""
+  update_Employee_by_pk("increments the numeric columns with given value of the filtered values" _inc: Employee_inc_input, "sets the columns of the filtered rows to the given values" _set: Employee_set_input, pk_columns: Employee_pk_columns_input!): Employee
+  "update multiples rows of table: \"Employee\""
+  update_Employee_many("updates to execute, in order" updates: [Employee_updates!]!): [Employee_mutation_response]
+  "update data of the table: \"Genre\""
+  update_Genre("increments the numeric columns with given value of the filtered values" _inc: Genre_inc_input, "sets the columns of the filtered rows to the given values" _set: Genre_set_input, "filter the rows which have to be updated" where: Genre_bool_exp!): Genre_mutation_response
+  "update single row of the table: \"Genre\""
+  update_Genre_by_pk("increments the numeric columns with given value of the filtered values" _inc: Genre_inc_input, "sets the columns of the filtered rows to the given values" _set: Genre_set_input, pk_columns: Genre_pk_columns_input!): Genre
+  "update multiples rows of table: \"Genre\""
+  update_Genre_many("updates to execute, in order" updates: [Genre_updates!]!): [Genre_mutation_response]
+  "update data of the table: \"Invoice\""
+  update_Invoice("increments the numeric columns with given value of the filtered values" _inc: Invoice_inc_input, "sets the columns of the filtered rows to the given values" _set: Invoice_set_input, "filter the rows which have to be updated" where: Invoice_bool_exp!): Invoice_mutation_response
+  "update data of the table: \"InvoiceLine\""
+  update_InvoiceLine("increments the numeric columns with given value of the filtered values" _inc: InvoiceLine_inc_input, "sets the columns of the filtered rows to the given values" _set: InvoiceLine_set_input, "filter the rows which have to be updated" where: InvoiceLine_bool_exp!): InvoiceLine_mutation_response
+  "update single row of the table: \"InvoiceLine\""
+  update_InvoiceLine_by_pk("increments the numeric columns with given value of the filtered values" _inc: InvoiceLine_inc_input, "sets the columns of the filtered rows to the given values" _set: InvoiceLine_set_input, pk_columns: InvoiceLine_pk_columns_input!): InvoiceLine
+  "update multiples rows of table: \"InvoiceLine\""
+  update_InvoiceLine_many("updates to execute, in order" updates: [InvoiceLine_updates!]!): [InvoiceLine_mutation_response]
+  "update single row of the table: \"Invoice\""
+  update_Invoice_by_pk("increments the numeric columns with given value of the filtered values" _inc: Invoice_inc_input, "sets the columns of the filtered rows to the given values" _set: Invoice_set_input, pk_columns: Invoice_pk_columns_input!): Invoice
+  "update multiples rows of table: \"Invoice\""
+  update_Invoice_many("updates to execute, in order" updates: [Invoice_updates!]!): [Invoice_mutation_response]
+  "update data of the table: \"MediaType\""
+  update_MediaType("increments the numeric columns with given value of the filtered values" _inc: MediaType_inc_input, "sets the columns of the filtered rows to the given values" _set: MediaType_set_input, "filter the rows which have to be updated" where: MediaType_bool_exp!): MediaType_mutation_response
+  "update single row of the table: \"MediaType\""
+  update_MediaType_by_pk("increments the numeric columns with given value of the filtered values" _inc: MediaType_inc_input, "sets the columns of the filtered rows to the given values" _set: MediaType_set_input, pk_columns: MediaType_pk_columns_input!): MediaType
+  "update multiples rows of table: \"MediaType\""
+  update_MediaType_many("updates to execute, in order" updates: [MediaType_updates!]!): [MediaType_mutation_response]
+  "update data of the table: \"Playlist\""
+  update_Playlist("increments the numeric columns with given value of the filtered values" _inc: Playlist_inc_input, "sets the columns of the filtered rows to the given values" _set: Playlist_set_input, "filter the rows which have to be updated" where: Playlist_bool_exp!): Playlist_mutation_response
+  "update data of the table: \"PlaylistTrack\""
+  update_PlaylistTrack("increments the numeric columns with given value of the filtered values" _inc: PlaylistTrack_inc_input, "sets the columns of the filtered rows to the given values" _set: PlaylistTrack_set_input, "filter the rows which have to be updated" where: PlaylistTrack_bool_exp!): PlaylistTrack_mutation_response
+  "update single row of the table: \"PlaylistTrack\""
+  update_PlaylistTrack_by_pk("increments the numeric columns with given value of the filtered values" _inc: PlaylistTrack_inc_input, "sets the columns of the filtered rows to the given values" _set: PlaylistTrack_set_input, pk_columns: PlaylistTrack_pk_columns_input!): PlaylistTrack
+  "update multiples rows of table: \"PlaylistTrack\""
+  update_PlaylistTrack_many("updates to execute, in order" updates: [PlaylistTrack_updates!]!): [PlaylistTrack_mutation_response]
+  "update single row of the table: \"Playlist\""
+  update_Playlist_by_pk("increments the numeric columns with given value of the filtered values" _inc: Playlist_inc_input, "sets the columns of the filtered rows to the given values" _set: Playlist_set_input, pk_columns: Playlist_pk_columns_input!): Playlist
+  "update multiples rows of table: \"Playlist\""
+  update_Playlist_many("updates to execute, in order" updates: [Playlist_updates!]!): [Playlist_mutation_response]
+  "update data of the table: \"Track\""
+  update_Track("increments the numeric columns with given value of the filtered values" _inc: Track_inc_input, "sets the columns of the filtered rows to the given values" _set: Track_set_input, "filter the rows which have to be updated" where: Track_bool_exp!): Track_mutation_response
+  "update single row of the table: \"Track\""
+  update_Track_by_pk("increments the numeric columns with given value of the filtered values" _inc: Track_inc_input, "sets the columns of the filtered rows to the given values" _set: Track_set_input, pk_columns: Track_pk_columns_input!): Track
+  "update multiples rows of table: \"Track\""
+  update_Track_many("updates to execute, in order" updates: [Track_updates!]!): [Track_mutation_response]
+  "update data of the table: \"cart_items\""
+  update_cart_items("increments the numeric columns with given value of the filtered values" _inc: cart_items_inc_input, "sets the columns of the filtered rows to the given values" _set: cart_items_set_input, "filter the rows which have to be updated" where: cart_items_bool_exp!): cart_items_mutation_response
+  "update single row of the table: \"cart_items\""
+  update_cart_items_by_pk("increments the numeric columns with given value of the filtered values" _inc: cart_items_inc_input, "sets the columns of the filtered rows to the given values" _set: cart_items_set_input, pk_columns: cart_items_pk_columns_input!): cart_items
+  "update multiples rows of table: \"cart_items\""
+  update_cart_items_many("updates to execute, in order" updates: [cart_items_updates!]!): [cart_items_mutation_response]
+  "update data of the table: \"carts\""
+  update_carts("sets the columns of the filtered rows to the given values" _set: carts_set_input, "filter the rows which have to be updated" where: carts_bool_exp!): carts_mutation_response
+  "update single row of the table: \"carts\""
+  update_carts_by_pk("sets the columns of the filtered rows to the given values" _set: carts_set_input, pk_columns: carts_pk_columns_input!): carts
+  "update multiples rows of table: \"carts\""
+  update_carts_many("updates to execute, in order" updates: [carts_updates!]!): [carts_mutation_response]
+  "update data of the table: \"categories\""
+  update_categories("sets the columns of the filtered rows to the given values" _set: categories_set_input, "filter the rows which have to be updated" where: categories_bool_exp!): categories_mutation_response
+  "update single row of the table: \"categories\""
+  update_categories_by_pk("sets the columns of the filtered rows to the given values" _set: categories_set_input, pk_columns: categories_pk_columns_input!): categories
+  "update multiples rows of table: \"categories\""
+  update_categories_many("updates to execute, in order" updates: [categories_updates!]!): [categories_mutation_response]
+  "update data of the table: \"coupons\""
+  update_coupons("increments the numeric columns with given value of the filtered values" _inc: coupons_inc_input, "sets the columns of the filtered rows to the given values" _set: coupons_set_input, "filter the rows which have to be updated" where: coupons_bool_exp!): coupons_mutation_response
+  "update single row of the table: \"coupons\""
+  update_coupons_by_pk("increments the numeric columns with given value of the filtered values" _inc: coupons_inc_input, "sets the columns of the filtered rows to the given values" _set: coupons_set_input, pk_columns: coupons_pk_columns_input!): coupons
+  "update multiples rows of table: \"coupons\""
+  update_coupons_many("updates to execute, in order" updates: [coupons_updates!]!): [coupons_mutation_response]
+  "update data of the table: \"manufacturers\""
+  update_manufacturers("sets the columns of the filtered rows to the given values" _set: manufacturers_set_input, "filter the rows which have to be updated" where: manufacturers_bool_exp!): manufacturers_mutation_response
+  "update single row of the table: \"manufacturers\""
+  update_manufacturers_by_pk("sets the columns of the filtered rows to the given values" _set: manufacturers_set_input, pk_columns: manufacturers_pk_columns_input!): manufacturers
+  "update multiples rows of table: \"manufacturers\""
+  update_manufacturers_many("updates to execute, in order" updates: [manufacturers_updates!]!): [manufacturers_mutation_response]
+  "update data of the table: \"notifications\""
+  update_notifications("sets the columns of the filtered rows to the given values" _set: notifications_set_input, "filter the rows which have to be updated" where: notifications_bool_exp!): notifications_mutation_response
+  "update single row of the table: \"notifications\""
+  update_notifications_by_pk("sets the columns of the filtered rows to the given values" _set: notifications_set_input, pk_columns: notifications_pk_columns_input!): notifications
+  "update multiples rows of table: \"notifications\""
+  update_notifications_many("updates to execute, in order" updates: [notifications_updates!]!): [notifications_mutation_response]
+  "update data of the table: \"orders\""
+  update_orders("sets the columns of the filtered rows to the given values" _set: orders_set_input, "filter the rows which have to be updated" where: orders_bool_exp!): orders_mutation_response
+  "update single row of the table: \"orders\""
+  update_orders_by_pk("sets the columns of the filtered rows to the given values" _set: orders_set_input, pk_columns: orders_pk_columns_input!): orders
+  "update multiples rows of table: \"orders\""
+  update_orders_many("updates to execute, in order" updates: [orders_updates!]!): [orders_mutation_response]
+  "update data of the table: \"products\""
+  update_products("increments the numeric columns with given value of the filtered values" _inc: products_inc_input, "sets the columns of the filtered rows to the given values" _set: products_set_input, "filter the rows which have to be updated" where: products_bool_exp!): products_mutation_response
+  "update single row of the table: \"products\""
+  update_products_by_pk("increments the numeric columns with given value of the filtered values" _inc: products_inc_input, "sets the columns of the filtered rows to the given values" _set: products_set_input, pk_columns: products_pk_columns_input!): products
+  "update multiples rows of table: \"products\""
+  update_products_many("updates to execute, in order" updates: [products_updates!]!): [products_mutation_response]
+  "update data of the table: \"reviews\""
+  update_reviews("increments the numeric columns with given value of the filtered values" _inc: reviews_inc_input, "sets the columns of the filtered rows to the given values" _set: reviews_set_input, "filter the rows which have to be updated" where: reviews_bool_exp!): reviews_mutation_response
+  "update single row of the table: \"reviews\""
+  update_reviews_by_pk("increments the numeric columns with given value of the filtered values" _inc: reviews_inc_input, "sets the columns of the filtered rows to the given values" _set: reviews_set_input, pk_columns: reviews_pk_columns_input!): reviews
+  "update multiples rows of table: \"reviews\""
+  update_reviews_many("updates to execute, in order" updates: [reviews_updates!]!): [reviews_mutation_response]
+  "update data of the table: \"security_event\""
+  update_security_event("increments the numeric columns with given value of the filtered values" _inc: security_event_inc_input, "sets the columns of the filtered rows to the given values" _set: security_event_set_input, "filter the rows which have to be updated" where: security_event_bool_exp!): security_event_mutation_response
+  "update single row of the table: \"security_event\""
+  update_security_event_by_pk("increments the numeric columns with given value of the filtered values" _inc: security_event_inc_input, "sets the columns of the filtered rows to the given values" _set: security_event_set_input, pk_columns: security_event_pk_columns_input!): security_event
+  "update multiples rows of table: \"security_event\""
+  update_security_event_many("updates to execute, in order" updates: [security_event_updates!]!): [security_event_mutation_response]
+  "update data of the table: \"users\""
+  update_users("sets the columns of the filtered rows to the given values" _set: users_set_input, "filter the rows which have to be updated" where: users_bool_exp!): users_mutation_response
+  "update single row of the table: \"users\""
+  update_users_by_pk("sets the columns of the filtered rows to the given values" _set: users_set_input, pk_columns: users_pk_columns_input!): users
+  "update multiples rows of table: \"users\""
+  update_users_many("updates to execute, in order" updates: [users_updates!]!): [users_mutation_response]
+}
+
+"columns and relationships of \"notifications\""
+type notifications {
+  created_at: timestamptz!
+  id: uuid!
+  message: String!
+  updated_at: timestamptz!
+  user_id: uuid!
+}
+
+"aggregated selection of \"notifications\""
+type notifications_aggregate {
+  aggregate: notifications_aggregate_fields
+  nodes: [notifications!]!
+}
+
+"aggregate fields of \"notifications\""
+type notifications_aggregate_fields {
+  count(columns: [notifications_select_column!], distinct: Boolean): Int!
+  max: notifications_max_fields
+  min: notifications_min_fields
+}
+
+"Boolean expression to filter rows from the table \"notifications\". All fields are combined with a logical 'AND'."
+input notifications_bool_exp {
+  _and: [notifications_bool_exp!]
+  _not: notifications_bool_exp
+  _or: [notifications_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  message: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: uuid_comparison_exp
+}
+
+"unique or primary key constraints on table \"notifications\""
+enum notifications_constraint {
+  "unique or primary key constraint on columns \"id\"" notifications_pkey
+}
+
+"input type for inserting data into table \"notifications\""
+input notifications_insert_input {
+  created_at: timestamptz
+  id: uuid
+  message: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate max on columns"
+type notifications_max_fields {
+  created_at: timestamptz
+  id: uuid
+  message: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate min on columns"
+type notifications_min_fields {
+  created_at: timestamptz
+  id: uuid
+  message: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"response of any mutation on the table \"notifications\""
+type notifications_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [notifications!]!
+}
+
+"on_conflict condition type for table \"notifications\""
+input notifications_on_conflict {
+  constraint: notifications_constraint!
+  update_columns: [notifications_update_column!]! = []
+  where: notifications_bool_exp
+}
+
+"Ordering options when selecting data from \"notifications\"."
+input notifications_order_by {
+  created_at: order_by
+  id: order_by
+  message: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
+"primary key columns input for table: notifications"
+input notifications_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"notifications\""
+enum notifications_select_column {
+  "column name" created_at
+  "column name" id
+  "column name" message
+  "column name" updated_at
+  "column name" user_id
+}
+
+"input type for updating data in table \"notifications\""
+input notifications_set_input {
+  created_at: timestamptz
+  id: uuid
+  message: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"Streaming cursor of the table \"notifications\""
+input notifications_stream_cursor_input {
+  "Stream column input with initial value" initial_value: notifications_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input notifications_stream_cursor_value_input {
+  created_at: timestamptz
+  id: uuid
+  message: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"update columns of table \"notifications\""
+enum notifications_update_column {
+  "column name" created_at
+  "column name" id
+  "column name" message
+  "column name" updated_at
+  "column name" user_id
+}
+
+input notifications_updates {
+  "sets the columns of the filtered rows to the given values" _set: notifications_set_input
+  "filter the rows which have to be updated" where: notifications_bool_exp!
+}
+
+scalar numeric
+
+"Boolean expression to compare columns of type \"numeric\". All fields are combined with logical 'AND'."
+input numeric_comparison_exp {
+  _eq: numeric
+  _gt: numeric
+  _gte: numeric
+  _in: [numeric!]
+  _is_null: Boolean
+  _lt: numeric
+  _lte: numeric
+  _neq: numeric
+  _nin: [numeric!]
+}
+
+"column ordering options"
+enum order_by {
+  "in ascending order, nulls last" asc
+  "in ascending order, nulls first" asc_nulls_first
+  "in ascending order, nulls last" asc_nulls_last
+  "in descending order, nulls first" desc
+  "in descending order, nulls first" desc_nulls_first
+  "in descending order, nulls last" desc_nulls_last
+}
+
+"columns and relationships of \"orders\""
+type orders {
+  created_at: timestamptz!
+  delivery_date: timestamptz
+  id: uuid!
+  is_reviewed: Boolean!
+  product_id: uuid!
+  status: String!
+  updated_at: timestamptz!
+  user_id: uuid!
+}
+
+"aggregated selection of \"orders\""
+type orders_aggregate {
+  aggregate: orders_aggregate_fields
+  nodes: [orders!]!
+}
+
+"aggregate fields of \"orders\""
+type orders_aggregate_fields {
+  count(columns: [orders_select_column!], distinct: Boolean): Int!
+  max: orders_max_fields
+  min: orders_min_fields
+}
+
+"Boolean expression to filter rows from the table \"orders\". All fields are combined with a logical 'AND'."
+input orders_bool_exp {
+  _and: [orders_bool_exp!]
+  _not: orders_bool_exp
+  _or: [orders_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  delivery_date: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  is_reviewed: Boolean_comparison_exp
+  product_id: uuid_comparison_exp
+  status: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: uuid_comparison_exp
+}
+
+"unique or primary key constraints on table \"orders\""
+enum orders_constraint {
+  "unique or primary key constraint on columns \"id\"" orders_pkey
+}
+
+"input type for inserting data into table \"orders\""
+input orders_insert_input {
+  created_at: timestamptz
+  delivery_date: timestamptz
+  id: uuid
+  is_reviewed: Boolean
+  product_id: uuid
+  status: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate max on columns"
+type orders_max_fields {
+  created_at: timestamptz
+  delivery_date: timestamptz
+  id: uuid
+  product_id: uuid
+  status: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate min on columns"
+type orders_min_fields {
+  created_at: timestamptz
+  delivery_date: timestamptz
+  id: uuid
+  product_id: uuid
+  status: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"response of any mutation on the table \"orders\""
+type orders_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [orders!]!
+}
+
+"on_conflict condition type for table \"orders\""
+input orders_on_conflict {
+  constraint: orders_constraint!
+  update_columns: [orders_update_column!]! = []
+  where: orders_bool_exp
+}
+
+"Ordering options when selecting data from \"orders\"."
+input orders_order_by {
+  created_at: order_by
+  delivery_date: order_by
+  id: order_by
+  is_reviewed: order_by
+  product_id: order_by
+  status: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
+"primary key columns input for table: orders"
+input orders_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"orders\""
+enum orders_select_column {
+  "column name" created_at
+  "column name" delivery_date
+  "column name" id
+  "column name" is_reviewed
+  "column name" product_id
+  "column name" status
+  "column name" updated_at
+  "column name" user_id
+}
+
+"input type for updating data in table \"orders\""
+input orders_set_input {
+  created_at: timestamptz
+  delivery_date: timestamptz
+  id: uuid
+  is_reviewed: Boolean
+  product_id: uuid
+  status: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"Streaming cursor of the table \"orders\""
+input orders_stream_cursor_input {
+  "Stream column input with initial value" initial_value: orders_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input orders_stream_cursor_value_input {
+  created_at: timestamptz
+  delivery_date: timestamptz
+  id: uuid
+  is_reviewed: Boolean
+  product_id: uuid
+  status: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"update columns of table \"orders\""
+enum orders_update_column {
+  "column name" created_at
+  "column name" delivery_date
+  "column name" id
+  "column name" is_reviewed
+  "column name" product_id
+  "column name" status
+  "column name" updated_at
+  "column name" user_id
+}
+
+input orders_updates {
+  "sets the columns of the filtered rows to the given values" _set: orders_set_input
+  "filter the rows which have to be updated" where: orders_bool_exp!
+}
+
+"columns and relationships of \"products\""
+type products {
+  category_id: uuid!
+  country_of_origin: String!
+  created_at: timestamptz!
+  description: String!
+  id: uuid!
+  image: String!
+  manufacturer_id: uuid!
+  name: String!
+  price: Int!
+  updated_at: timestamptz!
+  vector: vector!
+}
+
+"aggregated selection of \"products\""
+type products_aggregate {
+  aggregate: products_aggregate_fields
+  nodes: [products!]!
+}
+
+"aggregate fields of \"products\""
+type products_aggregate_fields {
+  avg: products_avg_fields
+  count(columns: [products_select_column!], distinct: Boolean): Int!
+  max: products_max_fields
+  min: products_min_fields
+  stddev: products_stddev_fields
+  stddev_pop: products_stddev_pop_fields
+  stddev_samp: products_stddev_samp_fields
+  sum: products_sum_fields
+  var_pop: products_var_pop_fields
+  var_samp: products_var_samp_fields
+  variance: products_variance_fields
+}
+
+"aggregate avg on columns"
+type products_avg_fields {
+  price: Float
+}
+
+"Boolean expression to filter rows from the table \"products\". All fields are combined with a logical 'AND'."
+input products_bool_exp {
+  _and: [products_bool_exp!]
+  _not: products_bool_exp
+  _or: [products_bool_exp!]
+  category_id: uuid_comparison_exp
+  country_of_origin: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  description: String_comparison_exp
+  id: uuid_comparison_exp
+  image: String_comparison_exp
+  manufacturer_id: uuid_comparison_exp
+  name: String_comparison_exp
+  price: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  vector: vector_comparison_exp
+}
+
+"unique or primary key constraints on table \"products\""
+enum products_constraint {
+  "unique or primary key constraint on columns \"id\"" products_pkey
+}
+
+"input type for incrementing numeric columns in table \"products\""
+input products_inc_input {
+  price: Int
+}
+
+"input type for inserting data into table \"products\""
+input products_insert_input {
+  category_id: uuid
+  country_of_origin: String
+  created_at: timestamptz
+  description: String
+  id: uuid
+  image: String
+  manufacturer_id: uuid
+  name: String
+  price: Int
+  updated_at: timestamptz
+  vector: vector
+}
+
+"aggregate max on columns"
+type products_max_fields {
+  category_id: uuid
+  country_of_origin: String
+  created_at: timestamptz
+  description: String
+  id: uuid
+  image: String
+  manufacturer_id: uuid
+  name: String
+  price: Int
+  updated_at: timestamptz
+}
+
+"aggregate min on columns"
+type products_min_fields {
+  category_id: uuid
+  country_of_origin: String
+  created_at: timestamptz
+  description: String
+  id: uuid
+  image: String
+  manufacturer_id: uuid
+  name: String
+  price: Int
+  updated_at: timestamptz
+}
+
+"response of any mutation on the table \"products\""
+type products_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [products!]!
+}
+
+"on_conflict condition type for table \"products\""
+input products_on_conflict {
+  constraint: products_constraint!
+  update_columns: [products_update_column!]! = []
+  where: products_bool_exp
+}
+
+"Ordering options when selecting data from \"products\"."
+input products_order_by {
+  category_id: order_by
+  country_of_origin: order_by
+  created_at: order_by
+  description: order_by
+  id: order_by
+  image: order_by
+  manufacturer_id: order_by
+  name: order_by
+  price: order_by
+  updated_at: order_by
+  vector: order_by
+}
+
+"primary key columns input for table: products"
+input products_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"products\""
+enum products_select_column {
+  "column name" category_id
+  "column name" country_of_origin
+  "column name" created_at
+  "column name" description
+  "column name" id
+  "column name" image
+  "column name" manufacturer_id
+  "column name" name
+  "column name" price
+  "column name" updated_at
+  "column name" vector
+}
+
+"input type for updating data in table \"products\""
+input products_set_input {
+  category_id: uuid
+  country_of_origin: String
+  created_at: timestamptz
+  description: String
+  id: uuid
+  image: String
+  manufacturer_id: uuid
+  name: String
+  price: Int
+  updated_at: timestamptz
+  vector: vector
+}
+
+"aggregate stddev on columns"
+type products_stddev_fields {
+  price: Float
+}
+
+"aggregate stddev_pop on columns"
+type products_stddev_pop_fields {
+  price: Float
+}
+
+"aggregate stddev_samp on columns"
+type products_stddev_samp_fields {
+  price: Float
+}
+
+"Streaming cursor of the table \"products\""
+input products_stream_cursor_input {
+  "Stream column input with initial value" initial_value: products_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input products_stream_cursor_value_input {
+  category_id: uuid
+  country_of_origin: String
+  created_at: timestamptz
+  description: String
+  id: uuid
+  image: String
+  manufacturer_id: uuid
+  name: String
+  price: Int
+  updated_at: timestamptz
+  vector: vector
+}
+
+"aggregate sum on columns"
+type products_sum_fields {
+  price: Int
+}
+
+"update columns of table \"products\""
+enum products_update_column {
+  "column name" category_id
+  "column name" country_of_origin
+  "column name" created_at
+  "column name" description
+  "column name" id
+  "column name" image
+  "column name" manufacturer_id
+  "column name" name
+  "column name" price
+  "column name" updated_at
+  "column name" vector
+}
+
+input products_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: products_inc_input
+  "sets the columns of the filtered rows to the given values" _set: products_set_input
+  "filter the rows which have to be updated" where: products_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type products_var_pop_fields {
+  price: Float
+}
+
+"aggregate var_samp on columns"
+type products_var_samp_fields {
+  price: Float
+}
+
+"aggregate variance on columns"
+type products_variance_fields {
+  price: Float
+}
+
+type query_root {
+  "fetch data from the table: \"Album\""
+  Album("distinct select on columns" distinct_on: [Album_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Album_order_by!], "filter the rows returned" where: Album_bool_exp): [Album!]!
+  "fetch aggregated fields from the table: \"Album\""
+  Album_aggregate("distinct select on columns" distinct_on: [Album_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Album_order_by!], "filter the rows returned" where: Album_bool_exp): Album_aggregate!
+  "fetch data from the table: \"Album\" using primary key columns"
+  Album_by_pk(AlbumId: Int!): Album
+  "fetch data from the table: \"Artist\""
+  Artist("distinct select on columns" distinct_on: [Artist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Artist_order_by!], "filter the rows returned" where: Artist_bool_exp): [Artist!]!
+  "fetch aggregated fields from the table: \"Artist\""
+  Artist_aggregate("distinct select on columns" distinct_on: [Artist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Artist_order_by!], "filter the rows returned" where: Artist_bool_exp): Artist_aggregate!
+  "fetch data from the table: \"Artist\" using primary key columns"
+  Artist_by_pk(ArtistId: Int!): Artist
+  "fetch data from the table: \"Customer\""
+  Customer("distinct select on columns" distinct_on: [Customer_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Customer_order_by!], "filter the rows returned" where: Customer_bool_exp): [Customer!]!
+  "fetch aggregated fields from the table: \"Customer\""
+  Customer_aggregate("distinct select on columns" distinct_on: [Customer_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Customer_order_by!], "filter the rows returned" where: Customer_bool_exp): Customer_aggregate!
+  "fetch data from the table: \"Customer\" using primary key columns"
+  Customer_by_pk(CustomerId: Int!): Customer
+  "fetch data from the table: \"Employee\""
+  Employee("distinct select on columns" distinct_on: [Employee_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Employee_order_by!], "filter the rows returned" where: Employee_bool_exp): [Employee!]!
+  "fetch aggregated fields from the table: \"Employee\""
+  Employee_aggregate("distinct select on columns" distinct_on: [Employee_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Employee_order_by!], "filter the rows returned" where: Employee_bool_exp): Employee_aggregate!
+  "fetch data from the table: \"Employee\" using primary key columns"
+  Employee_by_pk(EmployeeId: Int!): Employee
+  "fetch data from the table: \"Genre\""
+  Genre("distinct select on columns" distinct_on: [Genre_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Genre_order_by!], "filter the rows returned" where: Genre_bool_exp): [Genre!]!
+  "fetch aggregated fields from the table: \"Genre\""
+  Genre_aggregate("distinct select on columns" distinct_on: [Genre_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Genre_order_by!], "filter the rows returned" where: Genre_bool_exp): Genre_aggregate!
+  "fetch data from the table: \"Genre\" using primary key columns"
+  Genre_by_pk(GenreId: Int!): Genre
+  "fetch data from the table: \"Invoice\""
+  Invoice("distinct select on columns" distinct_on: [Invoice_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Invoice_order_by!], "filter the rows returned" where: Invoice_bool_exp): [Invoice!]!
+  "fetch data from the table: \"InvoiceLine\""
+  InvoiceLine("distinct select on columns" distinct_on: [InvoiceLine_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [InvoiceLine_order_by!], "filter the rows returned" where: InvoiceLine_bool_exp): [InvoiceLine!]!
+  "fetch aggregated fields from the table: \"InvoiceLine\""
+  InvoiceLine_aggregate("distinct select on columns" distinct_on: [InvoiceLine_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [InvoiceLine_order_by!], "filter the rows returned" where: InvoiceLine_bool_exp): InvoiceLine_aggregate!
+  "fetch data from the table: \"InvoiceLine\" using primary key columns"
+  InvoiceLine_by_pk(InvoiceLineId: Int!): InvoiceLine
+  "fetch aggregated fields from the table: \"Invoice\""
+  Invoice_aggregate("distinct select on columns" distinct_on: [Invoice_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Invoice_order_by!], "filter the rows returned" where: Invoice_bool_exp): Invoice_aggregate!
+  "fetch data from the table: \"Invoice\" using primary key columns"
+  Invoice_by_pk(InvoiceId: Int!): Invoice
+  "fetch data from the table: \"MediaType\""
+  MediaType("distinct select on columns" distinct_on: [MediaType_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [MediaType_order_by!], "filter the rows returned" where: MediaType_bool_exp): [MediaType!]!
+  "fetch aggregated fields from the table: \"MediaType\""
+  MediaType_aggregate("distinct select on columns" distinct_on: [MediaType_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [MediaType_order_by!], "filter the rows returned" where: MediaType_bool_exp): MediaType_aggregate!
+  "fetch data from the table: \"MediaType\" using primary key columns"
+  MediaType_by_pk(MediaTypeId: Int!): MediaType
+  "fetch data from the table: \"Playlist\""
+  Playlist("distinct select on columns" distinct_on: [Playlist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Playlist_order_by!], "filter the rows returned" where: Playlist_bool_exp): [Playlist!]!
+  "fetch data from the table: \"PlaylistTrack\""
+  PlaylistTrack("distinct select on columns" distinct_on: [PlaylistTrack_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [PlaylistTrack_order_by!], "filter the rows returned" where: PlaylistTrack_bool_exp): [PlaylistTrack!]!
+  "fetch aggregated fields from the table: \"PlaylistTrack\""
+  PlaylistTrack_aggregate("distinct select on columns" distinct_on: [PlaylistTrack_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [PlaylistTrack_order_by!], "filter the rows returned" where: PlaylistTrack_bool_exp): PlaylistTrack_aggregate!
+  "fetch data from the table: \"PlaylistTrack\" using primary key columns"
+  PlaylistTrack_by_pk(PlaylistId: Int!, TrackId: Int!): PlaylistTrack
+  "fetch aggregated fields from the table: \"Playlist\""
+  Playlist_aggregate("distinct select on columns" distinct_on: [Playlist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Playlist_order_by!], "filter the rows returned" where: Playlist_bool_exp): Playlist_aggregate!
+  "fetch data from the table: \"Playlist\" using primary key columns"
+  Playlist_by_pk(PlaylistId: Int!): Playlist
+  "fetch data from the table: \"Track\""
+  Track("distinct select on columns" distinct_on: [Track_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Track_order_by!], "filter the rows returned" where: Track_bool_exp): [Track!]!
+  "fetch aggregated fields from the table: \"Track\""
+  Track_aggregate("distinct select on columns" distinct_on: [Track_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Track_order_by!], "filter the rows returned" where: Track_bool_exp): Track_aggregate!
+  "fetch data from the table: \"Track\" using primary key columns"
+  Track_by_pk(TrackId: Int!): Track
+  "fetch data from the table: \"cart_items\""
+  cart_items("distinct select on columns" distinct_on: [cart_items_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [cart_items_order_by!], "filter the rows returned" where: cart_items_bool_exp): [cart_items!]!
+  "fetch aggregated fields from the table: \"cart_items\""
+  cart_items_aggregate("distinct select on columns" distinct_on: [cart_items_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [cart_items_order_by!], "filter the rows returned" where: cart_items_bool_exp): cart_items_aggregate!
+  "fetch data from the table: \"cart_items\" using primary key columns"
+  cart_items_by_pk(id: uuid!): cart_items
+  "fetch data from the table: \"carts\""
+  carts("distinct select on columns" distinct_on: [carts_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [carts_order_by!], "filter the rows returned" where: carts_bool_exp): [carts!]!
+  "fetch aggregated fields from the table: \"carts\""
+  carts_aggregate("distinct select on columns" distinct_on: [carts_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [carts_order_by!], "filter the rows returned" where: carts_bool_exp): carts_aggregate!
+  "fetch data from the table: \"carts\" using primary key columns"
+  carts_by_pk(id: uuid!): carts
+  "fetch data from the table: \"categories\""
+  categories("distinct select on columns" distinct_on: [categories_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [categories_order_by!], "filter the rows returned" where: categories_bool_exp): [categories!]!
+  "fetch aggregated fields from the table: \"categories\""
+  categories_aggregate("distinct select on columns" distinct_on: [categories_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [categories_order_by!], "filter the rows returned" where: categories_bool_exp): categories_aggregate!
+  "fetch data from the table: \"categories\" using primary key columns"
+  categories_by_pk(id: uuid!): categories
+  "fetch data from the table: \"coupons\""
+  coupons("distinct select on columns" distinct_on: [coupons_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [coupons_order_by!], "filter the rows returned" where: coupons_bool_exp): [coupons!]!
+  "fetch aggregated fields from the table: \"coupons\""
+  coupons_aggregate("distinct select on columns" distinct_on: [coupons_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [coupons_order_by!], "filter the rows returned" where: coupons_bool_exp): coupons_aggregate!
+  "fetch data from the table: \"coupons\" using primary key columns"
+  coupons_by_pk(id: uuid!): coupons
+  "fetch data from the table: \"manufacturers\""
+  manufacturers("distinct select on columns" distinct_on: [manufacturers_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [manufacturers_order_by!], "filter the rows returned" where: manufacturers_bool_exp): [manufacturers!]!
+  "fetch aggregated fields from the table: \"manufacturers\""
+  manufacturers_aggregate("distinct select on columns" distinct_on: [manufacturers_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [manufacturers_order_by!], "filter the rows returned" where: manufacturers_bool_exp): manufacturers_aggregate!
+  "fetch data from the table: \"manufacturers\" using primary key columns"
+  manufacturers_by_pk(id: uuid!): manufacturers
+  "fetch data from the table: \"notifications\""
+  notifications("distinct select on columns" distinct_on: [notifications_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [notifications_order_by!], "filter the rows returned" where: notifications_bool_exp): [notifications!]!
+  "fetch aggregated fields from the table: \"notifications\""
+  notifications_aggregate("distinct select on columns" distinct_on: [notifications_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [notifications_order_by!], "filter the rows returned" where: notifications_bool_exp): notifications_aggregate!
+  "fetch data from the table: \"notifications\" using primary key columns"
+  notifications_by_pk(id: uuid!): notifications
+  "fetch data from the table: \"orders\""
+  orders("distinct select on columns" distinct_on: [orders_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [orders_order_by!], "filter the rows returned" where: orders_bool_exp): [orders!]!
+  "fetch aggregated fields from the table: \"orders\""
+  orders_aggregate("distinct select on columns" distinct_on: [orders_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [orders_order_by!], "filter the rows returned" where: orders_bool_exp): orders_aggregate!
+  "fetch data from the table: \"orders\" using primary key columns"
+  orders_by_pk(id: uuid!): orders
+  "fetch data from the table: \"products\""
+  products("distinct select on columns" distinct_on: [products_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [products_order_by!], "filter the rows returned" where: products_bool_exp): [products!]!
+  "fetch aggregated fields from the table: \"products\""
+  products_aggregate("distinct select on columns" distinct_on: [products_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [products_order_by!], "filter the rows returned" where: products_bool_exp): products_aggregate!
+  "fetch data from the table: \"products\" using primary key columns"
+  products_by_pk(id: uuid!): products
+  "fetch data from the table: \"reviews\""
+  reviews("distinct select on columns" distinct_on: [reviews_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [reviews_order_by!], "filter the rows returned" where: reviews_bool_exp): [reviews!]!
+  "fetch aggregated fields from the table: \"reviews\""
+  reviews_aggregate("distinct select on columns" distinct_on: [reviews_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [reviews_order_by!], "filter the rows returned" where: reviews_bool_exp): reviews_aggregate!
+  "fetch data from the table: \"reviews\" using primary key columns"
+  reviews_by_pk(id: uuid!): reviews
+  "fetch data from the table: \"security_event\""
+  security_event("distinct select on columns" distinct_on: [security_event_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [security_event_order_by!], "filter the rows returned" where: security_event_bool_exp): [security_event!]!
+  "fetch aggregated fields from the table: \"security_event\""
+  security_event_aggregate("distinct select on columns" distinct_on: [security_event_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [security_event_order_by!], "filter the rows returned" where: security_event_bool_exp): security_event_aggregate!
+  "fetch data from the table: \"security_event\" using primary key columns"
+  security_event_by_pk(evt_id: Int!): security_event
+  "fetch data from the table: \"users\""
+  users("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): [users!]!
+  "fetch aggregated fields from the table: \"users\""
+  users_aggregate("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): users_aggregate!
+  "fetch data from the table: \"users\" using primary key columns"
+  users_by_pk(id: uuid!): users
+}
+
+"columns and relationships of \"reviews\""
+type reviews {
+  created_at: timestamptz!
+  id: uuid!
+  is_visible: Boolean!
+  product_id: uuid!
+  rating: Int!
+  text: String!
+  updated_at: timestamptz!
+  user_id: uuid!
+}
+
+"aggregated selection of \"reviews\""
+type reviews_aggregate {
+  aggregate: reviews_aggregate_fields
+  nodes: [reviews!]!
+}
+
+"aggregate fields of \"reviews\""
+type reviews_aggregate_fields {
+  avg: reviews_avg_fields
+  count(columns: [reviews_select_column!], distinct: Boolean): Int!
+  max: reviews_max_fields
+  min: reviews_min_fields
+  stddev: reviews_stddev_fields
+  stddev_pop: reviews_stddev_pop_fields
+  stddev_samp: reviews_stddev_samp_fields
+  sum: reviews_sum_fields
+  var_pop: reviews_var_pop_fields
+  var_samp: reviews_var_samp_fields
+  variance: reviews_variance_fields
+}
+
+"aggregate avg on columns"
+type reviews_avg_fields {
+  rating: Float
+}
+
+"Boolean expression to filter rows from the table \"reviews\". All fields are combined with a logical 'AND'."
+input reviews_bool_exp {
+  _and: [reviews_bool_exp!]
+  _not: reviews_bool_exp
+  _or: [reviews_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  is_visible: Boolean_comparison_exp
+  product_id: uuid_comparison_exp
+  rating: Int_comparison_exp
+  text: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: uuid_comparison_exp
+}
+
+"unique or primary key constraints on table \"reviews\""
+enum reviews_constraint {
+  "unique or primary key constraint on columns \"id\"" reviews_pkey
+}
+
+"input type for incrementing numeric columns in table \"reviews\""
+input reviews_inc_input {
+  rating: Int
+}
+
+"input type for inserting data into table \"reviews\""
+input reviews_insert_input {
+  created_at: timestamptz
+  id: uuid
+  is_visible: Boolean
+  product_id: uuid
+  rating: Int
+  text: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate max on columns"
+type reviews_max_fields {
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  rating: Int
+  text: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate min on columns"
+type reviews_min_fields {
+  created_at: timestamptz
+  id: uuid
+  product_id: uuid
+  rating: Int
+  text: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"response of any mutation on the table \"reviews\""
+type reviews_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [reviews!]!
+}
+
+"on_conflict condition type for table \"reviews\""
+input reviews_on_conflict {
+  constraint: reviews_constraint!
+  update_columns: [reviews_update_column!]! = []
+  where: reviews_bool_exp
+}
+
+"Ordering options when selecting data from \"reviews\"."
+input reviews_order_by {
+  created_at: order_by
+  id: order_by
+  is_visible: order_by
+  product_id: order_by
+  rating: order_by
+  text: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
+"primary key columns input for table: reviews"
+input reviews_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"reviews\""
+enum reviews_select_column {
+  "column name" created_at
+  "column name" id
+  "column name" is_visible
+  "column name" product_id
+  "column name" rating
+  "column name" text
+  "column name" updated_at
+  "column name" user_id
+}
+
+"input type for updating data in table \"reviews\""
+input reviews_set_input {
+  created_at: timestamptz
+  id: uuid
+  is_visible: Boolean
+  product_id: uuid
+  rating: Int
+  text: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate stddev on columns"
+type reviews_stddev_fields {
+  rating: Float
+}
+
+"aggregate stddev_pop on columns"
+type reviews_stddev_pop_fields {
+  rating: Float
+}
+
+"aggregate stddev_samp on columns"
+type reviews_stddev_samp_fields {
+  rating: Float
+}
+
+"Streaming cursor of the table \"reviews\""
+input reviews_stream_cursor_input {
+  "Stream column input with initial value" initial_value: reviews_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input reviews_stream_cursor_value_input {
+  created_at: timestamptz
+  id: uuid
+  is_visible: Boolean
+  product_id: uuid
+  rating: Int
+  text: String
+  updated_at: timestamptz
+  user_id: uuid
+}
+
+"aggregate sum on columns"
+type reviews_sum_fields {
+  rating: Int
+}
+
+"update columns of table \"reviews\""
+enum reviews_update_column {
+  "column name" created_at
+  "column name" id
+  "column name" is_visible
+  "column name" product_id
+  "column name" rating
+  "column name" text
+  "column name" updated_at
+  "column name" user_id
+}
+
+input reviews_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: reviews_inc_input
+  "sets the columns of the filtered rows to the given values" _set: reviews_set_input
+  "filter the rows which have to be updated" where: reviews_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type reviews_var_pop_fields {
+  rating: Float
+}
+
+"aggregate var_samp on columns"
+type reviews_var_samp_fields {
+  rating: Float
+}
+
+"aggregate variance on columns"
+type reviews_variance_fields {
+  rating: Float
+}
+
+"columns and relationships of \"security_event\""
+type security_event {
+  evt_desc: String!
+  evt_id: Int!
+  evt_root_cause: String
+}
+
+"aggregated selection of \"security_event\""
+type security_event_aggregate {
+  aggregate: security_event_aggregate_fields
+  nodes: [security_event!]!
+}
+
+"aggregate fields of \"security_event\""
+type security_event_aggregate_fields {
+  avg: security_event_avg_fields
+  count(columns: [security_event_select_column!], distinct: Boolean): Int!
+  max: security_event_max_fields
+  min: security_event_min_fields
+  stddev: security_event_stddev_fields
+  stddev_pop: security_event_stddev_pop_fields
+  stddev_samp: security_event_stddev_samp_fields
+  sum: security_event_sum_fields
+  var_pop: security_event_var_pop_fields
+  var_samp: security_event_var_samp_fields
+  variance: security_event_variance_fields
+}
+
+"aggregate avg on columns"
+type security_event_avg_fields {
+  evt_id: Float
+}
+
+"Boolean expression to filter rows from the table \"security_event\". All fields are combined with a logical 'AND'."
+input security_event_bool_exp {
+  _and: [security_event_bool_exp!]
+  _not: security_event_bool_exp
+  _or: [security_event_bool_exp!]
+  evt_desc: String_comparison_exp
+  evt_id: Int_comparison_exp
+  evt_root_cause: String_comparison_exp
+}
+
+"unique or primary key constraints on table \"security_event\""
+enum security_event_constraint {
+  "unique or primary key constraint on columns \"evt_id\"" security_event_pkey
+}
+
+"input type for incrementing numeric columns in table \"security_event\""
+input security_event_inc_input {
+  evt_id: Int
+}
+
+"input type for inserting data into table \"security_event\""
+input security_event_insert_input {
+  evt_desc: String
+  evt_id: Int
+  evt_root_cause: String
+}
+
+"aggregate max on columns"
+type security_event_max_fields {
+  evt_desc: String
+  evt_id: Int
+  evt_root_cause: String
+}
+
+"aggregate min on columns"
+type security_event_min_fields {
+  evt_desc: String
+  evt_id: Int
+  evt_root_cause: String
+}
+
+"response of any mutation on the table \"security_event\""
+type security_event_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [security_event!]!
+}
+
+"on_conflict condition type for table \"security_event\""
+input security_event_on_conflict {
+  constraint: security_event_constraint!
+  update_columns: [security_event_update_column!]! = []
+  where: security_event_bool_exp
+}
+
+"Ordering options when selecting data from \"security_event\"."
+input security_event_order_by {
+  evt_desc: order_by
+  evt_id: order_by
+  evt_root_cause: order_by
+}
+
+"primary key columns input for table: security_event"
+input security_event_pk_columns_input {
+  evt_id: Int!
+}
+
+"select columns of table \"security_event\""
+enum security_event_select_column {
+  "column name" evt_desc
+  "column name" evt_id
+  "column name" evt_root_cause
+}
+
+"input type for updating data in table \"security_event\""
+input security_event_set_input {
+  evt_desc: String
+  evt_id: Int
+  evt_root_cause: String
+}
+
+"aggregate stddev on columns"
+type security_event_stddev_fields {
+  evt_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type security_event_stddev_pop_fields {
+  evt_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type security_event_stddev_samp_fields {
+  evt_id: Float
+}
+
+"Streaming cursor of the table \"security_event\""
+input security_event_stream_cursor_input {
+  "Stream column input with initial value" initial_value: security_event_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input security_event_stream_cursor_value_input {
+  evt_desc: String
+  evt_id: Int
+  evt_root_cause: String
+}
+
+"aggregate sum on columns"
+type security_event_sum_fields {
+  evt_id: Int
+}
+
+"update columns of table \"security_event\""
+enum security_event_update_column {
+  "column name" evt_desc
+  "column name" evt_id
+  "column name" evt_root_cause
+}
+
+input security_event_updates {
+  "increments the numeric columns with given value of the filtered values" _inc: security_event_inc_input
+  "sets the columns of the filtered rows to the given values" _set: security_event_set_input
+  "filter the rows which have to be updated" where: security_event_bool_exp!
+}
+
+"aggregate var_pop on columns"
+type security_event_var_pop_fields {
+  evt_id: Float
+}
+
+"aggregate var_samp on columns"
+type security_event_var_samp_fields {
+  evt_id: Float
+}
+
+"aggregate variance on columns"
+type security_event_variance_fields {
+  evt_id: Float
+}
+
+type subscription_root {
+  "fetch data from the table: \"Album\""
+  Album("distinct select on columns" distinct_on: [Album_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Album_order_by!], "filter the rows returned" where: Album_bool_exp): [Album!]!
+  "fetch aggregated fields from the table: \"Album\""
+  Album_aggregate("distinct select on columns" distinct_on: [Album_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Album_order_by!], "filter the rows returned" where: Album_bool_exp): Album_aggregate!
+  "fetch data from the table: \"Album\" using primary key columns"
+  Album_by_pk(AlbumId: Int!): Album
+  "fetch data from the table in a streaming manner: \"Album\""
+  Album_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Album_stream_cursor_input]!, "filter the rows returned" where: Album_bool_exp): [Album!]!
+  "fetch data from the table: \"Artist\""
+  Artist("distinct select on columns" distinct_on: [Artist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Artist_order_by!], "filter the rows returned" where: Artist_bool_exp): [Artist!]!
+  "fetch aggregated fields from the table: \"Artist\""
+  Artist_aggregate("distinct select on columns" distinct_on: [Artist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Artist_order_by!], "filter the rows returned" where: Artist_bool_exp): Artist_aggregate!
+  "fetch data from the table: \"Artist\" using primary key columns"
+  Artist_by_pk(ArtistId: Int!): Artist
+  "fetch data from the table in a streaming manner: \"Artist\""
+  Artist_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Artist_stream_cursor_input]!, "filter the rows returned" where: Artist_bool_exp): [Artist!]!
+  "fetch data from the table: \"Customer\""
+  Customer("distinct select on columns" distinct_on: [Customer_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Customer_order_by!], "filter the rows returned" where: Customer_bool_exp): [Customer!]!
+  "fetch aggregated fields from the table: \"Customer\""
+  Customer_aggregate("distinct select on columns" distinct_on: [Customer_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Customer_order_by!], "filter the rows returned" where: Customer_bool_exp): Customer_aggregate!
+  "fetch data from the table: \"Customer\" using primary key columns"
+  Customer_by_pk(CustomerId: Int!): Customer
+  "fetch data from the table in a streaming manner: \"Customer\""
+  Customer_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Customer_stream_cursor_input]!, "filter the rows returned" where: Customer_bool_exp): [Customer!]!
+  "fetch data from the table: \"Employee\""
+  Employee("distinct select on columns" distinct_on: [Employee_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Employee_order_by!], "filter the rows returned" where: Employee_bool_exp): [Employee!]!
+  "fetch aggregated fields from the table: \"Employee\""
+  Employee_aggregate("distinct select on columns" distinct_on: [Employee_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Employee_order_by!], "filter the rows returned" where: Employee_bool_exp): Employee_aggregate!
+  "fetch data from the table: \"Employee\" using primary key columns"
+  Employee_by_pk(EmployeeId: Int!): Employee
+  "fetch data from the table in a streaming manner: \"Employee\""
+  Employee_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Employee_stream_cursor_input]!, "filter the rows returned" where: Employee_bool_exp): [Employee!]!
+  "fetch data from the table: \"Genre\""
+  Genre("distinct select on columns" distinct_on: [Genre_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Genre_order_by!], "filter the rows returned" where: Genre_bool_exp): [Genre!]!
+  "fetch aggregated fields from the table: \"Genre\""
+  Genre_aggregate("distinct select on columns" distinct_on: [Genre_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Genre_order_by!], "filter the rows returned" where: Genre_bool_exp): Genre_aggregate!
+  "fetch data from the table: \"Genre\" using primary key columns"
+  Genre_by_pk(GenreId: Int!): Genre
+  "fetch data from the table in a streaming manner: \"Genre\""
+  Genre_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Genre_stream_cursor_input]!, "filter the rows returned" where: Genre_bool_exp): [Genre!]!
+  "fetch data from the table: \"Invoice\""
+  Invoice("distinct select on columns" distinct_on: [Invoice_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Invoice_order_by!], "filter the rows returned" where: Invoice_bool_exp): [Invoice!]!
+  "fetch data from the table: \"InvoiceLine\""
+  InvoiceLine("distinct select on columns" distinct_on: [InvoiceLine_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [InvoiceLine_order_by!], "filter the rows returned" where: InvoiceLine_bool_exp): [InvoiceLine!]!
+  "fetch aggregated fields from the table: \"InvoiceLine\""
+  InvoiceLine_aggregate("distinct select on columns" distinct_on: [InvoiceLine_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [InvoiceLine_order_by!], "filter the rows returned" where: InvoiceLine_bool_exp): InvoiceLine_aggregate!
+  "fetch data from the table: \"InvoiceLine\" using primary key columns"
+  InvoiceLine_by_pk(InvoiceLineId: Int!): InvoiceLine
+  "fetch data from the table in a streaming manner: \"InvoiceLine\""
+  InvoiceLine_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [InvoiceLine_stream_cursor_input]!, "filter the rows returned" where: InvoiceLine_bool_exp): [InvoiceLine!]!
+  "fetch aggregated fields from the table: \"Invoice\""
+  Invoice_aggregate("distinct select on columns" distinct_on: [Invoice_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Invoice_order_by!], "filter the rows returned" where: Invoice_bool_exp): Invoice_aggregate!
+  "fetch data from the table: \"Invoice\" using primary key columns"
+  Invoice_by_pk(InvoiceId: Int!): Invoice
+  "fetch data from the table in a streaming manner: \"Invoice\""
+  Invoice_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Invoice_stream_cursor_input]!, "filter the rows returned" where: Invoice_bool_exp): [Invoice!]!
+  "fetch data from the table: \"MediaType\""
+  MediaType("distinct select on columns" distinct_on: [MediaType_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [MediaType_order_by!], "filter the rows returned" where: MediaType_bool_exp): [MediaType!]!
+  "fetch aggregated fields from the table: \"MediaType\""
+  MediaType_aggregate("distinct select on columns" distinct_on: [MediaType_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [MediaType_order_by!], "filter the rows returned" where: MediaType_bool_exp): MediaType_aggregate!
+  "fetch data from the table: \"MediaType\" using primary key columns"
+  MediaType_by_pk(MediaTypeId: Int!): MediaType
+  "fetch data from the table in a streaming manner: \"MediaType\""
+  MediaType_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [MediaType_stream_cursor_input]!, "filter the rows returned" where: MediaType_bool_exp): [MediaType!]!
+  "fetch data from the table: \"Playlist\""
+  Playlist("distinct select on columns" distinct_on: [Playlist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Playlist_order_by!], "filter the rows returned" where: Playlist_bool_exp): [Playlist!]!
+  "fetch data from the table: \"PlaylistTrack\""
+  PlaylistTrack("distinct select on columns" distinct_on: [PlaylistTrack_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [PlaylistTrack_order_by!], "filter the rows returned" where: PlaylistTrack_bool_exp): [PlaylistTrack!]!
+  "fetch aggregated fields from the table: \"PlaylistTrack\""
+  PlaylistTrack_aggregate("distinct select on columns" distinct_on: [PlaylistTrack_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [PlaylistTrack_order_by!], "filter the rows returned" where: PlaylistTrack_bool_exp): PlaylistTrack_aggregate!
+  "fetch data from the table: \"PlaylistTrack\" using primary key columns"
+  PlaylistTrack_by_pk(PlaylistId: Int!, TrackId: Int!): PlaylistTrack
+  "fetch data from the table in a streaming manner: \"PlaylistTrack\""
+  PlaylistTrack_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [PlaylistTrack_stream_cursor_input]!, "filter the rows returned" where: PlaylistTrack_bool_exp): [PlaylistTrack!]!
+  "fetch aggregated fields from the table: \"Playlist\""
+  Playlist_aggregate("distinct select on columns" distinct_on: [Playlist_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Playlist_order_by!], "filter the rows returned" where: Playlist_bool_exp): Playlist_aggregate!
+  "fetch data from the table: \"Playlist\" using primary key columns"
+  Playlist_by_pk(PlaylistId: Int!): Playlist
+  "fetch data from the table in a streaming manner: \"Playlist\""
+  Playlist_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Playlist_stream_cursor_input]!, "filter the rows returned" where: Playlist_bool_exp): [Playlist!]!
+  "fetch data from the table: \"Track\""
+  Track("distinct select on columns" distinct_on: [Track_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Track_order_by!], "filter the rows returned" where: Track_bool_exp): [Track!]!
+  "fetch aggregated fields from the table: \"Track\""
+  Track_aggregate("distinct select on columns" distinct_on: [Track_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [Track_order_by!], "filter the rows returned" where: Track_bool_exp): Track_aggregate!
+  "fetch data from the table: \"Track\" using primary key columns"
+  Track_by_pk(TrackId: Int!): Track
+  "fetch data from the table in a streaming manner: \"Track\""
+  Track_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [Track_stream_cursor_input]!, "filter the rows returned" where: Track_bool_exp): [Track!]!
+  "fetch data from the table: \"cart_items\""
+  cart_items("distinct select on columns" distinct_on: [cart_items_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [cart_items_order_by!], "filter the rows returned" where: cart_items_bool_exp): [cart_items!]!
+  "fetch aggregated fields from the table: \"cart_items\""
+  cart_items_aggregate("distinct select on columns" distinct_on: [cart_items_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [cart_items_order_by!], "filter the rows returned" where: cart_items_bool_exp): cart_items_aggregate!
+  "fetch data from the table: \"cart_items\" using primary key columns"
+  cart_items_by_pk(id: uuid!): cart_items
+  "fetch data from the table in a streaming manner: \"cart_items\""
+  cart_items_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [cart_items_stream_cursor_input]!, "filter the rows returned" where: cart_items_bool_exp): [cart_items!]!
+  "fetch data from the table: \"carts\""
+  carts("distinct select on columns" distinct_on: [carts_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [carts_order_by!], "filter the rows returned" where: carts_bool_exp): [carts!]!
+  "fetch aggregated fields from the table: \"carts\""
+  carts_aggregate("distinct select on columns" distinct_on: [carts_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [carts_order_by!], "filter the rows returned" where: carts_bool_exp): carts_aggregate!
+  "fetch data from the table: \"carts\" using primary key columns"
+  carts_by_pk(id: uuid!): carts
+  "fetch data from the table in a streaming manner: \"carts\""
+  carts_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [carts_stream_cursor_input]!, "filter the rows returned" where: carts_bool_exp): [carts!]!
+  "fetch data from the table: \"categories\""
+  categories("distinct select on columns" distinct_on: [categories_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [categories_order_by!], "filter the rows returned" where: categories_bool_exp): [categories!]!
+  "fetch aggregated fields from the table: \"categories\""
+  categories_aggregate("distinct select on columns" distinct_on: [categories_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [categories_order_by!], "filter the rows returned" where: categories_bool_exp): categories_aggregate!
+  "fetch data from the table: \"categories\" using primary key columns"
+  categories_by_pk(id: uuid!): categories
+  "fetch data from the table in a streaming manner: \"categories\""
+  categories_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [categories_stream_cursor_input]!, "filter the rows returned" where: categories_bool_exp): [categories!]!
+  "fetch data from the table: \"coupons\""
+  coupons("distinct select on columns" distinct_on: [coupons_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [coupons_order_by!], "filter the rows returned" where: coupons_bool_exp): [coupons!]!
+  "fetch aggregated fields from the table: \"coupons\""
+  coupons_aggregate("distinct select on columns" distinct_on: [coupons_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [coupons_order_by!], "filter the rows returned" where: coupons_bool_exp): coupons_aggregate!
+  "fetch data from the table: \"coupons\" using primary key columns"
+  coupons_by_pk(id: uuid!): coupons
+  "fetch data from the table in a streaming manner: \"coupons\""
+  coupons_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [coupons_stream_cursor_input]!, "filter the rows returned" where: coupons_bool_exp): [coupons!]!
+  "fetch data from the table: \"manufacturers\""
+  manufacturers("distinct select on columns" distinct_on: [manufacturers_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [manufacturers_order_by!], "filter the rows returned" where: manufacturers_bool_exp): [manufacturers!]!
+  "fetch aggregated fields from the table: \"manufacturers\""
+  manufacturers_aggregate("distinct select on columns" distinct_on: [manufacturers_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [manufacturers_order_by!], "filter the rows returned" where: manufacturers_bool_exp): manufacturers_aggregate!
+  "fetch data from the table: \"manufacturers\" using primary key columns"
+  manufacturers_by_pk(id: uuid!): manufacturers
+  "fetch data from the table in a streaming manner: \"manufacturers\""
+  manufacturers_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [manufacturers_stream_cursor_input]!, "filter the rows returned" where: manufacturers_bool_exp): [manufacturers!]!
+  "fetch data from the table: \"notifications\""
+  notifications("distinct select on columns" distinct_on: [notifications_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [notifications_order_by!], "filter the rows returned" where: notifications_bool_exp): [notifications!]!
+  "fetch aggregated fields from the table: \"notifications\""
+  notifications_aggregate("distinct select on columns" distinct_on: [notifications_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [notifications_order_by!], "filter the rows returned" where: notifications_bool_exp): notifications_aggregate!
+  "fetch data from the table: \"notifications\" using primary key columns"
+  notifications_by_pk(id: uuid!): notifications
+  "fetch data from the table in a streaming manner: \"notifications\""
+  notifications_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [notifications_stream_cursor_input]!, "filter the rows returned" where: notifications_bool_exp): [notifications!]!
+  "fetch data from the table: \"orders\""
+  orders("distinct select on columns" distinct_on: [orders_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [orders_order_by!], "filter the rows returned" where: orders_bool_exp): [orders!]!
+  "fetch aggregated fields from the table: \"orders\""
+  orders_aggregate("distinct select on columns" distinct_on: [orders_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [orders_order_by!], "filter the rows returned" where: orders_bool_exp): orders_aggregate!
+  "fetch data from the table: \"orders\" using primary key columns"
+  orders_by_pk(id: uuid!): orders
+  "fetch data from the table in a streaming manner: \"orders\""
+  orders_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [orders_stream_cursor_input]!, "filter the rows returned" where: orders_bool_exp): [orders!]!
+  "fetch data from the table: \"products\""
+  products("distinct select on columns" distinct_on: [products_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [products_order_by!], "filter the rows returned" where: products_bool_exp): [products!]!
+  "fetch aggregated fields from the table: \"products\""
+  products_aggregate("distinct select on columns" distinct_on: [products_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [products_order_by!], "filter the rows returned" where: products_bool_exp): products_aggregate!
+  "fetch data from the table: \"products\" using primary key columns"
+  products_by_pk(id: uuid!): products
+  "fetch data from the table in a streaming manner: \"products\""
+  products_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [products_stream_cursor_input]!, "filter the rows returned" where: products_bool_exp): [products!]!
+  "fetch data from the table: \"reviews\""
+  reviews("distinct select on columns" distinct_on: [reviews_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [reviews_order_by!], "filter the rows returned" where: reviews_bool_exp): [reviews!]!
+  "fetch aggregated fields from the table: \"reviews\""
+  reviews_aggregate("distinct select on columns" distinct_on: [reviews_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [reviews_order_by!], "filter the rows returned" where: reviews_bool_exp): reviews_aggregate!
+  "fetch data from the table: \"reviews\" using primary key columns"
+  reviews_by_pk(id: uuid!): reviews
+  "fetch data from the table in a streaming manner: \"reviews\""
+  reviews_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [reviews_stream_cursor_input]!, "filter the rows returned" where: reviews_bool_exp): [reviews!]!
+  "fetch data from the table: \"security_event\""
+  security_event("distinct select on columns" distinct_on: [security_event_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [security_event_order_by!], "filter the rows returned" where: security_event_bool_exp): [security_event!]!
+  "fetch aggregated fields from the table: \"security_event\""
+  security_event_aggregate("distinct select on columns" distinct_on: [security_event_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [security_event_order_by!], "filter the rows returned" where: security_event_bool_exp): security_event_aggregate!
+  "fetch data from the table: \"security_event\" using primary key columns"
+  security_event_by_pk(evt_id: Int!): security_event
+  "fetch data from the table in a streaming manner: \"security_event\""
+  security_event_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [security_event_stream_cursor_input]!, "filter the rows returned" where: security_event_bool_exp): [security_event!]!
+  "fetch data from the table: \"users\""
+  users("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): [users!]!
+  "fetch aggregated fields from the table: \"users\""
+  users_aggregate("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): users_aggregate!
+  "fetch data from the table: \"users\" using primary key columns"
+  users_by_pk(id: uuid!): users
+  "fetch data from the table in a streaming manner: \"users\""
+  users_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [users_stream_cursor_input]!, "filter the rows returned" where: users_bool_exp): [users!]!
+}
+
+scalar timestamp
+
+"Boolean expression to compare columns of type \"timestamp\". All fields are combined with logical 'AND'."
+input timestamp_comparison_exp {
+  _eq: timestamp
+  _gt: timestamp
+  _gte: timestamp
+  _in: [timestamp!]
+  _is_null: Boolean
+  _lt: timestamp
+  _lte: timestamp
+  _neq: timestamp
+  _nin: [timestamp!]
+}
+
+scalar timestamptz
+
+"Boolean expression to compare columns of type \"timestamptz\". All fields are combined with logical 'AND'."
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+
+"columns and relationships of \"users\""
+type users {
+  created_at: timestamptz!
+  email: String!
+  id: uuid!
+  is_email_verified: Boolean
+  last_seen: timestamptz
+  name: String!
+  password: String
+  updated_at: timestamptz!
+}
+
+"aggregated selection of \"users\""
+type users_aggregate {
+  aggregate: users_aggregate_fields
+  nodes: [users!]!
+}
+
+"aggregate fields of \"users\""
+type users_aggregate_fields {
+  count(columns: [users_select_column!], distinct: Boolean): Int!
+  max: users_max_fields
+  min: users_min_fields
+}
+
+"Boolean expression to filter rows from the table \"users\". All fields are combined with a logical 'AND'."
+input users_bool_exp {
+  _and: [users_bool_exp!]
+  _not: users_bool_exp
+  _or: [users_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  email: String_comparison_exp
+  id: uuid_comparison_exp
+  is_email_verified: Boolean_comparison_exp
+  last_seen: timestamptz_comparison_exp
+  name: String_comparison_exp
+  password: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"unique or primary key constraints on table \"users\""
+enum users_constraint {
+  "unique or primary key constraint on columns \"id\"" users_pkey
+}
+
+"input type for inserting data into table \"users\""
+input users_insert_input {
+  created_at: timestamptz
+  email: String
+  id: uuid
+  is_email_verified: Boolean
+  last_seen: timestamptz
+  name: String
+  password: String
+  updated_at: timestamptz
+}
+
+"aggregate max on columns"
+type users_max_fields {
+  created_at: timestamptz
+  email: String
+  id: uuid
+  last_seen: timestamptz
+  name: String
+  password: String
+  updated_at: timestamptz
+}
+
+"aggregate min on columns"
+type users_min_fields {
+  created_at: timestamptz
+  email: String
+  id: uuid
+  last_seen: timestamptz
+  name: String
+  password: String
+  updated_at: timestamptz
+}
+
+"response of any mutation on the table \"users\""
+type users_mutation_response {
+  "number of rows affected by the mutation"
+  affected_rows: Int!
+  "data from the rows affected by the mutation"
+  returning: [users!]!
+}
+
+"on_conflict condition type for table \"users\""
+input users_on_conflict {
+  constraint: users_constraint!
+  update_columns: [users_update_column!]! = []
+  where: users_bool_exp
+}
+
+"Ordering options when selecting data from \"users\"."
+input users_order_by {
+  created_at: order_by
+  email: order_by
+  id: order_by
+  is_email_verified: order_by
+  last_seen: order_by
+  name: order_by
+  password: order_by
+  updated_at: order_by
+}
+
+"primary key columns input for table: users"
+input users_pk_columns_input {
+  id: uuid!
+}
+
+"select columns of table \"users\""
+enum users_select_column {
+  "column name" created_at
+  "column name" email
+  "column name" id
+  "column name" is_email_verified
+  "column name" last_seen
+  "column name" name
+  "column name" password
+  "column name" updated_at
+}
+
+"input type for updating data in table \"users\""
+input users_set_input {
+  created_at: timestamptz
+  email: String
+  id: uuid
+  is_email_verified: Boolean
+  last_seen: timestamptz
+  name: String
+  password: String
+  updated_at: timestamptz
+}
+
+"Streaming cursor of the table \"users\""
+input users_stream_cursor_input {
+  "Stream column input with initial value" initial_value: users_stream_cursor_value_input!
+  "cursor ordering" ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input users_stream_cursor_value_input {
+  created_at: timestamptz
+  email: String
+  id: uuid
+  is_email_verified: Boolean
+  last_seen: timestamptz
+  name: String
+  password: String
+  updated_at: timestamptz
+}
+
+"update columns of table \"users\""
+enum users_update_column {
+  "column name" created_at
+  "column name" email
+  "column name" id
+  "column name" is_email_verified
+  "column name" last_seen
+  "column name" name
+  "column name" password
+  "column name" updated_at
+}
+
+input users_updates {
+  "sets the columns of the filtered rows to the given values" _set: users_set_input
+  "filter the rows which have to be updated" where: users_bool_exp!
+}
+
+scalar uuid
+
+"Boolean expression to compare columns of type \"uuid\". All fields are combined with logical 'AND'."
+input uuid_comparison_exp {
+  _eq: uuid
+  _gt: uuid
+  _gte: uuid
+  _in: [uuid!]
+  _is_null: Boolean
+  _lt: uuid
+  _lte: uuid
+  _neq: uuid
+  _nin: [uuid!]
+}
+
+scalar vector
+
+"Boolean expression to compare columns of type \"vector\". All fields are combined with logical 'AND'."
+input vector_comparison_exp {
+  _eq: vector
+  _gt: vector
+  _gte: vector
+  _in: [vector!]
+  _is_null: Boolean
+  _lt: vector
+  _lte: vector
+  _neq: vector
+  _nin: [vector!]
+}
+
+"whether this query should be included"
+directive @include(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"whether this query should be skipped"
+directive @skip(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"whether this query should be cached (Hasura Cloud only)"
+directive @cached("measured in seconds" ttl: Int! = "60", "refresh the cache entry" refresh: Boolean! = "false") on QUERY

@@ -1,0 +1,284 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersOrderBy
+  description: Ordering options when selecting data from "users".
+  fields:
+    - name: createdAt
+      type: OrderBy
+    - name: email
+      type: OrderBy
+    - name: id
+      type: OrderBy
+    - name: isEmailVerified
+      type: OrderBy
+    - name: lastSeen
+      type: OrderBy
+    - name: name
+      type: OrderBy
+    - name: password
+      type: OrderBy
+    - name: updatedAt
+      type: OrderBy
+  graphql:
+    typeName: UsersOrderBy
+    inputTypeName: UsersOrderByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_order_by
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        isEmailVerified:
+          column:
+            name: is_email_verified
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersOrderBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - email
+          - id
+          - isEmailVerified
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UsersBoolExp
+  description: Boolean expression to filter rows from the table "users". All
+    fields are combined with a logical 'AND'.
+  fields:
+    - name: and
+      type: "[UsersBoolExp!]"
+    - name: not
+      type: UsersBoolExp
+    - name: or
+      type: "[UsersBoolExp!]"
+    - name: createdAt
+      type: TimestamptzComparisonExp
+    - name: email
+      type: StringComparisonExp
+    - name: id
+      type: UuidComparisonExp
+    - name: isEmailVerified
+      type: BooleanComparisonExp
+    - name: lastSeen
+      type: TimestamptzComparisonExp
+    - name: name
+      type: StringComparisonExp
+    - name: password
+      type: StringComparisonExp
+    - name: updatedAt
+      type: TimestamptzComparisonExp
+  graphql:
+    typeName: UsersBoolExp
+    inputTypeName: UsersBoolExpInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users_bool_exp
+      fieldMapping:
+        and:
+          column:
+            name: _and
+        not:
+          column:
+            name: _not
+        or:
+          column:
+            name: _or
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        isEmailVerified:
+          column:
+            name: is_email_verified
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UsersBoolExp
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - and
+          - not
+          - or
+          - createdAt
+          - email
+          - id
+          - isEmailVerified
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: Users
+  description: columns and relationships of "users"
+  fields:
+    - name: createdAt
+      type: Timestamptz!
+    - name: email
+      type: String!
+    - name: id
+      type: Uuid!
+    - name: isEmailVerified
+      type: Boolean
+    - name: lastSeen
+      type: Timestamptz
+    - name: name
+      type: String!
+    - name: password
+      type: String
+    - name: updatedAt
+      type: Timestamptz!
+  graphql:
+    typeName: Users
+    inputTypeName: UsersInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: users
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        email:
+          column:
+            name: email
+        id:
+          column:
+            name: id
+        isEmailVerified:
+          column:
+            name: is_email_verified
+        lastSeen:
+          column:
+            name: last_seen
+        name:
+          column:
+            name: name
+        password:
+          column:
+            name: password
+        updatedAt:
+          column:
+            name: updated_at
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: Users
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - email
+          - id
+          - isEmailVerified
+          - lastSeen
+          - name
+          - password
+          - updatedAt
+
+---
+kind: Command
+version: v1
+definition:
+  name: Users
+  outputType: "[Users!]!"
+  arguments:
+    - name: distinctOn
+      type: "[UsersSelectColumn!]"
+      description: distinct select on columns
+    - name: limit
+      type: Int
+      description: limit the number of rows returned
+    - name: offset
+      type: Int
+      description: skip the first n rows. Use only with order_by
+    - name: orderBy
+      type: "[UsersOrderBy!]"
+      description: sort the rows by one or more columns
+    - name: where
+      type: UsersBoolExp
+      description: filter the rows returned
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: users
+    argumentMapping:
+      distinctOn: distinct_on
+      limit: limit
+      offset: offset
+      orderBy: order_by
+      where: where
+  graphql:
+    rootFieldName: users
+    rootFieldKind: Query
+  description: 'fetch data from the table: "users"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Users
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,68 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: SecurityEventPkColumnsInput
+  description: "primary key columns input for table: security_event"
+  fields:
+    - name: evtId
+      type: Int!
+  graphql:
+    typeName: SecurityEventPkColumnsInput
+    inputTypeName: SecurityEventPkColumnsInputInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_graphql
+      dataConnectorObjectType: security_event_pk_columns_input
+      fieldMapping:
+        evtId:
+          column:
+            name: evt_id
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: SecurityEventPkColumnsInput
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - evtId
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateSecurityEventByPk
+  outputType: SecurityEvent
+  arguments:
+    - name: inc
+      type: SecurityEventIncInput
+      description: increments the numeric columns with given value of the filtered values
+    - name: set
+      type: SecurityEventSetInput
+      description: sets the columns of the filtered rows to the given values
+    - name: pkColumns
+      type: SecurityEventPkColumnsInput!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      procedure: update_security_event_by_pk
+    argumentMapping:
+      inc: _inc
+      set: _set
+      pkColumns: pk_columns
+  graphql:
+    rootFieldName: updateSecurityEventByPk
+    rootFieldKind: Mutation
+  description: 'update single row of the table: "security_event"'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateSecurityEventByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,27 @@
+---
+kind: Command
+version: v1
+definition:
+  name: CategoriesByPk
+  outputType: Categories
+  arguments:
+    - name: id
+      type: Uuid!
+  source:
+    dataConnectorName: my_graphql
+    dataConnectorCommand:
+      function: categories_by_pk
+  graphql:
+    rootFieldName: categoriesByPk
+    rootFieldKind: Query
+  description: 'fetch data from the table: "categories" using primary key columns'
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: CategoriesByPk
+  permissions:
+    - role: admin
+      allowExecution: true
+
